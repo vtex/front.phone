@@ -11,7 +11,7 @@ describe 'Phone:', ->
 		countryCodeBrazil = '55'
 		countryCodeUSA = '1'
 		# Act
-		# Assert		
+		# Assert
 		expect(vtex.phone.countries[countryCodeBrazil]).toBeDefined()
 		expect(vtex.phone.countries[countryCodeUSA]).toBeDefined()
 	
@@ -23,7 +23,7 @@ describe 'Phone:', ->
 			# Act
 			result = vtex.phone.validateInternational(number)
 
-			# Assert			
+			# Assert
 			expect(result.valid).toBe(true)
 
 		it 'standard formatted number', ->
@@ -50,7 +50,7 @@ describe 'Phone:', ->
 			# Act
 			result = vtex.phone.validateInternational(number)
 
-			# Assert			
+			# Assert
 			expect(result.valid).toBe(true)
 
 		it 'an average number from Buenos Aires', ->
@@ -73,7 +73,7 @@ describe 'Phone:', ->
 			# Act
 			result = vtex.phone.validateInternational(number)
 
-			# Assert			
+			# Assert
 			expect(result.valid).toBe(true)
 
 		it 'number with national destination code with 1 digit', ->
@@ -83,13 +83,45 @@ describe 'Phone:', ->
 		it 'number with national destination code with 3 digits', ->
 			# Arrange
 			number = "+598 (447) 87256"
-			
+
+	describe 'chilean phone should validate a', ->
+
+		number = ''
+
+		afterEach ->
+			# Act
+			result = vtex.phone.validateInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'number with destination national code 2', ->
+			# Arrange
+			number = "+56 (2) 98986565"
+
+		it 'number with 7 digits', ->
+			# Arrange
+			number = "+56 (35) 9898656"
 		
-			
-		
-			
-		
-			
-			
-		
-	
+		it 'number with 6 digits', ->
+			# Arrange
+			number = "+56 (35) 989865"
+
+		it 'number with destination national code 58', ->
+			# Arrange
+			number = "+56 (58) 9898656"
+
+	describe 'american phone should validate a', ->
+
+		number = ''
+
+		afterEach ->
+			# Act
+			result = vtex.phone.validateInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'number', ->
+			# Arrange
+			number = "+1 (201) 9898656"
