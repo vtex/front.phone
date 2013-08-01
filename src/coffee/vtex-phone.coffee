@@ -1,5 +1,15 @@
 window.vtex = window.vtex || {}
 
+class PhoneNumber
+	constructor: (countryCode, nationalDestinationCode, number, originalNumber) ->
+		@countryCode = countryCode
+		@nationalDestinationCode = nationalDestinationCode
+		@number = number
+		@originalNumber = originalNumber
+
+	valid: (isValid) =>
+		@valid = isValid
+
 class Phone
 	constructor: ->
 
@@ -12,36 +22,36 @@ class Phone
 		# Remove + sign
 		number = if number.indexOf('+') is 0 then number.slice(1) else number
 
-		for countryCode, countryObj of vtex.phone.countries			
+		for countryCode, countryObj of vtex.phone.countries
 			countryCodePattern = new RegExp "^"+countryCode
 			withoutCountryCode = number.replace(countryCodePattern, "")
 
 			if withoutCountryCode.length < number.length
-				for nationalDestinationCode in countryObj.nationalDestinationCode
-					ndcRegex = "^("+countryObj.initialOptionalDigit+"|)"+nationalDestinationCode
-					ndcPattern = new RegExp ndcRegex
-					withoutNDC = withoutCountryCode.replace(ndcPattern, "")
+				foundCountryCode = true
+				break
 
-					if withoutNDC.length < withoutCountryCode.length
-						result = countryObj.specialRules(originalNumber, withoutCountryCode,
-														withoutNDC, nationalDestinationCode)
-						if result
-							return {
-								nationalDestinationCode: nationalDestinationCode,
-								countryCode: countryCode,
-								number: withoutNDC,
-								originalNumber: originalNumber,
-								valid: true
-							}
-						else
-							return {
-								nationalDestinationCode: nationalDestinationCode,
-								countryCode: countryCode,
-								number: withoutNDC,
-								originalNumber: originalNumber,
-								valid: false
-							}
+		if foundCountryCode
+			for nationalDestinationCode in countryObj.nationalDestinationCode
+				ndcRegex = "^("+countryObj.initialOptionalDigit+"|)"+nationalDestinationCode
+				ndcPattern = new RegExp ndcRegex
+				withoutNDC = withoutCountryCode.replace(ndcPattern, "")
 
-		return null		
+				if withoutNDC.length < withoutCountryCode.length
+					foundNationalDestinationCode = true
+					break
+
+		if foundNationalDestinationCode
+			result = countryObj.specialRules(originalNumber, withoutCountryCode,
+												withoutNDC, nationalDestinationCode)
+
+			phoneNumber = new PhoneNumber(countryCode, nationalDestinationCode, number, originalNumber)
+			if result
+				phoneNumber.valid(true)
+				return phoneNumber
+			else
+				phoneNumber.valid(false)
+				return phoneNumber
+
+		return null
 
 window.vtex.phone = new Phone()
