@@ -38,9 +38,9 @@ describe 'Phone:', ->
 			# Arrange
 			number = "+55 (021) 9898-6565"
 			
-		it 'mobile number from Sao Paulo (extra digit)', ->
+		it 'mobile number (extra digit)', ->
 			# Arrange
-			number = "+55 (011) 99898-6565"			
+			number = "+55 (021) 99898-6565"
 	
 	describe 'argentinian phone should validate a', ->
 

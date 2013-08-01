@@ -4,6 +4,7 @@ window.vtex.phone.countries = window.vtex.phone.countries || {}
 
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
+# (1) http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecialPesquisa.do?acao=&tipoConteudoHtml=1&codNoticia=27199
 # http://en.wikipedia.org/wiki/Local_conventions_for_writing_telephone_numbers#Brazil
 class Brazil
 	constructor: ->
@@ -15,8 +16,10 @@ class Brazil
 			]
 
 	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>
-		saoPauloMobilePattern = new RegExp /^(0|)11/
-		ndcRest = withoutCountryCode.replace(saoPauloMobilePattern, "")
+		# Needs to be updated in 2015 (as in link (1) above)
+		newMobileNDC = ['11','12','13','14','15','16','17','18','19','21','22','24','27','28']
+		newMobilePattern = new RegExp "^(0|)("+newMobileNDC.join("|")+")"
+		ndcRest = withoutCountryCode.replace(newMobilePattern, "")
 		
 		if ndcRest.length < withoutCountryCode.length			
 			return ndcRest.length is 9 or ndcRest.length is 8
