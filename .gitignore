@@ -1,0 +1,4 @@
+build/
+deploy/
+node_modules/
+.idea/

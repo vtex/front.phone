@@ -1,0 +1,17 @@
+{
+	"name": "front-phone",
+	"version": "0.1.0",
+	"main": [
+		"dist/people.js", "dist/people.min.js"
+	],
+	"dependencies": {
+		"jquery": "1.9.0",
+		"underscore": "latest"
+	},
+	"devDependencies": {
+		"bootstrap": "brenocalazans/bootstrap"
+	},
+	"install": {
+		"path": "src/lib/bower_components"
+	}
+}
