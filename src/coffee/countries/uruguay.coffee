@@ -5,13 +5,14 @@ window.vtex.phone.countries = window.vtex.phone.countries || {}
 # For more info check:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
+# http://www.howtocallabroad.com/uruguay/
 class Uruguay
 	constructor: ->
 		@countryCode = '598'
 		@initialOptionalDigit = ''
 		@nationalDestinationCode =
 			[
-				'433','42','447','445','464','462','477','473','472','456','453','452','434','435','444','436','463','2'
+				'2', '4', '9'
 			]
 
 	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>		
