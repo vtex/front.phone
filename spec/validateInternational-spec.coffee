@@ -91,11 +91,7 @@ describe 'Should validate a', ->
 
 		it 'number with national destination code with 1 digit', ->
 			# Arrange
-			number = "+598 (2) 9898656"
-		
-		it 'number with national destination code with 3 digits', ->
-			# Arrange
-			number = "+598 (447) 87256"
+			number = "+598 2 989 8656"		
 
 	describe 'chilean phone with a', ->
 
@@ -123,6 +119,10 @@ describe 'Should validate a', ->
 		it 'number with destination national code 58', ->
 			# Arrange
 			number = "+56 (58) 9898656"
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+56 9 98986565"
 
 	describe 'american phone with a', ->
 
