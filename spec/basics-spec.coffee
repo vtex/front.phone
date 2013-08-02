@@ -1,7 +1,7 @@
 jasmine.getFixtures().fixturesPath = 'base/build/spec/fixtures'
 jasmine.getJSONFixtures().fixturesPath = 'base/build/spec/fixtures'
 
-describe 'Phone basics', ->
+describe 'front.phone component', ->
 
 	it 'should be defined', ->
 		expect(vtex.phone).toBeDefined()
