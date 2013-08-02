@@ -22,6 +22,9 @@ class Phone
 		# Remove + sign
 		number = if number.indexOf('+') is 0 then number.slice(1) else number
 
+		# Not valid if it contains non-digits after this point
+		return null if /\D/.test(number)
+
 		for countryCode, countryObj of vtex.phone.countries
 			countryCodePattern = new RegExp "^"+countryCode
 			withoutCountryCode = number.replace(countryCodePattern, "")
