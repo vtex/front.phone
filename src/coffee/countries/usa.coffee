@@ -16,4 +16,11 @@ class USA
 	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>		
 		return withoutNDC.length is 7
 
+	splitNumber: (number) =>
+		if number.length is 7
+			splitNumber = number.split(/(\d{3})(\d{4})/)
+			return _.filter splitNumber, (n) => n.length >= 1
+
+		return [number]
+
 window.vtex.phone.countries['1'] = new USA()

@@ -16,6 +16,13 @@ class Uruguay
 			]
 
 	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>		
-		return (ndc.length + withoutNDC.length) is 8			
+		return (ndc.length + withoutNDC.length) is 8
+
+	splitNumber: (number) =>
+		if number.length is 7
+			splitNumber = number.split(/(\d{3})(\d{4})/)
+			return _.filter splitNumber, (n) => n.length >= 1
+
+		return [number]
 
 window.vtex.phone.countries['598'] = new Uruguay()

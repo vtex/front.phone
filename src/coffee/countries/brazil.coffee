@@ -25,5 +25,16 @@ class Brazil
 			return ndcRest.length is 9 or ndcRest.length is 8
 		else
 			return withoutNDC.length is 8
+
+	splitNumber: (number) =>
+		if number.length is 8
+			splitNumber = number.split(/(\d{4})(\d{4})/)
+			return _.filter splitNumber, (n) => n.length >= 1
+		else if number.length is 9
+			if number.indexOf("9") is 0
+				splitNumber = number.split(/(\d{5})(\d{4})/)
+				return _.filter splitNumber, (n) => n.length >= 1
+
+		return [number]
 			
 window.vtex.phone.countries['55'] = new Brazil()

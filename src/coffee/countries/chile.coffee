@@ -27,4 +27,18 @@ class Chile
 			# Should be updated based on link (1)
 				return withoutNDC.length is 6 or withoutNDC.length is 7
 
+	splitNumber: (number) =>
+		switch number.length
+			when 8
+				splitNumber = number.split(/(\d{4})(\d{4})/)
+				return _.filter splitNumber, (n) => n.length >= 1
+			when 7
+				splitNumber = number.split(/(\d{3})(\d{4})/)
+				return _.filter splitNumber, (n) => n.length >= 1
+			when 6
+				splitNumber = number.split(/(\d{2})(\d{4})/)
+				return _.filter splitNumber, (n) => n.length >= 1
+
+		return [number]
+
 window.vtex.phone.countries['56'] = new Chile()
