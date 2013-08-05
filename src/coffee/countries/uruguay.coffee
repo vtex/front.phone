@@ -25,4 +25,23 @@ class Uruguay
 
 		return [number]
 
+	format: (phone, format = vtex.phone.INTERNATIONAL) =>
+		resultString = ""
+
+		splitNumber = @splitNumber(phone.number)
+		nationalNumber = phone.nationalDestinationCode + splitNumber[0] + " " + splitNumber[1]
+		switch format
+			when vtex.phone.INTERNATIONAL
+				resultString = "+" + phone.countryCode + " "
+				resultString += nationalNumber
+			when vtex.phone.NATIONAL
+				resultString = nationalNumber
+			when vtex.phone.LOCAL
+				resultString = nationalNumber
+			else
+				resultString = phone.originalNumber
+
+		return resultString
+
+
 window.vtex.phone.countries['598'] = new Uruguay()
