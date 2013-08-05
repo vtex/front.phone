@@ -51,7 +51,7 @@ class Phone
 			result = countryObj.specialRules(originalNumber, withoutCountryCode,
 												withoutNDC, nationalDestinationCode)
 
-			phoneNumber = new PhoneNumber(countryCode, nationalDestinationCode, number, originalNumber)
+			phoneNumber = new PhoneNumber(countryCode, nationalDestinationCode, withoutNDC, originalNumber)
 			if result
 				phoneNumber.valid(true)
 				return phoneNumber
