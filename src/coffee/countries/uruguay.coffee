@@ -9,7 +9,8 @@ window.vtex.phone.countries = window.vtex.phone.countries || {}
 class Uruguay
 	constructor: ->
 		@countryCode = '598'
-		@nationalTrunkPrefix = ''
+		@optionalTrunkPrefix = ''
+		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
 			[
 				'2', '4', '9'
@@ -24,24 +25,5 @@ class Uruguay
 			return _.filter splitNumber, (n) => n.length >= 1
 
 		return [number]
-
-	format: (phone, format = vtex.phone.INTERNATIONAL) =>
-		resultString = ""
-
-		splitNumber = @splitNumber(phone.number)
-		nationalNumber = phone.nationalDestinationCode + splitNumber[0] + " " + splitNumber[1]
-		switch format
-			when vtex.phone.INTERNATIONAL
-				resultString = "+" + phone.countryCode + " "
-				resultString += nationalNumber
-			when vtex.phone.NATIONAL
-				resultString = nationalNumber
-			when vtex.phone.LOCAL
-				resultString = nationalNumber
-			else
-				resultString = phone.originalNumber
-
-		return resultString
-
 
 window.vtex.phone.countries['598'] = new Uruguay()

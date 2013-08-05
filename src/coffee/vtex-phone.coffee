@@ -39,7 +39,7 @@ class Phone
 
 		if foundCountryCode
 			for nationalDestinationCode in countryObj.nationalDestinationCode
-				ndcRegex = "^("+countryObj.nationalTrunkPrefix+"|)"+nationalDestinationCode
+				ndcRegex = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
 				ndcPattern = new RegExp ndcRegex
 				withoutNDC = withoutCountryCode.replace(ndcPattern, "")
 
@@ -66,7 +66,29 @@ class Phone
 		return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "")
 
 	format: (phone, format = vtex.phone.INTERNATIONAL) =>
-		return vtex.phone.countries[phone.countryCode].format(phone, format)
+		resultString = ""
 
+		splitNumber = vtex.phone.countries[phone.countryCode].splitNumber(phone.number)
+
+		switch format
+			when vtex.phone.INTERNATIONAL
+				resultString = "+" + phone.countryCode + " "
+				resultString += phone.nationalDestinationCode + " "
+				localNumber = splitNumber[0] + " " + splitNumber[1]
+				resultString += localNumber
+			when vtex.phone.NATIONAL
+				resultString += "("
+				resultString += vtex.phone.countries[phone.countryCode].optionalTrunkPrefix
+				resultString += phone.nationalDestinationCode
+				resultString += ") "
+				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
+				resultString += splitNumber[0] + separator + splitNumber[1]
+			when vtex.phone.LOCAL
+				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
+				resultString = splitNumber[0] + separator + splitNumber[1]
+			else
+				resultString = ""
+
+		return resultString
 
 window.vtex.phone = new Phone()
