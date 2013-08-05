@@ -9,7 +9,7 @@ window.vtex.phone.countries = window.vtex.phone.countries || {}
 class Chile
 	constructor: ->
 		@countryCode = '56'
-		@initialOptionalDigit = ''
+		@nationalTrunkPrefix = ''
 		@nationalDestinationCode =
 			[
 				'2','32','33','34','35','41','42','43','45','51','52','53','55','57','58','61','63','64','65','67','68','71','72','73','75', '9' # 9 is a mobile number

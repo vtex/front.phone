@@ -35,7 +35,7 @@ class Phone
 
 		if foundCountryCode
 			for nationalDestinationCode in countryObj.nationalDestinationCode
-				ndcRegex = "^("+countryObj.initialOptionalDigit+"|)"+nationalDestinationCode
+				ndcRegex = "^("+countryObj.nationalTrunkPrefix+"|)"+nationalDestinationCode
 				ndcPattern = new RegExp ndcRegex
 				withoutNDC = withoutCountryCode.replace(ndcPattern, "")
 

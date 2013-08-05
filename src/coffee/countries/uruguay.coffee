@@ -9,7 +9,7 @@ window.vtex.phone.countries = window.vtex.phone.countries || {}
 class Uruguay
 	constructor: ->
 		@countryCode = '598'
-		@initialOptionalDigit = ''
+		@nationalTrunkPrefix = ''
 		@nationalDestinationCode =
 			[
 				'2', '4', '9'
