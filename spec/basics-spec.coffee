@@ -14,3 +14,13 @@ describe 'front.phone component', ->
 		# Assert
 		expect(vtex.phone.countries[countryCodeBrazil]).toBeDefined()
 		expect(vtex.phone.countries[countryCodeUSA]).toBeDefined()
+
+	it 'should normalize number', ->
+		# Arrange
+		number = "+55 (21) 9898-6565"
+
+		# Act
+		result = vtex.phone.normalize(number)
+
+		# Assert
+		expect(/\D/g.test(result)).toBeFalsy()

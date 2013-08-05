@@ -1,31 +1,6 @@
 jasmine.getFixtures().fixturesPath = 'base/build/spec/fixtures'
 jasmine.getJSONFixtures().fixturesPath = 'base/build/spec/fixtures'
 
-describe 'Shouldn\'t validate a', ->
-	
-	number = ''
-
-	afterEach ->
-		# Act
-		result = vtex.phone.validateInternational(number)
-
-		# Assert
-		expect(result).toBe(null)
-
-	describe 'number with non-digits', ->		
-
-		it 'in country code', ->
-			# Arrange
-			number = "+5W (21) 2343-2321"
-
-		it 'in national destination code', ->
-			# Arrange
-			number = "+55 (2x1) 2343-2321"
-
-		it 'in number', ->
-			# Arrange
-			number = "+55 (21) U 343-2321"			
-
 describe 'Should validate a', ->	
 	
 	describe 'brazilian phone with a', ->

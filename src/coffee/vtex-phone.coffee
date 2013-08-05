@@ -13,17 +13,21 @@ class PhoneNumber
 class Phone
 	constructor: ->
 
+		# Like so: +55 (21) 9898-6565
+		@INTERNATIONAL = 0
+
+		# Like so: (21) 9898-6565
+		@NATIONAL = 1
+
+		# And: 9898-6565
+		@LOCAL = 2
+
+
 	validateInternational: (originalNumber) =>
 		number = originalNumber
 
-		# Remove whitespaces, parenthesis, slashes and dots
-		number = number.replace(/\ |\(|\)|\-|\./g, "")
-
-		# Remove + sign
-		number = if number.indexOf('+') is 0 then number.slice(1) else number
-
-		# Not valid if it contains non-digits after this point
-		return null if /\D/.test(number)
+		# Clean up number
+		number = @normalize(number)
 
 		for countryCode, countryObj of vtex.phone.countries
 			countryCodePattern = new RegExp "^"+countryCode
@@ -56,5 +60,13 @@ class Phone
 				return phoneNumber
 
 		return null
+
+	normalize: (number) =>
+		# Remove whitespaces, parenthesis, slashes, dots, plus sign and letters
+		return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "")
+
+	format: (phone, format = vtex.phone.INTERNATIONAL) =>
+		return vtex.phone.countries[phone.countryCode].format(phone, format)
+
 
 window.vtex.phone = new Phone()
