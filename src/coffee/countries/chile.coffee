@@ -1,6 +1,4 @@
-window.vtex = window.vtex || {}
-window.vtex.phone = window.vtex.phone || {}
-window.vtex.phone.countries = window.vtex.phone.countries || {}
+root = exports ? this
 
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
@@ -17,16 +15,17 @@ class Chile
 			]
 
 	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>
+		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC, originalNumber)
 		switch ndc
 			when '2'
-				return withoutNDC.length is 8
+				if withoutNDC.length is 8 then return phone 
 			when '9'
-				return withoutNDC.length is 8
+				if withoutNDC.length is 8 then return phone
 			when '58'
-				return withoutNDC.length is 7
+				if withoutNDC.length is 7 then return phone
 			else
 			# Should be updated based on link (1)
-				return withoutNDC.length is 6 or withoutNDC.length is 7
+				if withoutNDC.length is 6 or withoutNDC.length is 7 then return phone
 
 	splitNumber: (number) =>
 		switch number.length
@@ -42,4 +41,6 @@ class Chile
 
 		return [number]
 
-window.vtex.phone.countries['56'] = new Chile()
+# exports
+root.vtex.phone.countries = root.vtex.phone.countries || {}
+root.vtex.phone.countries['56'] = new Chile()

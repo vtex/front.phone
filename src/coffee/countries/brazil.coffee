@@ -1,6 +1,4 @@
-window.vtex = window.vtex || {}
-window.vtex.phone = window.vtex.phone || {}
-window.vtex.phone.countries = window.vtex.phone.countries || {}
+root = exports ? this
 
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
@@ -20,12 +18,13 @@ class Brazil
 		# Needs to be updated in 2015 (as in link (1) above)
 		newMobileNDC = ['11','12','13','14','15','16','17','18','19','21','22','24','27','28']
 		newMobilePattern = new RegExp "^(0|)("+newMobileNDC.join("|")+")"
-		ndcRest = withoutCountryCode.replace(newMobilePattern, "")
+		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC, originalNumber)
 		
-		if ndcRest.length < withoutCountryCode.length			
-			return ndcRest.length is 9 or ndcRest.length is 8
+		if newMobilePattern.test(withoutCountryCode)
+			ndcRest = withoutCountryCode.replace(newMobilePattern, "")
+			if ndcRest.length is 9 or ndcRest.length is 8 then return phone
 		else
-			return withoutNDC.length is 8
+			if withoutNDC.length is 8 then return phone 
 
 	splitNumber: (number) =>
 		if number.length is 8
@@ -37,5 +36,7 @@ class Brazil
 				return _.filter splitNumber, (n) => n.length >= 1
 
 		return [number]
-			
-window.vtex.phone.countries['55'] = new Brazil()
+
+# exports
+root.vtex.phone.countries = root.vtex.phone.countries || {}
+root.vtex.phone.countries['55'] = new Brazil()

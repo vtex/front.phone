@@ -27,8 +27,9 @@ class Ecuador
 			splitNumber = number.split(/(\d{3})(\d{4})/)
 			return _.filter splitNumber, (n) => n.length >= 1
 		else if number.length is 9
-			splitNumber = number.split(/(\d{2})(\d{3})(\d{4)/)
-			return _.filter splitNumber, (n) => n.length >= 1
+			if number.indexOf("9") is 0
+				splitNumber = number.split(/(\d{2})(\d{3})(\d{4})/)
+				return _.filter splitNumber, (n) => n.length >= 1
 
 		return [number]
 
