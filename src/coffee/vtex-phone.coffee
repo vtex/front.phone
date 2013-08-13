@@ -1,4 +1,4 @@
-window.vtex = window.vtex || {}
+root = exports ? this
 
 class PhoneNumber
 	constructor: (countryCode, nationalDestinationCode, number, originalNumber) ->
@@ -6,13 +6,16 @@ class PhoneNumber
 		@nationalDestinationCode = nationalDestinationCode
 		@number = number
 		@originalNumber = originalNumber
+		@isMobile = false
+
+		# Argentina madness only
+		@has15 = false
 
 	valid: (isValid) =>
 		@valid = isValid
 
 class Phone
 	constructor: ->
-
 		# Like so: +55 (21) 9898-6565
 		@INTERNATIONAL = 0
 
@@ -30,33 +33,29 @@ class Phone
 		number = @normalize(number)
 
 		for countryCode, countryObj of vtex.phone.countries
-			countryCodePattern = new RegExp "^"+countryCode
-			withoutCountryCode = number.replace(countryCodePattern, "")
+			countryCodeRegex = new RegExp "^"+countryCode
 
-			if withoutCountryCode.length < number.length
+			if countryCodeRegex.test(number)
+				withoutCountryCode = number.replace(countryCodeRegex, "")
 				foundCountryCode = true
 				break
 
 		if foundCountryCode
 			for nationalDestinationCode in countryObj.nationalDestinationCode
-				ndcRegex = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
-				ndcPattern = new RegExp ndcRegex
-				withoutNDC = withoutCountryCode.replace(ndcPattern, "")
+				ndcPattern = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
+				ndcRegex = new RegExp ndcPattern
 
-				if withoutNDC.length < withoutCountryCode.length
+				if ndcRegex.test(withoutCountryCode)
+					withoutNDC = withoutCountryCode.replace(ndcRegex, "")
 					foundNationalDestinationCode = true
 					break
 
 		if foundNationalDestinationCode
-			result = countryObj.specialRules(originalNumber, withoutCountryCode,
+			phoneNumber = countryObj.specialRules(originalNumber, withoutCountryCode,
 												withoutNDC, nationalDestinationCode)
 
-			phoneNumber = new PhoneNumber(countryCode, nationalDestinationCode, withoutNDC, originalNumber)
-			if result
+			if phoneNumber
 				phoneNumber.valid(true)
-				return phoneNumber
-			else
-				phoneNumber.valid(false)
 				return phoneNumber
 
 		return null
@@ -66,6 +65,9 @@ class Phone
 		return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "")
 
 	format: (phone, format = vtex.phone.INTERNATIONAL) =>
+		if vtex.phone.countries[phone.countryCode].format
+			return vtex.phone.countries[phone.countryCode].format(phone, format)
+
 		resultString = ""
 
 		splitNumber = vtex.phone.countries[phone.countryCode].splitNumber(phone.number)
@@ -73,22 +75,23 @@ class Phone
 		switch format
 			when vtex.phone.INTERNATIONAL
 				resultString = "+" + phone.countryCode + " "
-				resultString += phone.nationalDestinationCode + " "
-				localNumber = splitNumber[0] + " " + splitNumber[1]
-				resultString += localNumber
+				if phone.nationalDestinationCode
+					resultString += phone.nationalDestinationCode + " "
+				resultString += splitNumber.join(" ")
 			when vtex.phone.NATIONAL
-				resultString += "("
-				resultString += vtex.phone.countries[phone.countryCode].optionalTrunkPrefix
-				resultString += phone.nationalDestinationCode
-				resultString += ") "
+				if phone.nationalDestinationCode
+					resultString += "(" + phone.nationalDestinationCode + ") "
 				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
-				resultString += splitNumber[0] + separator + splitNumber[1]
+				resultString += splitNumber.join(separator)
 			when vtex.phone.LOCAL
 				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
-				resultString = splitNumber[0] + separator + splitNumber[1]
+				resultString = splitNumber.join(separator)
 			else
 				resultString = ""
 
 		return resultString
 
-window.vtex.phone = new Phone()
+# exports
+root.vtex = root.vtex || {}
+root.vtex.phone = new Phone()
+root.vtex.phone.PhoneNumber = PhoneNumber

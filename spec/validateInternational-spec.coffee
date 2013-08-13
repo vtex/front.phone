@@ -43,15 +43,15 @@ describe 'Should validate a', ->
 
 		it 'an average number from Buenos Aires', ->
 			# Arrange
-			number = "+54 (11) 87876565"
+			number = "+54 11 87876565"
 
 		it 'a number with a national destination code with 3 digits', ->
 			# Arrange
-			number = "+54 (220) 8787656"
+			number = "+54 220 8787656"
 
 		it 'a mobile number', ->
 			# Arrange
-			number = "+54 (011) 15 87876565"
+			number = "+54 9 11 87876565"
 
 	describe 'uruguayan phone with a', ->
 
