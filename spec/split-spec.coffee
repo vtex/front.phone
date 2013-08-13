@@ -15,7 +15,7 @@ describe 'Should split', ->
 			# Assert
 			expect(result.length).toBe(2)
 
-		it 'number with 9 digits only if it\'s mobile', ->			
+		it 'number with 9 digits only if it\'s mobile', ->
 			# Arrange
 			numberMobile = "998986565"
 			numberNotValid = "398986565"
@@ -29,29 +29,6 @@ describe 'Should split', ->
 			expect(resultNotValid.length).toBe(1)
 
 	describe 'an argentinian', ->
-
-		describe 'mobile number', ->
-
-			number = ''
-
-			afterEach ->
-				# Act
-				result = vtex.phone.countries['54'].splitNumber(number)
-
-				# Assert
-				expect(result.length).toBe(3)
-			
-			it 'with 10 digits', ->
-				# Arrange
-				number = "1598986565"
-			
-			it 'with 9 digits', ->
-				# Arrange
-				number = "158986565"
-
-			it 'with 8 digits', ->
-				# Arrange
-				number = "15986565"
 
 		describe 'land line number', ->
 
@@ -87,7 +64,7 @@ describe 'Should split', ->
 
 			# Assert
 			expect(result.length).toBe(2)
-	
+
 	describe 'a chilean', ->
 
 		number = ''
@@ -122,3 +99,47 @@ describe 'Should split', ->
 
 			# Assert
 			expect(result.length).toBe(2)
+
+	describe 'a colombian', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "8986565"
+
+			# Act
+			result = vtex.phone.countries['57'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "3018986565"
+
+			# Act
+			result = vtex.phone.countries['57'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)
+
+	describe 'a ecuatorian', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "2345678"
+
+			# Act
+			result = vtex.phone.countries['593'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "912345678"
+
+			# Act
+			result = vtex.phone.countries['593'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)

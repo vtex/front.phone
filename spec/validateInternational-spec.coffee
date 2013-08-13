@@ -1,8 +1,8 @@
 jasmine.getFixtures().fixturesPath = 'base/build/spec/fixtures'
 jasmine.getJSONFixtures().fixturesPath = 'base/build/spec/fixtures'
 
-describe 'Should validate a', ->	
-	
+describe 'Should validate a', ->
+
 	describe 'brazilian phone with a', ->
 
 		number = ''
@@ -24,13 +24,13 @@ describe 'Should validate a', ->
 
 		it 'national destination code starting with the optional digit', ->
 			# Arrange
-			number = "+55 (021) 9898-6565"
-			
+			number = "+55 021 9898-6565"
+
 		it 'mobile number (extra digit)', ->
 			# Arrange
-			number = "+55 (021) 99898-6565"
-	
-	describe 'argentinian phone with a', ->
+			number = "+55 021 998986565"
+
+	describe 'argentinian phone with', ->
 
 		number = ''
 
@@ -66,7 +66,7 @@ describe 'Should validate a', ->
 
 		it 'number with national destination code with 1 digit', ->
 			# Arrange
-			number = "+598 2 989 8656"		
+			number = "+598 2 989 8656"
 
 	describe 'chilean phone with a', ->
 
@@ -81,19 +81,19 @@ describe 'Should validate a', ->
 
 		it 'number with destination national code 2', ->
 			# Arrange
-			number = "+56 (2) 98986565"
+			number = "+56 2 98986565"
 
 		it 'number with 7 digits', ->
 			# Arrange
-			number = "+56 (35) 9898656"
+			number = "+56 35 9898656"
 		
 		it 'number with 6 digits', ->
 			# Arrange
-			number = "+56 (35) 989865"
+			number = "+56 35 989865"
 
 		it 'number with destination national code 58', ->
 			# Arrange
-			number = "+56 (58) 9898656"
+			number = "+56 58 9898656"
 
 		it 'mobile number', ->
 			# Arrange
@@ -112,4 +112,62 @@ describe 'Should validate a', ->
 
 		it 'number', ->
 			# Arrange
-			number = "+1 (201) 9898656"
+			number = "+1 201 9898656"
+
+	describe 'colombian phone with a', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "+57 1 9898656"
+
+			# Act
+			result = vtex.phone.validateInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+57 301 9898656"
+
+			# Act
+			result = vtex.phone.validateInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+			expect(result.nationalDestinationCode.length).toBe(0)
+
+	describe 'ecuadorian phone with a', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "+593 2 989 6565"
+
+			# Act
+			result = vtex.phone.validateInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+593 92 989 6565"
+
+			# Act
+			result = vtex.phone.validateInternational(number)
+			
+			# Assert
+			expect(result.valid).toBe(true)
+			expect(result.nationalDestinationCode.length).toBe(0)
+
+describe 'Should not validate a', ->
+
+	it '"almost" mobile number from Colombia', ->
+		# Arrange
+		number = "+57 501 9898656"
+
+		# Act
+		result = vtex.phone.validateInternational(number)
+
+		# Assert
+		expect(result).toBe(null)
