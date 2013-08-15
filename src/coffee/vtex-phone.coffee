@@ -16,7 +16,7 @@ class PhoneNumber
 
 class Phone
 	constructor: ->
-		# Like so: +55 (21) 9898-6565
+		# Like so: +55 21 9898 6565
 		@INTERNATIONAL = 0
 
 		# Like so: (21) 9898-6565
@@ -25,32 +25,33 @@ class Phone
 		# And: 9898-6565
 		@LOCAL = 2
 
-
-	validateInternational: (originalNumber) =>
+	validateInternational: (originalNumber, givenCountryCode, givenNationalDestinationCode) =>
 		number = originalNumber
+		number = @normalize(number) # Clean up number
 
-		# Clean up number
-		number = @normalize(number)
-
-		for countryCode, countryObj of vtex.phone.countries
-			countryCodeRegex = new RegExp "^"+countryCode
-
-			if countryCodeRegex.test(number)
-				withoutCountryCode = number.replace(countryCodeRegex, "")
-				foundCountryCode = true
-				break
+		if givenCountryCode
+			countryCode = givenCountryCode
+			[foundCountryCode, countryCodeRegex] = @testCountryCode(countryCode, number)
+		else
+			for countryCode, countryObj of vtex.phone.countries
+				[foundCountryCode, countryCodeRegex] = @testCountryCode(countryCode, number)
+				break if foundCountryCode is true
 
 		if foundCountryCode
-			for nationalDestinationCode in countryObj.nationalDestinationCode
-				ndcPattern = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
-				ndcRegex = new RegExp ndcPattern
+			withoutCountryCode = number.replace(countryCodeRegex, "")
+			countryObj = root.vtex.phone.countries[countryCode]
 
-				if ndcRegex.test(withoutCountryCode)
-					withoutNDC = withoutCountryCode.replace(ndcRegex, "")
-					foundNationalDestinationCode = true
-					break
+			if givenNationalDestinationCode
+				nationalDestinationCode = givenNationalDestinationCode
+				[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, withoutCountryCode)
+			else
+				for nationalDestinationCode in countryObj.nationalDestinationCode
+					[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, withoutCountryCode)
+					break if foundNDC is true
 
-		if foundNationalDestinationCode
+		if foundNDC
+			withoutNDC = withoutCountryCode.replace(ndcRegex, "")
+
 			phoneNumber = countryObj.specialRules(originalNumber, withoutCountryCode,
 												withoutNDC, nationalDestinationCode)
 
@@ -63,6 +64,17 @@ class Phone
 	normalize: (number) =>
 		# Remove whitespaces, parenthesis, slashes, dots, plus sign and letters
 		return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "")
+
+	testCountryCode: (countryCode, number) =>
+		countryCodeRegex = new RegExp "^"+countryCode
+
+		if countryCodeRegex.test(number) then [true, countryCodeRegex] else [false, null]
+
+	testNDC: (nationalDestinationCode, countryObj, number) =>
+		ndcPattern = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
+		ndcRegex = new RegExp ndcPattern
+
+		if ndcRegex.test(number) then [true, ndcRegex] else [false, null]
 
 	format: (phone, format = vtex.phone.INTERNATIONAL) =>
 		if vtex.phone.countries[phone.countryCode].format
@@ -78,16 +90,16 @@ class Phone
 				if phone.nationalDestinationCode
 					resultString += phone.nationalDestinationCode + " "
 				resultString += splitNumber.join(" ")
+
 			when vtex.phone.NATIONAL
 				if phone.nationalDestinationCode
 					resultString += "(" + phone.nationalDestinationCode + ") "
 				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
 				resultString += splitNumber.join(separator)
+
 			when vtex.phone.LOCAL
 				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
 				resultString = splitNumber.join(separator)
-			else
-				resultString = ""
 
 		return resultString
 
