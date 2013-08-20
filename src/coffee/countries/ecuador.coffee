@@ -5,7 +5,10 @@ root = exports ? this
 # http://www.howtocallabroad.com/ecuador/
 class Ecuador
 	constructor: ->
+		@countryName = "Ecuador"
+		@countryNameAbbr = "ECU"
 		@countryCode = '593'
+		@mask = "[(9)][99] 999-9999"
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
@@ -13,11 +16,12 @@ class Ecuador
 				'2', '3', '4', '5', '6', '7', '9'
 			]
 
-	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC, originalNumber)
+	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
+		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
 		if withoutNDC.length is 7 and ndc isnt '9'
 			return phone
 		else if ndc is '9'and withoutNDC.length is 8
+			phone.isMobile = true
 			phone.number = withoutCountryCode
 			phone.nationalDestinationCode = ''
 			return phone

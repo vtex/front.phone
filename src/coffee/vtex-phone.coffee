@@ -1,15 +1,14 @@
 root = exports ? this
 
 class PhoneNumber
-	constructor: (countryCode, nationalDestinationCode, number, originalNumber) ->
+	constructor: (countryCode, nationalDestinationCode, number) ->
 		@countryCode = countryCode
 		@nationalDestinationCode = nationalDestinationCode
 		@number = number
-		@originalNumber = originalNumber
-		@isMobile = false
+		@isMobile = null
 
 		# Argentina madness only
-		@has15 = false
+		@has15 = null
 
 	valid: (isValid) =>
 		@valid = isValid
@@ -25,8 +24,33 @@ class Phone
 		# And: 9898-6565
 		@LOCAL = 2
 
-	validateInternational: (originalNumber, givenCountryCode, givenNationalDestinationCode) =>
-		number = originalNumber
+	validateNational: (nationalNumber, givenCountryCode, givenNationalDestinationCode) =>
+		nationalNumber = @normalize(nationalNumber) # Clean up number
+
+		countryObj = root.vtex.phone.countries[givenCountryCode]
+		if not countryObj then return null
+
+		if givenNationalDestinationCode
+			nationalDestinationCode = givenNationalDestinationCode
+			[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, nationalNumber)
+		else
+			for nationalDestinationCode in countryObj.nationalDestinationCode
+				[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, nationalNumber)
+				break if foundNDC is true
+
+		if not foundNDC then return null
+
+		withoutNDC = nationalNumber.replace(ndcRegex, "")
+
+		phoneNumber = countryObj.specialRules(nationalNumber, withoutNDC, nationalDestinationCode)
+
+		if phoneNumber
+			phoneNumber.valid(true)
+			return phoneNumber
+		else
+			return null
+
+	validateInternational: (number, givenCountryCode, givenNationalDestinationCode) =>
 		number = @normalize(number) # Clean up number
 
 		if givenCountryCode
@@ -37,29 +61,10 @@ class Phone
 				[foundCountryCode, countryCodeRegex] = @testCountryCode(countryCode, number)
 				break if foundCountryCode is true
 
-		if foundCountryCode
-			withoutCountryCode = number.replace(countryCodeRegex, "")
-			countryObj = root.vtex.phone.countries[countryCode]
+		if not foundCountryCode then return null
 
-			if givenNationalDestinationCode
-				nationalDestinationCode = givenNationalDestinationCode
-				[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, withoutCountryCode)
-			else
-				for nationalDestinationCode in countryObj.nationalDestinationCode
-					[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, withoutCountryCode)
-					break if foundNDC is true
-
-		if foundNDC
-			withoutNDC = withoutCountryCode.replace(ndcRegex, "")
-
-			phoneNumber = countryObj.specialRules(originalNumber, withoutCountryCode,
-												withoutNDC, nationalDestinationCode)
-
-			if phoneNumber
-				phoneNumber.valid(true)
-				return phoneNumber
-
-		return null
+		withoutCountryCode = number.replace(countryCodeRegex, "")
+		return @validateNational(withoutCountryCode, countryCode, givenNationalDestinationCode)
 
 	normalize: (number) =>
 		# Remove whitespaces, parenthesis, slashes, dots, plus sign and letters
@@ -102,6 +107,16 @@ class Phone
 				resultString = splitNumber.join(separator)
 
 		return resultString
+
+	getCountryCodeByName: (name) =>
+		for key, value of vtex.phone.countries
+			if value.countryName is name
+				return value.countryCode
+
+	getCountryCodeByNameAbbr: (nameAbbr) =>
+		for key, value of vtex.phone.countries
+			if value.countryNameAbbr is nameAbbr
+				return value.countryCode
 
 # exports
 root.vtex = root.vtex || {}

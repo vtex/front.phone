@@ -6,21 +6,32 @@ root = exports ? this
 # http://www.howtocallabroad.com/uruguay/
 class Uruguay
 	constructor: ->
+		@countryName = "Uruguay"
+		@countryNameAbbr = "URY"
 		@countryCode = '598'
-		@optionalTrunkPrefix = ''
+		@mask = "[(9)] [9]999-9999"
+		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
 			[
-				'2', '4', '9'
+				'2', '4', '9' # 9 is mobile
 			]
 
-	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>
+	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		if (ndc.length + withoutNDC.length) is 8
-			return new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC, originalNumber)
+			if ndc is '9'
+				phone.isMobile = true
+				phone.nationalDestinationCode = ''
+				phone.number = withoutCountryCode
+				return phone
+			return new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
 
 	splitNumber: (number) =>
 		if number.length is 7
 			splitNumber = number.split(/(\d{3})(\d{4})/)
+			return _.filter splitNumber, (n) => n.length >= 1
+		else if number.length is 8
+			splitNumber = number.split(/(\d{4})(\d{4})/)
 			return _.filter splitNumber, (n) => n.length >= 1
 
 		return [number]

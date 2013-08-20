@@ -5,7 +5,10 @@ root = exports ? this
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia
 class Colombia
 	constructor: ->
+		@countryName = "Colombia"
+		@countryNameAbbr = "COL"
 		@countryCode = '57'
+		@mask = "[(9)][999] 999-9999"
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
@@ -13,9 +16,10 @@ class Colombia
 				'3(\\d{2})', '1', '2', '3', '4', '5', '6', '7', '8'
 			]
 
-	specialRules: (originalNumber, withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, '', withoutNDC, originalNumber)
+	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
+		phone = new vtex.phone.PhoneNumber(@countryCode, '', withoutNDC)
 		if withoutCountryCode.indexOf('3') is 0 and withoutCountryCode.length is 10
+			phone.isMobile = true
 			phone.number = withoutCountryCode
 			phone.nationalDestinationCode = ''
 			return phone

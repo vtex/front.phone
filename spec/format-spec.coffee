@@ -74,3 +74,14 @@ describe 'Should format a number', ->
 
 		# Assert
 		expect(result).toMatch(/\(11\) 15 9898\-6565/)
+
+	it 'in national format mobile from Chile', ->
+		# Arrange
+		number = "56998986565"
+		phone = vtex.phone.validateInternational(number)
+
+		# Act
+		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
+
+		# Assert
+		expect(result).toMatch(/9 9898 6565/)
