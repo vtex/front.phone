@@ -1,6 +1,3 @@
-jasmine.getFixtures().fixturesPath = 'base/build/spec/fixtures'
-jasmine.getJSONFixtures().fixturesPath = 'base/build/spec/fixtures'
-
 describe 'Should split', ->
 
 	describe 'a brazilian', ->

@@ -1,6 +1,6 @@
 {
   "name": "front-phone",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "readmeFilename": "README.md",
   "description": "A phone component",
   "main": "index.html",
