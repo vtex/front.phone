@@ -1,6 +1,3 @@
-jasmine.getFixtures().fixturesPath = 'base/build/spec/fixtures'
-jasmine.getJSONFixtures().fixturesPath = 'base/build/spec/fixtures'
-
 describe 'Should format a number', ->
 
 	phone = {}
