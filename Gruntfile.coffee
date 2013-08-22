@@ -18,7 +18,7 @@ module.exports = (grunt) ->
 				files: [
 					expand: true
 					cwd: 'src/'
-					src: ['**', '!coffee/**', '!**/*.less']
+					src: ['**', '!coffee/**']
 					dest: 'build-raw/<%= relativePath %>'
 				,
 					src: ['src/index.html']
@@ -29,6 +29,10 @@ module.exports = (grunt) ->
 				cwd: 'build-raw/'
 				src: '**/*.*'
 				dest: 'build/'
+			dist:
+				expand: false
+				src: ['build/js/vtex-phone.js']
+				dest: 'dist/vtex-phone.js'
 
 		coffee:
 			main:
@@ -40,22 +44,17 @@ module.exports = (grunt) ->
 					ext: '.js'
 				]
 
-		less:
-			main:
-				files:
-					'build-raw/<%= relativePath %>/style/main.css': 'src/style/main.less'
-
 		useminPrepare:
 			html: 'build-raw/<%= relativePath %>/index.html'
 
 		usemin:
 			html: 'build-raw/<%= relativePath %>/index.html'
 
-		### example - we actually use grunt-usemin to min. check index.html for the build tags
+		###
 		uglify:
 			dist:
 				files:
-					'dist/people.min.js': ['dist/people.js']
+					'dist/front-phone.min.js': ['dist/people.js']
 		###
 
 		karma:
@@ -65,14 +64,6 @@ module.exports = (grunt) ->
 				background: true
 			single:
 				singleRun: true
-
-		'string-replace':
-			main:
-				files:
-					'build/<%= relativePath %>/index.html': ['build-raw/<%= relativePath %>/index.html']
-					'build/<%= relativePath %>/index.debug.html': ['build-raw/<%= relativePath %>/index.debug.html']
-				options:
-					replacements: ({'pattern': new RegExp(key, "g"), 'replacement': value} for key, value of replacements)
 
 		connect:
 			main:
@@ -86,11 +77,11 @@ module.exports = (grunt) ->
 			main:
 				options:
 					livereload: true
-				files: ['src/**/*.html', 'src/**/*.coffee', 'spec/**/*.coffee', 'src/**/*.js', 'src/**/*.less']
-				tasks: ['clean', 'concurrent:transform', 'copy:build', 'string-replace', 'karma:unit:run']
+				files: ['src/**/*.html', 'src/**/*.coffee', 'spec/**/*.coffee', 'src/**/*.js']
+				tasks: ['clean', 'concurrent:transform', 'copy:build', 'karma:unit:run']
 
 		concurrent:
-			transform: ['copy:main', 'coffee', 'less']
+			transform: ['copy:main', 'coffee']
 
 		vtex_deploy:
 			main:
@@ -112,7 +103,7 @@ module.exports = (grunt) ->
 
 	grunt.loadNpmTasks name for name of pkg.dependencies when name[0..5] is 'grunt-'
 
-	grunt.registerTask 'default', ['clean', 'concurrent:transform', 'copy:build', 'string-replace', 'server', 'karma:unit', 'watch:main']
-	grunt.registerTask 'dist', ['clean', 'concurrent:transform', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'usemin', 'copy:build', 'string-replace'] # Dist - minifies files
+	grunt.registerTask 'default', ['clean', 'concurrent:transform', 'copy:build', 'server', 'karma:unit', 'watch:main']
+	grunt.registerTask 'dist', ['clean', 'concurrent:transform', 'useminPrepare', 'concat', 'usemin', 'copy:build', 'copy:dist'] # Dist - minifies files
 	grunt.registerTask 'test', ['karma:single']
 	grunt.registerTask 'server', ['connect', 'remote']
