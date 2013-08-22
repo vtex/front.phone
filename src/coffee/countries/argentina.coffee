@@ -24,9 +24,7 @@ class Argentina
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
-		if (ndc.length + withoutNDC.length) is 10
-			return phone
-		else if ndc is '9'
+		if ndc is '9'
 				withoutCountryCode = withoutNDC
 
 				ndcArray = @nationalDestinationCode.slice(1)
@@ -41,12 +39,13 @@ class Argentina
 				phone.nationalDestinationCode = nationalDestinationCode
 				phone.number = withoutNDC
 				return phone
-		else
-			if /^15/.test(withoutNDC) and (ndc.length + withoutNDC.length) is 12
+		else if /^15/.test(withoutNDC) and (ndc.length + withoutNDC.length) is 12
 				withoutNDC = withoutNDC.replace(/^15/, "")
 				phone.isMobile = phone.has15 = true
 				phone.number = withoutNDC
 				return phone
+		else if (ndc.length + withoutNDC.length) is 10
+			return phone
 
 
 	splitNumber: (number) =>

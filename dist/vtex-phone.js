@@ -206,9 +206,7 @@
     Argentina.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
       var foundNDC, nationalDestinationCode, ndcArray, ndcRegex, phone, _i, _len, _ref;
       phone = new vtex.phone.PhoneNumber(this.countryCode, ndc, withoutNDC);
-      if ((ndc.length + withoutNDC.length) === 10) {
-        return phone;
-      } else if (ndc === '9') {
+      if (ndc === '9') {
         withoutCountryCode = withoutNDC;
         ndcArray = this.nationalDestinationCode.slice(1);
         for (_i = 0, _len = ndcArray.length; _i < _len; _i++) {
@@ -229,13 +227,13 @@
         phone.nationalDestinationCode = nationalDestinationCode;
         phone.number = withoutNDC;
         return phone;
-      } else {
-        if (/^15/.test(withoutNDC) && (ndc.length + withoutNDC.length) === 12) {
-          withoutNDC = withoutNDC.replace(/^15/, "");
-          phone.isMobile = phone.has15 = true;
-          phone.number = withoutNDC;
-          return phone;
-        }
+      } else if (/^15/.test(withoutNDC) && (ndc.length + withoutNDC.length) === 12) {
+        withoutNDC = withoutNDC.replace(/^15/, "");
+        phone.isMobile = phone.has15 = true;
+        phone.number = withoutNDC;
+        return phone;
+      } else if ((ndc.length + withoutNDC.length) === 10) {
+        return phone;
       }
     };
 
