@@ -8,7 +8,6 @@ class Ecuador
 		@countryName = "Ecuador"
 		@countryNameAbbr = "ECU"
 		@countryCode = '593'
-		@mask = "[(9)][99] 999-9999"
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =

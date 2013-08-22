@@ -8,7 +8,6 @@ class Colombia
 		@countryName = "Colombia"
 		@countryNameAbbr = "COL"
 		@countryCode = '57'
-		@mask = "[(9)][999] 999-9999"
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =

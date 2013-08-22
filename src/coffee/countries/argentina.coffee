@@ -15,7 +15,6 @@ class Argentina
 		@countryName = "Argentina"
 		@countryNameAbbr = "ARG"
 		@countryCode = '54'
-		@mask = "(9[9][9]) [99] [9][9]99-9999"
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = '-'
 		@nationalDestinationCode =

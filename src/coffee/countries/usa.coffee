@@ -7,7 +7,6 @@ class USA
 		@countryName = "USA"
 		@countryNameAbbr = "USA"
 		@countryCode = '1'
-		@mask = "(999) 999-9999"
 		@optionalTrunkPrefix = '1'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =

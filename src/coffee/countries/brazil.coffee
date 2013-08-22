@@ -9,7 +9,6 @@ class Brazil
 		@countryName = "Brazil"
 		@countryNameAbbr = "BRA"
 		@countryCode = '55'
-		@mask = "(99) [9]9999-9999"
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = '-'
 		@nationalDestinationCode =

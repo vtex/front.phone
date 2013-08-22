@@ -9,7 +9,6 @@ class Uruguay
 		@countryName = "Uruguay"
 		@countryNameAbbr = "URY"
 		@countryCode = '598'
-		@mask = "[(9)] [9]999-9999"
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
