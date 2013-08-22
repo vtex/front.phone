@@ -35,6 +35,7 @@ class Argentina
 					break if foundNDC is true
 				return null if !foundNDC
 				withoutNDC = withoutCountryCode.replace(ndcRegex, "")
+				return null if withoutNDC.length + nationalDestinationCode.length isnt 10
 
 				phone.isMobile = true
 				phone.nationalDestinationCode = nationalDestinationCode
