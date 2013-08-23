@@ -39,6 +39,9 @@
 
     Phone.prototype.validateNational = function(nationalNumber, givenCountryCode, givenNationalDestinationCode) {
       var countryObj, foundNDC, nationalDestinationCode, ndcRegex, phoneNumber, withoutNDC, _i, _len, _ref, _ref1, _ref2;
+      if (nationalNumber === null) {
+        return null;
+      }
       nationalNumber = this.normalize(nationalNumber);
       countryObj = root.vtex.phone.countries[givenCountryCode];
       if (!countryObj) {
@@ -72,6 +75,9 @@
 
     Phone.prototype.validateInternational = function(number, givenCountryCode, givenNationalDestinationCode) {
       var countryCode, countryCodeRegex, countryObj, foundCountryCode, withoutCountryCode, _ref, _ref1, _ref2;
+      if (number === null) {
+        return null;
+      }
       number = this.normalize(number);
       if (givenCountryCode) {
         countryCode = givenCountryCode;

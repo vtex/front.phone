@@ -25,6 +25,7 @@ class Phone
 		@LOCAL = 2
 
 	validateNational: (nationalNumber, givenCountryCode, givenNationalDestinationCode) =>
+		return null if nationalNumber is null
 		nationalNumber = @normalize(nationalNumber) # Clean up number
 
 		countryObj = root.vtex.phone.countries[givenCountryCode]
@@ -51,6 +52,7 @@ class Phone
 			return null
 
 	validateInternational: (number, givenCountryCode, givenNationalDestinationCode) =>
+		return null if number is null
 		number = @normalize(number) # Clean up number
 
 		if givenCountryCode
