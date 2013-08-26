@@ -9,7 +9,7 @@ class Chile
 		@countryName = "Chile"
 		@countryNameAbbr = "CHL"
 		@countryCode = '56'
-		@regex = /^((\+|)56|)(0|)(((2|9)\d{8})|(58\d{7})|((32|33|34|35|41|42|43|45|51|52|53|55|57|58|61|63|64|65|67|68|71|72|73|75)\d{6,7}))$/
+		@regex = /^(?:(?:\+|)56|)(?:0|)(?:(?:(?:2|9)\d{8})|(?:58\d{7})|(?:(?:3[2345]|4[1235]|5[123578]|6[134578]|7[1235])\d{6,7}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =

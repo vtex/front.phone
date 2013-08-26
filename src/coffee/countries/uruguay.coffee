@@ -9,7 +9,7 @@ class Uruguay
 		@countryName = "Uruguay"
 		@countryNameAbbr = "URY"
 		@countryCode = '598'
-		@regex = /^((\+|)598|)(0|)((2|4|9)\d{7})$/
+		@regex = /^(?:(?:\+|)598|)(?:0|)(?:[249]\d{7})$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =

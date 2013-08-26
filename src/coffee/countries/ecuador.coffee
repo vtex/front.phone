@@ -8,7 +8,7 @@ class Ecuador
 		@countryName = "Ecuador"
 		@countryNameAbbr = "ECU"
 		@countryCode = '593'
-		@regex = /^(((\+|)593)|)(0|)(((2|3|4|5|6|7)\d{7})|(9\d{8}))$/
+		@regex = /^(?:(?:(?:\+|)593)|)(?:0|)(?:(?:(?:[234567])\d{7})|(?:9\d{8}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
