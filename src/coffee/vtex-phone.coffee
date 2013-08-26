@@ -24,7 +24,7 @@ class Phone
 		# And: 9898-6565
 		@LOCAL = 2
 
-	validateNational: (nationalNumber, givenCountryCode, givenNationalDestinationCode) =>
+	getPhoneNational: (nationalNumber, givenCountryCode, givenNationalDestinationCode) =>
 		return null if nationalNumber is null
 		nationalNumber = @normalize(nationalNumber) # Clean up number
 
@@ -51,7 +51,7 @@ class Phone
 		else
 			return null
 
-	validateInternational: (number, givenCountryCode, givenNationalDestinationCode) =>
+	getPhoneInternational: (number, givenCountryCode, givenNationalDestinationCode) =>
 		return null if number is null
 		number = @normalize(number) # Clean up number
 
@@ -66,7 +66,7 @@ class Phone
 		if not foundCountryCode then return null
 
 		withoutCountryCode = number.replace(countryCodeRegex, "")
-		return @validateNational(withoutCountryCode, countryCode, givenNationalDestinationCode)
+		return @getPhoneNational(withoutCountryCode, countryCode, givenNationalDestinationCode)
 
 	normalize: (number) =>
 		# Remove whitespaces, parenthesis, slashes, dots, plus sign and letters

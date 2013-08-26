@@ -1,4 +1,4 @@
-describe 'Should validate a', ->
+describe 'Should get a', ->
 
 	describe 'brazilian phone with a', ->
 
@@ -6,7 +6,7 @@ describe 'Should validate a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -33,7 +33,7 @@ describe 'Should validate a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -56,7 +56,7 @@ describe 'Should validate a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -71,7 +71,7 @@ describe 'Should validate a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -102,7 +102,7 @@ describe 'Should validate a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -118,7 +118,7 @@ describe 'Should validate a', ->
 			number = "+57 1 9898656"
 
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -128,7 +128,7 @@ describe 'Should validate a', ->
 			number = "+57 301 9898656"
 
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -141,7 +141,7 @@ describe 'Should validate a', ->
 			number = "+593 2 989 6565"
 
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 
 			# Assert
 			expect(result.valid).toBe(true)
@@ -151,20 +151,20 @@ describe 'Should validate a', ->
 			number = "+593 92 989 6565"
 
 			# Act
-			result = vtex.phone.validateInternational(number)
+			result = vtex.phone.getPhoneInternational(number)
 			
 			# Assert
 			expect(result.valid).toBe(true)
 			expect(result.nationalDestinationCode.length).toBe(0)
 
-describe 'Should not validate a', ->
+describe 'Should not get a', ->
 
 	it '"almost" mobile number from Colombia', ->
 		# Arrange
 		number = "+57 501 9898656"
 
 		# Act
-		result = vtex.phone.validateInternational(number)
+		result = vtex.phone.getPhoneInternational(number)
 
 		# Assert
 		expect(result).toBe(null)

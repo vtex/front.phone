@@ -5,7 +5,7 @@ describe 'Should format a number', ->
 	beforeEach ->
 		# Arrange
 		number = "552198986565"
-		phone = vtex.phone.validateInternational(number)
+		phone = vtex.phone.getPhoneInternational(number)
 
 	it 'in international format', ->
 		# Act
@@ -31,7 +31,7 @@ describe 'Should format a number', ->
 	it 'in international format mobile from Colombia', ->
 		# Arrange
 		number = "573019879654"
-		phone = vtex.phone.validateInternational(number)
+		phone = vtex.phone.getPhoneInternational(number)
 
 		# Act
 		result = vtex.phone.format(phone, vtex.phone.INTERNATIONAL)
@@ -42,7 +42,7 @@ describe 'Should format a number', ->
 	it 'in national format mobile from Colombia', ->
 		# Arrange
 		number = "573019879654"
-		phone = vtex.phone.validateInternational(number)
+		phone = vtex.phone.getPhoneInternational(number)
 
 		# Act
 		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
@@ -53,7 +53,7 @@ describe 'Should format a number', ->
 	it 'in international format mobile from Argentina', ->
 		# Arrange
 		number = "5491198986565"
-		phone = vtex.phone.validateInternational(number)
+		phone = vtex.phone.getPhoneInternational(number)
 
 		# Act
 		result = vtex.phone.format(phone, vtex.phone.INTERNATIONAL)
@@ -64,7 +64,7 @@ describe 'Should format a number', ->
 	it 'in national format mobile from Argetina', ->
 		# Arrange
 		number = "54111598986565"
-		phone = vtex.phone.validateInternational(number)
+		phone = vtex.phone.getPhoneInternational(number)
 
 		# Act
 		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
@@ -75,7 +75,7 @@ describe 'Should format a number', ->
 	it 'in national format mobile from Chile', ->
 		# Arrange
 		number = "56998986565"
-		phone = vtex.phone.validateInternational(number)
+		phone = vtex.phone.getPhoneInternational(number)
 
 		# Act
 		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
