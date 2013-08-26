@@ -52,14 +52,11 @@ class Argentina
 	splitNumber: (number) =>
 		switch number.length
 			when 8
-				splitNumber = number.split(/(\d{4})(\d{4})/)
-				return _.filter splitNumber, (n) => n.length >= 1
+				return _.compact number.split(/(\d{4})(\d{4})/)
 			when 7
-				splitNumber = number.split(/(\d{3})(\d{4})/)
-				return _.filter splitNumber, (n) => n.length >= 1
+				return _.compact number.split(/(\d{3})(\d{4})/)
 			when 6
-				splitNumber = number.split(/(\d{2})(\d{4})/)
-				return _.filter splitNumber, (n) => n.length >= 1
+				return _.compact number.split(/(\d{2})(\d{4})/)
 
 		return [number]
 

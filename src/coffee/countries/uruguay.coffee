@@ -28,11 +28,9 @@ class Uruguay
 
 	splitNumber: (number) =>
 		if number.length is 7
-			splitNumber = number.split(/(\d{3})(\d{4})/)
-			return _.filter splitNumber, (n) => n.length >= 1
+			return _.compact number.split(/(\d{3})(\d{4})/)
 		else if number.length is 8
-			splitNumber = number.split(/(\d{4})(\d{4})/)
-			return _.filter splitNumber, (n) => n.length >= 1
+			return _.compact number.split(/(\d{4})(\d{4})/)
 
 		return [number]
 
