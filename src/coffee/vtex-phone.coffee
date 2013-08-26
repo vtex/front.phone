@@ -73,6 +73,7 @@ class Phone
 		return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "")
 
 	validate: (number, givenCountryCode) =>
+		return false if number is null
 		number = @normalize(number)
 
 		if givenCountryCode

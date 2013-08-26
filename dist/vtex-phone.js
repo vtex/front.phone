@@ -106,6 +106,9 @@
 
     Phone.prototype.validate = function(number, givenCountryCode) {
       var countryCode, countryObj, valid, _ref;
+      if (number === null) {
+        return false;
+      }
       number = this.normalize(number);
       if (givenCountryCode) {
         return vtex.phone.countries[givenCountryCode].regex.test(number);
