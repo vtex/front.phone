@@ -1,6 +1,6 @@
 {
   "name": "front-phone",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "readmeFilename": "README.md",
   "description": "A phone component",
   "main": "dist/vtex-phone.js",

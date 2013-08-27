@@ -152,6 +152,9 @@
       if (format == null) {
         format = vtex.phone.INTERNATIONAL;
       }
+      if (phone === null) {
+        return null;
+      }
       if (vtex.phone.countries[phone.countryCode].format) {
         return vtex.phone.countries[phone.countryCode].format(phone, format);
       }

@@ -99,6 +99,8 @@ class Phone
 		if ndcRegex.test(number) then [true, ndcRegex] else [false, null]
 
 	format: (phone, format = vtex.phone.INTERNATIONAL) =>
+		return null if phone is null
+
 		if vtex.phone.countries[phone.countryCode].format
 			return vtex.phone.countries[phone.countryCode].format(phone, format)
 
