@@ -7,9 +7,6 @@ class PhoneNumber
 		@number = number
 		@isMobile = null
 
-		# Argentina madness only
-		@has15 = null
-
 	valid: (isValid) =>
 		@valid = isValid
 

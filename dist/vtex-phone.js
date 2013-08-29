@@ -11,7 +11,6 @@
       this.nationalDestinationCode = nationalDestinationCode;
       this.number = number;
       this.isMobile = null;
-      this.has15 = null;
     }
 
     PhoneNumber.prototype.valid = function(isValid) {
@@ -262,7 +261,7 @@
         return phone;
       } else if (/^15/.test(withoutNDC) && (ndc.length + withoutNDC.length) === 12) {
         withoutNDC = withoutNDC.replace(/^15/, "");
-        phone.isMobile = phone.has15 = true;
+        phone.isMobile = true;
         phone.number = withoutNDC;
         return phone;
       } else if ((ndc.length + withoutNDC.length) === 10) {
@@ -305,7 +304,7 @@
             resultString += "(" + phone.nationalDestinationCode + ") ";
           }
           separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator;
-          if (phone.has15) {
+          if (phone.isMobile) {
             resultString += "15 ";
           }
           resultString += splitNumber.join(separator);

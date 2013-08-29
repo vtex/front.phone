@@ -42,7 +42,7 @@ class Argentina
 				return phone
 		else if /^15/.test(withoutNDC) and (ndc.length + withoutNDC.length) is 12
 				withoutNDC = withoutNDC.replace(/^15/, "")
-				phone.isMobile = phone.has15 = true
+				phone.isMobile = true
 				phone.number = withoutNDC
 				return phone
 		else if (ndc.length + withoutNDC.length) is 10
@@ -76,7 +76,7 @@ class Argentina
 				if phone.nationalDestinationCode
 					resultString += "(" + phone.nationalDestinationCode + ") "
 				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
-				if phone.has15 then resultString += "15 "
+				if phone.isMobile then resultString += "15 "
 				resultString += splitNumber.join(separator)
 			when vtex.phone.LOCAL
 				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
