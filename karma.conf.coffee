@@ -1,8 +1,6 @@
 module.exports = (config) ->
 	config.set
 		files: [
-			'build/lib/jquery/jquery.js',
-			'build/lib/underscore/underscore.js',
 			'build/js/vtex-phone.js',
 			'build/js/countries/**.*',
 			'spec/**/*.*'

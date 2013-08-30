@@ -28,10 +28,10 @@ class Ecuador
 
 	splitNumber: (number) =>
 		if number.length is 7
-			return _.compact number.split(/(\d{3})(\d{4})/)
+			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
 		else if number.length is 9
 			if number.indexOf("9") is 0
-				return _.compact number.split(/(\d{2})(\d{3})(\d{4})/)
+				return vtex.phone.compact number.split(/(\d{2})(\d{3})(\d{4})/)
 
 		return [number]
 

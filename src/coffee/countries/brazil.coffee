@@ -31,10 +31,10 @@ class Brazil
 
 	splitNumber: (number) =>
 		if number.length is 8
-			return _.compact number.split(/(\d{4})(\d{4})/)
+			return vtex.phone.compact number.split(/(\d{4})(\d{4})/)
 		else if number.length is 9
 			if number.indexOf("9") is 0
-				return _.compact number.split(/(\d{5})(\d{4})/)
+				return vtex.phone.compact number.split(/(\d{5})(\d{4})/)
 
 		return [number]
 

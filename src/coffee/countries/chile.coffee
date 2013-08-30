@@ -37,13 +37,13 @@ class Chile
 	splitNumber: (number) =>
 		switch number.length
 			when 9
-				return _.compact number.split(/(\d{1})(\d{4})(\d{4})/)
+				return vtex.phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
 			when 8
-				return _.compact number.split(/(\d{4})(\d{4})/)
+				return vtex.phone.compact number.split(/(\d{4})(\d{4})/)
 			when 7
-				return _.compact number.split(/(\d{3})(\d{4})/)
+				return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
 			when 6
-				return _.compact number.split(/(\d{2})(\d{4})/)
+				return vtex.phone.compact number.split(/(\d{2})(\d{4})/)
 
 		return [number]
 

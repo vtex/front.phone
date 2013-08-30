@@ -69,6 +69,12 @@ class Phone
 		# Remove whitespaces, parenthesis, slashes, dots, plus sign and letters
 		return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "")
 
+	compact: (array) =>
+		newArray = []
+		for element in array
+			newArray.push element if element isnt ""
+		return newArray
+
 	validate: (number, givenCountryCode) =>
 		return false if number is null
 		number = @normalize(number)

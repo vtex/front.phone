@@ -1,10 +1,10 @@
 {
   "name": "front-phone",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "readmeFilename": "README.md",
   "description": "A phone component",
   "main": "dist/vtex-phone.js",
-  "dependencies": {
+  "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.7.0",
     "grunt-contrib-coffee": "~0.7.0",

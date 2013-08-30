@@ -29,6 +29,7 @@
       this.testNDC = __bind(this.testNDC, this);
       this.testCountryCode = __bind(this.testCountryCode, this);
       this.validate = __bind(this.validate, this);
+      this.compact = __bind(this.compact, this);
       this.normalize = __bind(this.normalize, this);
       this.getPhoneInternational = __bind(this.getPhoneInternational, this);
       this.getPhoneNational = __bind(this.getPhoneNational, this);
@@ -101,6 +102,18 @@
 
     Phone.prototype.normalize = function(number) {
       return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "");
+    };
+
+    Phone.prototype.compact = function(array) {
+      var element, newArray, _i, _len;
+      newArray = [];
+      for (_i = 0, _len = array.length; _i < _len; _i++) {
+        element = array[_i];
+        if (element !== "") {
+          newArray.push(element);
+        }
+      }
+      return newArray;
     };
 
     Phone.prototype.validate = function(number, givenCountryCode) {
@@ -272,11 +285,11 @@
     Argentina.prototype.splitNumber = function(number) {
       switch (number.length) {
         case 8:
-          return _.compact(number.split(/(\d{4})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{4})(\d{4})/));
         case 7:
-          return _.compact(number.split(/(\d{3})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{3})(\d{4})/));
         case 6:
-          return _.compact(number.split(/(\d{2})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{2})(\d{4})/));
       }
       return [number];
     };
@@ -367,10 +380,10 @@
 
     Brazil.prototype.splitNumber = function(number) {
       if (number.length === 8) {
-        return _.compact(number.split(/(\d{4})(\d{4})/));
+        return vtex.phone.compact(number.split(/(\d{4})(\d{4})/));
       } else if (number.length === 9) {
         if (number.indexOf("9") === 0) {
-          return _.compact(number.split(/(\d{5})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{5})(\d{4})/));
         }
       }
       return [number];
@@ -437,13 +450,13 @@
     Chile.prototype.splitNumber = function(number) {
       switch (number.length) {
         case 9:
-          return _.compact(number.split(/(\d{1})(\d{4})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{1})(\d{4})(\d{4})/));
         case 8:
-          return _.compact(number.split(/(\d{4})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{4})(\d{4})/));
         case 7:
-          return _.compact(number.split(/(\d{3})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{3})(\d{4})/));
         case 6:
-          return _.compact(number.split(/(\d{2})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{2})(\d{4})/));
       }
       return [number];
     };
@@ -494,9 +507,9 @@
 
     Colombia.prototype.splitNumber = function(number) {
       if (number.length === 7) {
-        return _.compact(number.split(/(\d{3})(\d{4})/));
+        return vtex.phone.compact(number.split(/(\d{3})(\d{4})/));
       } else if (number.length === 10) {
-        return _.compact(number.split(/(\d{3})(\d{3})(\d{4})/));
+        return vtex.phone.compact(number.split(/(\d{3})(\d{3})(\d{4})/));
       }
       return [number];
     };
@@ -545,10 +558,10 @@
 
     Ecuador.prototype.splitNumber = function(number) {
       if (number.length === 7) {
-        return _.compact(number.split(/(\d{3})(\d{4})/));
+        return vtex.phone.compact(number.split(/(\d{3})(\d{4})/));
       } else if (number.length === 9) {
         if (number.indexOf("9") === 0) {
-          return _.compact(number.split(/(\d{2})(\d{3})(\d{4})/));
+          return vtex.phone.compact(number.split(/(\d{2})(\d{3})(\d{4})/));
         }
       }
       return [number];
@@ -597,9 +610,9 @@
 
     Uruguay.prototype.splitNumber = function(number) {
       if (number.length === 7) {
-        return _.compact(number.split(/(\d{3})(\d{4})/));
+        return vtex.phone.compact(number.split(/(\d{3})(\d{4})/));
       } else if (number.length === 8) {
-        return _.compact(number.split(/(\d{4})(\d{4})/));
+        return vtex.phone.compact(number.split(/(\d{4})(\d{4})/));
       }
       return [number];
     };
@@ -641,7 +654,7 @@
 
     USA.prototype.splitNumber = function(number) {
       if (number.length === 7) {
-        return _.compact(number.split(/(\d{3})(\d{4})/));
+        return vtex.phone.compact(number.split(/(\d{3})(\d{4})/));
       }
       return [number];
     };
