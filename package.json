@@ -1,9 +1,9 @@
 {
   "name": "front-phone",
-  "version": "2.1.11",
+  "version": "3.0.0",
   "readmeFilename": "README.md",
   "description": "A phone component",
-  "main": "dist/vtex-phone.js",
+  "main": "dist/vtex-phone-bundle.js",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.7.0",
@@ -19,7 +19,6 @@
     "grunt-string-replace": "~0.2.4",
     "grunt-usemin": "~0.1.10",
     "grunt-karma": "~0.6.1",
-    "grunt-vtex-deploy": "~0.2.2",
     "grunt-remote": "~0.1.1"
   },
   "repository": {

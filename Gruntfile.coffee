@@ -7,6 +7,8 @@ module.exports = (grunt) ->
 
 	# Project configuration.
 	grunt.initConfig
+		bower: grunt.file.readJSON('bower.json')
+
 		relativePath: ''
 
 		# Tasks
@@ -30,9 +32,10 @@ module.exports = (grunt) ->
 				src: '**/*.*'
 				dest: 'build/'
 			dist:
-				expand: false
-				src: ['build/js/vtex-phone.js']
-				dest: 'dist/vtex-phone.js'
+				expand: true
+				cwd: 'build/js/'
+				src: '**'
+				dest: 'dist'
 
 		coffee:
 			main:
@@ -45,18 +48,19 @@ module.exports = (grunt) ->
 				]
 
 		useminPrepare:
-			html: 'build-raw/<%= relativePath %>/index.html'
+			html: 'build-raw/<%= relativePath %>/index.html'			
 
 		usemin:
 			html: 'build-raw/<%= relativePath %>/index.html'
 
-		###
 		uglify:
+			options:
+			      banner: '/*! <%= bower.name %> - v<%= bower.version %> - ' +
+			        '<%= bower.repository %> */'
 			dist:
 				files:
-					'dist/front-phone.min.js': ['dist/people.js']
-		###
-
+					'dist/vtex-phone.min.js': 'dist/vtex-phone.js'
+					'dist/vtex-phone-bundle.min.js': 'dist/vtex-phone-bundle.js'
 		karma:
 			options:
 				configFile: 'karma.conf.coffee'
@@ -101,9 +105,9 @@ module.exports = (grunt) ->
 						hostname: 'VTEX_IO_HOST'
 						files: ["build-raw/index.html", "build-raw/index.debug.html"]
 
-	grunt.loadNpmTasks name for name of pkg.dependencies when name[0..5] is 'grunt-'
+	grunt.loadNpmTasks name for name of pkg.devDependencies when name[0..5] is 'grunt-'
 
 	grunt.registerTask 'default', ['clean', 'concurrent:transform', 'copy:build', 'server', 'karma:unit', 'watch:main']
-	grunt.registerTask 'dist', ['clean', 'concurrent:transform', 'useminPrepare', 'concat', 'usemin', 'copy:build', 'copy:dist'] # Dist - minifies files
+	grunt.registerTask 'dist', ['clean', 'concurrent:transform', 'useminPrepare', 'concat', 'usemin', 'copy:build', 'copy:dist', 'uglify:dist'] # Dist - minifies files
 	grunt.registerTask 'test', ['karma:single']
 	grunt.registerTask 'server', ['connect', 'remote']

@@ -1,5 +1,6 @@
 {
 	"name": "front-phone",
-	"version": "2.1.11",
-	"main": ["dist/vtex-phone.js"]
+	"version": "3.0.0",
+	"main": ["dist/vtex-phone-bundle.js"],
+	"repository": "git://github.com/vtex/front.phone.git"
 }
