@@ -20,16 +20,20 @@ front.phone identify phone countries files included, so if you include a new cou
 This functions extracts info from a number in international or national notation and *also* validate. You can pass the country code and national destination number (in this order) as a param, if you already know them.
 
 ```javascript
-// you can relax about usage of hiphens and other special characters, we'll strip it down internally later ;)
+// you can relax about usage of hiphens and other special characters, we'll strip 
+//it down internally later ;)
 var number = "5521989898989";
 var phone = vtex.phone.getPhoneInternational(number); 
-console.log(phone); // { countryCode: "55", nationalDestinationCode: "21", number: "998986565", isMobile: true, isValid: true }
+console.log(phone); // { countryCode: "55", nationalDestinationCode: "21", 
+//number: "998986565", isMobile: true, isValid: true }
 ```
 
 ```javascript
 var number = "5521989898989";
-var phone = vtex.phone.getPhoneNational(number, "55"); // if you use this function, you MUST give the phone's countryCode
-console.log(phone); // { countryCode: "55", nationalDestinationCode: "21", number: "998986565", isMobile: true, isValid: true }
+var phone = vtex.phone.getPhoneNational(number, "55"); // if you use this function,
+//you MUST give the phone's countryCode
+console.log(phone); // { countryCode: "55", nationalDestinationCode: "21",
+//number: "998986565", isMobile: true, isValid: true }
 ```
 
 ### Validation
