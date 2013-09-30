@@ -2,5 +2,18 @@
 	"name": "front-phone",
 	"version": "3.0.1",
 	"main": ["dist/vtex-phone-bundle.js"],
+	"ignore": [
+		".gitignore",
+		"CONTRIBUTING.md",
+		"Gruntfile.coffee",
+		"LICENSE",
+		"README.md",
+		"bower.json",
+		"karma.conf.coffee",
+		"package.json",
+		"remote.json",
+		"spec/",
+		"src/"
+	],
 	"repository": "git://github.com/vtex/front.phone.git"
 }
