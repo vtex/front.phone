@@ -27,6 +27,7 @@
         return phone;
       } else {
         if (withoutNDC.length === 7) {
+          phone.nationalDestinationCode = ndc;
           return phone;
         }
       }

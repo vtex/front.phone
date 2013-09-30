@@ -24,7 +24,9 @@ class Colombia
 			phone.nationalDestinationCode = ''
 			return phone
 		else
-			if withoutNDC.length is 7 then return phone
+			if withoutNDC.length is 7
+				phone.nationalDestinationCode = ndc
+				return phone
 
 	splitNumber: (number) =>
 		if number.length is 7
