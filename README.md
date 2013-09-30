@@ -1,6 +1,6 @@
 # front.phone
 
-front.phone a Javascript library to validate, format and identify phone numbers. The main goal with this project is to create a trustful component to input phone numbers and extract information from it. We can currently extract the phone's country code, national destination number, it's number and in some cases if it is a mobile number. The recommend input for it's use is in international notation. 
+front.phone is a Javascript library that validates, formats and identifies phone numbers. The main goal of this project is to create a trustful component to input phone numbers and extract information from it. We can currently extract the phone's country code, national destination number, it's number and in some cases if it is a mobile number. The recommended input for it's use is in international notation. 
 
 We are compliant to the [E.123](http://en.wikipedia.org/wiki/E.123) notation.
 
@@ -11,7 +11,7 @@ Depending on you application scope, you may want or not to use all countries ava
 - All countries: `vtex-phone-bundle.min.js`
 - Just some countries: `vtex-phone.min.js` + `usa.js` + `brazil.js` + etc
 
-front.phone identify phone countries files included, so if you include a new country file, it will recognize and validate as expected.
+front.phone checks phone countries files included, so if you include a new country file, it will recognize and validate as expected.
 
 ## Usage
 
