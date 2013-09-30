@@ -1,6 +1,6 @@
 {
 	"name": "front-phone",
-	"version": "3.0.1",
+	"version": "3.1.0",
 	"main": ["dist/vtex-phone-bundle.js"],
 	"ignore": [
 		".gitignore",
