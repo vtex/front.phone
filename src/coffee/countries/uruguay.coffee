@@ -18,13 +18,13 @@ class Uruguay
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
+		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
 		if (ndc.length + withoutNDC.length) is 8
 			if ndc is '9'
 				phone.isMobile = true
-				phone.nationalDestinationCode = ''
-				phone.number = withoutCountryCode
-				return phone
-			return new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+			phone.nationalDestinationCode = ''
+			phone.number = withoutCountryCode
+			return phone
 
 	splitNumber: (number) =>
 		if number.length is 7
