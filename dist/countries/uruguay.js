@@ -18,14 +18,15 @@
     }
 
     Uruguay.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
+      var phone;
+      phone = new vtex.phone.PhoneNumber(this.countryCode, ndc, withoutNDC);
       if ((ndc.length + withoutNDC.length) === 8) {
         if (ndc === '9') {
           phone.isMobile = true;
-          phone.nationalDestinationCode = '';
-          phone.number = withoutCountryCode;
-          return phone;
         }
-        return new vtex.phone.PhoneNumber(this.countryCode, ndc, withoutNDC);
+        phone.nationalDestinationCode = '';
+        phone.number = withoutCountryCode;
+        return phone;
       }
     };
 
