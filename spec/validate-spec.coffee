@@ -151,7 +151,39 @@ describe 'Should validate a', ->
 
 			# Act
 			result = vtex.phone.validate(number)
-			
+
+			# Assert
+			expect(result).toBe(true)
+
+	describe 'peruvian phone with a', ->
+
+		it 'land line number from metropolitan area', ->
+			# Arrange
+			number = "+51 1 989 6565"
+
+			# Act
+			result = vtex.phone.validate(number)
+
+			# Assert
+			expect(result).toBe(true)
+
+		it 'land line number', ->
+			# Arrange
+			number = "+51 41 989 656"
+
+			# Act
+			result = vtex.phone.validate(number)
+
+			# Assert
+			expect(result).toBe(true)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+51 989 656 565"
+
+			# Act
+			result = vtex.phone.validate(number)
+
 			# Assert
 			expect(result).toBe(true)
 

@@ -140,3 +140,35 @@ describe 'Should split', ->
 
 			# Assert
 			expect(result.length).toBe(3)
+
+	describe 'a peruvian', ->
+
+		it 'land line number from metropolitan area', ->
+			# Arrange
+			number = "9896565"
+
+			# Act
+			result = vtex.phone.countries['51'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)
+
+		it 'land line number', ->
+			# Arrange
+			number = "989898"
+
+			# Act
+			result = vtex.phone.countries['51'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "989656989"
+
+			# Act
+			result = vtex.phone.countries['51'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)

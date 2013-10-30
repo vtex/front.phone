@@ -93,3 +93,36 @@ describe 'Should format a number', ->
 
 		# Assert
 		expect(result).toMatch(/9 9898 6565/)
+
+	it 'in national format metropolitan area phone from Peru', ->
+		# Arrange
+		number = "5118786565"
+		phone = vtex.phone.getPhoneInternational(number)
+
+		# Act
+		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
+
+		# Assert
+		expect(result).toMatch(/878 6565/)
+
+	it 'in national format phone from Peru', ->
+		# Arrange
+		number = "5141786565"
+		phone = vtex.phone.getPhoneInternational(number)
+
+		# Act
+		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
+
+		# Assert
+		expect(result).toMatch(/786 565/)
+
+	it 'in national fomat mobile phone from Peru', ->
+		# Arrange
+		number = "51987876565"
+		phone = vtex.phone.getPhoneInternational(number)
+
+		# Act
+		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
+
+		# Assert
+		expect(result).toMatch(/987 876 565/)

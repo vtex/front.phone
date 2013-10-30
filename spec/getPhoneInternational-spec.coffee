@@ -152,7 +152,40 @@ describe 'Should get a', ->
 
 			# Act
 			result = vtex.phone.getPhoneInternational(number)
-			
+
+			# Assert
+			expect(result.valid).toBe(true)
+			expect(result.nationalDestinationCode.length).toBe(0)
+
+	describe 'peruvian phone with a', ->
+
+		it 'land line number from metropolitan area', ->
+			# Arrange
+			number = "+51 1 878 6565"
+
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'land line number', ->
+			# Arrange
+			number = "+51 41 878 656"
+
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+51 987 876 565"
+
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
 			# Assert
 			expect(result.valid).toBe(true)
 			expect(result.nationalDestinationCode.length).toBe(0)
