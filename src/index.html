@@ -16,6 +16,10 @@
 		<p class="lead">A JS phone component.</p>
 	</div>
 
+	<input type="text" name="phone" id="phone"/>
+	<button id="validate">Validate</button>
+	<p id="status"></p>
+
 	<div class="footer">
 		<p>VTEX 2013</p>
 	</div>
@@ -41,5 +45,15 @@
 <script type="text/javascript" src="js/countries/uruguay.js"></script>
 <script type="text/javascript" src="js/countries/usa.js"></script>
 <script type="text/javascript" src="js/countries/peru.js"></script>
+
+<script>
+var validateButton = document.getElementById('validate');
+validateButton.onclick = function onClickButton () {
+	var phoneInput = document.getElementById('phone');
+	var result = vtex.phone.validate(phoneInput.value);
+	document.getElementById('status').innerText = '\'' + phoneInput.value + '\' is ' + result;
+}
+</script>
+
 </body>
 </html>
