@@ -189,6 +189,30 @@ describe 'Should get a', ->
 			# Assert
 			expect(result.valid).toBe(true)
 			expect(result.nationalDestinationCode.length).toBe(0)
+			expect(result.isMobile).toBe(true)
+
+	describe 'paraguayan phone with a', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "+595 21 987 8765"
+
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+595 992 987 8765"
+
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+			expect(result.isMobile).toBe(true)
 
 describe 'Should not get a', ->
 
