@@ -5,23 +5,63 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<style type="text/css">
+		.result {
+			text-align: left;
+			margin: 20px auto;
+		}
+		.phone { margin-bottom: 10px; }
+		.main { margin-bottom: 30px; }
+		body { overflow-y: scroll;}
+	</style>
 </head>
 <body>
-<div class="container-narrow" style="text-align:center; font-family: sans-serif;">
-	<!-- Fork Snippet by http://codepo8.github.io/css-fork-on-github-ribbon/ -->
-	<style>#forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#006;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;left:0;width:200px;overflow:hidden;height:200px;}#forkongithub a{width:200px;position:absolute;top:60px;left:-60px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/vtex/speedbag">Fork me on GitHub</a></span>
+<div class="container">
+<a href="https://github.com/vtex/front.phone"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
-	<div class="page-header">
+	<div class="header">
 		<h1>front.phone</h1>
 		<p class="lead">A JS phone component.</p>
 	</div>
 
-	<input type="text" name="phone" id="phone"/>
-	<button id="validate">Validate</button>
-	<p id="status"></p>
+	<div class="row main">
+		<div class="getinfo col-md-4">
+			<form>
+				<h4>Get Info</h4>
+				<input type="text" class="form-control input-large phone" value="+1 (303) 448-1730">
+				<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
+			</form>
+
+			<pre class="result" style="display: none;"></pre>
+		</div>
+		<div class="format col-md-4">
+			<form>
+				<h4>Format</h4>
+				<input type="text" class="form-control input-large phone" value="13034481730">
+				<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
+			</form>
+
+			<pre class="result" style="display: none;"></pre>
+		</div>
+		<div class="validate col-md-4">
+			<form>
+				<h4>Validate</h4>
+				<input type="text" class="form-control input-large phone" value="+1 (303) 448-1730">
+				<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
+			</form>
+
+			<pre class="result" style="display: none;"></pre>
+		</div>
+	</div>
+
+	<h4>Countries Supported</h4>
+	<p>Argentina, Brazil, Chile, Colombia, Ecuador, Paraguay, Peru, Uruguay and USA.</p>
+
+	<hr>
 
 	<div class="footer">
-		<p>VTEX 2013</p>
+		<p>VTEX 2014</p>
 	</div>
 </div>
 <script src="http://localhost:35729/livereload.js"></script>
@@ -46,14 +86,31 @@
 <script type="text/javascript" src="js/countries/uruguay.js"></script>
 <script type="text/javascript" src="js/countries/usa.js"></script>
 <script type="text/javascript" src="js/countries/peru.js"></script>
+<script type="text/javascript" src="js/countries/paraguay.js"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
-var validateButton = document.getElementById('validate');
-validateButton.onclick = function onClickButton () {
-	var phoneInput = document.getElementById('phone');
+$('.getinfo form').on('submit', function(e) {
+	e.preventDefault();
+	var phoneInput = $('.getinfo .phone')[0];
+	var result = vtex.phone.getPhoneInternational(phoneInput.value);
+	var a = JSON.stringify(result, undefined, 2);
+	$('.getinfo .result').text(a).fadeIn();
+});
+$('.format form').on('submit', function(e) {
+	e.preventDefault();
+	var phoneInput = $('.format .phone')[0];
+	var phone = vtex.phone.getPhoneInternational(phoneInput.value);
+	var result = vtex.phone.format(phone);
+	$('.format .result').text(result).fadeIn();
+});
+$('.validate form').on('submit', function(e) {
+	e.preventDefault();
+	var phoneInput = $('.validate .phone')[0];
 	var result = vtex.phone.validate(phoneInput.value);
-	document.getElementById('status').innerText = '\'' + phoneInput.value + '\' is ' + result;
-}
+	$('.validate .result').text(result).fadeIn();
+});
+$('form').submit();
 </script>
 
 </body>
