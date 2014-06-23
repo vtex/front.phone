@@ -42,7 +42,15 @@ module.exports = (grunt) ->
 				files: [
 					expand: true
 					cwd: 'src/coffee'
-					src: ['**/*.coffee']
+					src: ['vtex-phone.coffee', 'countries/*.coffee']
+					dest: 'build-raw/<%= relativePath %>/js/'
+					ext: '.js'
+				]
+			angular:
+				files: [
+					expand: true
+					cwd: 'src/coffee'
+					src: ['vtex-phone-filter.coffee']
 					dest: 'build-raw/<%= relativePath %>/js/'
 					ext: '.js'
 				]
@@ -55,12 +63,12 @@ module.exports = (grunt) ->
 
 		uglify:
 			options:
-			      banner: '/*! <%= bower.name %> - v<%= bower.version %> - ' +
-			        '<%= bower.repository %> */'
+			      banner: '/*! <%= bower.name %> - v<%= bower.version %> - <%= bower.repository %> */\n'
 			dist:
 				files:
 					'dist/vtex-phone.min.js': 'dist/vtex-phone.js'
 					'dist/vtex-phone-bundle.min.js': 'dist/vtex-phone-bundle.js'
+					'dist/vtex-phone-filter.min.js': 'dist/vtex-phone-filter.js'
 		karma:
 			options:
 				configFile: 'karma.conf.coffee'

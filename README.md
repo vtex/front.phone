@@ -13,6 +13,8 @@ Depending on you application scope, you may want or not to use all countries ava
 
 front.phone checks phone countries files included, so if you include a new country file, it will recognize and validate as expected.
 
+There's also an Angular.js filter: `vtex-phone-filter.min.js`. (The bundle does not include the filter).
+
 ## Usage
 
 ### Getting Phone's Info
@@ -80,6 +82,26 @@ var phone = vtex.phone.getPhoneInternational(number);
 var result = vtex.phone.format(phone, vtex.phone.LOCAL);
 console.log(result); // 8989-8989
 ```
+
+### Angular Filter
+
+1. Include `vtex-phone-filter.min.js`.
+
+2. Add `"vtex-phoneFilter"` as a dependency to your app.
+
+3. Use the filter like this:
+
+   ```
+   {{ user.phoneNumber | phone }}
+   or
+   {{ '552189898989' | phone }}
+   ```
+
+   Which will give you the following output:
+
+   ```
+   +55 21 8989 8989
+   ```
 
 ## Contributing
 
