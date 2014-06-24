@@ -103,6 +103,18 @@ console.log(result); // 8989-8989
    +55 21 8989 8989
    ```
 
+   It also has two optional parameters:
+
+   * the format to be converted. One of  **`'international'`**, `'national'`, `'local'`.
+   * the national number, if needed. It's blank by default.
+
+   ```
+   {{ '2189898989' | phone:'international':55 }}
+   ->
+   +55 21 8989 8989
+   ```
+
+
 ## Contributing
 
 Anyone is welcome to contribute to this project.

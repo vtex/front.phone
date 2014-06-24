@@ -1,12 +1,22 @@
 (function() {
   angular.module('vtex.phoneFilter', []).filter('phone', function() {
-    return function(ph) {
+    return function(ph, toFormat, nationalCode) {
       var phoneObject;
       if (!ph) {
         return 'N/A';
       }
-      phoneObject = vtex.phone.getPhoneInternational(ph);
-      return vtex.phone.format(phoneObject, vtex.phone.INTERNATIONAL);
+      if (nationalCode) {
+        phoneObject = vtex.phone.getPhoneNational(ph, nationalCode);
+      }
+      if (!phoneObject || !nationalCode) {
+        phoneObject = vtex.phone.getPhoneInternational(ph);
+      }
+      if (!toFormat) {
+        toFormat = vtex.phone.INTERNATIONAL;
+      } else {
+        toFormat = vtex.phone[toFormat.toUpperCase()];
+      }
+      return vtex.phone.format(phoneObject, toFormat);
     };
   });
 
