@@ -1,9 +1,3 @@
-body {
-  padding-top: 20px;
-  padding-bottom: 40px;
-}
-
-/* Custom container */
 .container-narrow {
   margin: 0 auto;
   max-width: 700px;
@@ -75,4 +69,12 @@ body {
 
 body {
   overflow-y: scroll;
+}
+
+.countries {
+  list-style: none;
+}
+.countries li {
+  display: inline;
+  margin-left: 16px;
 }
