@@ -16,9 +16,11 @@
 		body { overflow-y: scroll;}
 	</style>
 </head>
-<body>
-<div class="container">
-<a href="https://github.com/vtex/front.phone"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+<body ng-app="app">
+
+<div class="container" ng-controller="AppCtrl">
+  <!-- Fork me on GitHub -->
+  <a href="https://github.com/vtex/front.phone"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
 	<div class="header">
 		<h1>front.phone</h1>
@@ -27,33 +29,90 @@
 
 	<div class="row main">
 		<div class="getinfo col-md-4">
-			<form>
-				<h4>Get Info</h4>
-				<input type="text" class="form-control input-large phone" value="+1 (303) 448-1730">
-				<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
-			</form>
-
-			<pre class="result" style="display: none;"></pre>
+      <h4>Get Info</h4>
+      <input type="text" class="form-control input-large phone" ng-model="getInfo.value">
+			<pre class="result" ng-cloak>{{ getInfo.result }}</pre>
 		</div>
 		<div class="format col-md-4">
-			<form>
-				<h4>Format</h4>
-				<input type="text" class="form-control input-large phone" value="13034481730">
-				<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
-			</form>
-
-			<pre class="result" style="display: none;"></pre>
+      <h4>Format</h4>
+      <input type="text" class="form-control input-large phone" ng-model="format.value">
+			<pre class="result" ng-cloak>{{ format.value | phone }}</pre>
 		</div>
 		<div class="validate col-md-4">
-			<form>
-				<h4>Validate</h4>
-				<input type="text" class="form-control input-large phone" value="+1 (303) 448-1730">
-				<input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
-			</form>
-
-			<pre class="result" style="display: none;"></pre>
+      <h4>Validate</h4>
+      <input type="text" class="form-control input-large phone" ng-model="validate.value">
+			<pre class="result" ng-cloak>{{ validate.result }}</pre>
 		</div>
 	</div>
+
+  <div>
+    <h4>AngularJS Support</h4>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body" ng-cloak>
+            {{ '552189898989' | phone:'international' }}
+          </div>
+          <div class="panel-footer" ng-non-bindable>
+            {{ '552189898989' | phone:'international' }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body" ng-cloak>
+            {{ '552189898989' | phone:'national' }}
+          </div>
+          <div class="panel-footer" ng-non-bindable>
+            {{ '552189898989' | phone:'national' }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body" ng-cloak>
+            {{ '552189898989' | phone:'local' }}
+          </div>
+          <div class="panel-footer" ng-non-bindable>
+            {{ '552189898989' | phone:'local' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body" ng-cloak>
+            {{ '2189898989' | phone:'international':55 }}
+          </div>
+          <div class="panel-footer" ng-non-bindable>
+            {{ '2189898989' | phone:'international':55 }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body" ng-cloak>
+            {{ '2189898989' | phone:'national':55 }}
+          </div>
+          <div class="panel-footer" ng-non-bindable>
+            {{ '2189898989' | phone:'national':55 }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body" ng-cloak>
+            {{ '2189898989' | phone:'local':55 }}
+          </div>
+          <div class="panel-footer" ng-non-bindable>
+            {{ '2189898989' | phone:'local':55 }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 	<h4>Countries Supported</h4>
 	<p>Argentina, Brazil, Chile, Colombia, Ecuador, Paraguay, Peru, Uruguay and USA.</p>
@@ -65,6 +124,9 @@
 	</div>
 </div>
 <script src="http://localhost:35729/livereload.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.min.js"></script>
+
 <!-- build:js js/vtex-phone-bundle.js -->
 <script type="text/javascript" src="js/vtex-phone.js"></script>
 <script type="text/javascript" src="js/countries/argentina.js"></script>
@@ -78,6 +140,7 @@
 <script type="text/javascript" src="js/countries/paraguay.js"></script>
 <!-- endbuild -->
 <script type="text/javascript" src="js/vtex-phone.js"></script>
+<script type="text/javascript" src="js/vtex-phone-filter.js"></script>
 <script type="text/javascript" src="js/countries/argentina.js"></script>
 <script type="text/javascript" src="js/countries/brazil.js"></script>
 <script type="text/javascript" src="js/countries/chile.js"></script>
@@ -88,29 +151,22 @@
 <script type="text/javascript" src="js/countries/peru.js"></script>
 <script type="text/javascript" src="js/countries/paraguay.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
-$('.getinfo form').on('submit', function(e) {
-	e.preventDefault();
-	var phoneInput = $('.getinfo .phone')[0];
-	var result = vtex.phone.getPhoneInternational(phoneInput.value);
-	var a = JSON.stringify(result, undefined, 2);
-	$('.getinfo .result').text(a).fadeIn();
+angular.module("app", ["vtex.phoneFilter"])
+.controller("AppCtrl", function($scope) {
+  $scope.getInfo = {value: "+1 (303) 448-1730"};
+  $scope.format = {value: "13034481730"};
+  $scope.validate = {value: "+1 (303) 448-1730"};
+
+  $scope.$watch('getInfo.value', function(v) {
+    var result = vtex.phone.getPhoneInternational(v);
+    $scope.getInfo.result = JSON.stringify(result, undefined, 2);
+  });
+
+  $scope.$watch('validate.value', function(v) {
+    $scope.validate.result = vtex.phone.validate(v);
+  });
 });
-$('.format form').on('submit', function(e) {
-	e.preventDefault();
-	var phoneInput = $('.format .phone')[0];
-	var phone = vtex.phone.getPhoneInternational(phoneInput.value);
-	var result = vtex.phone.format(phone);
-	$('.format .result').text(result).fadeIn();
-});
-$('.validate form').on('submit', function(e) {
-	e.preventDefault();
-	var phoneInput = $('.validate .phone')[0];
-	var result = vtex.phone.validate(phoneInput.value);
-	$('.validate .result').text(result).fadeIn();
-});
-$('form').submit();
 </script>
 
 </body>
