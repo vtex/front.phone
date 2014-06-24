@@ -1,6 +1,10 @@
 # front.phone
 
-front.phone is a Javascript library that validates, formats and identifies phone numbers. The main goal of this project is to create a trustful component to input phone numbers and extract information from it. We can currently extract the phone's country code, national destination number, it's number and in some cases if it is a mobile number. The recommended input for it's use is in international notation. 
+front.phone is a Javascript library that validates, formats and identifies phone numbers.
+
+[Demo](https://vtex.github.io/front.phone/)
+
+The main goal of this project is to create a trustful component to input phone numbers and extract information from it. We can currently extract the phone's country code, national destination number, it's number and in some cases if it is a mobile number. The recommended input for it's use is in international notation.
 
 We are compliant to the [E.123](http://en.wikipedia.org/wiki/E.123) notation.
 
@@ -95,11 +99,7 @@ console.log(result); // 8989-8989
    {{ user.phoneNumber | phone }}
    or
    {{ '552189898989' | phone }}
-   ```
-
-   Which will give you the following output:
-
-   ```
+   ->
    +55 21 8989 8989
    ```
 
