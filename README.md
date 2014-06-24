@@ -13,7 +13,7 @@ We are compliant to the [E.123](http://en.wikipedia.org/wiki/E.123) notation.
 Depending on you application scope, you may want or not to use all countries available in this library. You can follow this rule:
 
 - All countries: `vtex-phone-bundle.min.js`
-- Just some countries: `vtex-phone.min.js` + `usa.js` + `brazil.js` + etc
+- Just some countries: `vtex-phone-core.min.js` + `usa.js` + `brazil.js` + etc
 
 front.phone checks phone countries files included, so if you include a new country file, it will recognize and validate as expected.
 
@@ -115,10 +115,18 @@ console.log(result); // 8989-8989
    ```
 
 
-## Contributing
+## Building and Testing
+
+We use Grunt as a task runner. Before you start, make sure to `npm install -g grunt-cli` and `npm install`.
+
+Use `grunt` to build and test, and rebuild whenever a file is changed.
+
+Use `grunt dist` to build, test and prepare files on the `dist` folder.
+
+## Contributins
 
 Anyone is welcome to contribute to this project.
-We now are urging for pull requests of new countries' phones, aiming to global domination.
+We now are urging for pull requests of new countries' phones.
 But before you do, please read the [guidelines for contributing](CONTRIBUTING.md).
 
 ## Authors
