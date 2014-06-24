@@ -1,8 +1,8 @@
 # front.phone
 
-front.phone is a Javascript library that validates, formats and identifies phone numbers.
+front.phone is a Javascript library that identifies, validates and formats phone numbers.
 
-[Demo](https://vtex.github.io/front.phone/)
+**[Demo](https://vtex.github.io/front.phone/)**
 
 The main goal of this project is to create a trustful component to input phone numbers and extract information from it. We can currently extract the phone's country code, national destination number, it's number and in some cases if it is a mobile number. The recommended input for it's use is in international notation.
 
