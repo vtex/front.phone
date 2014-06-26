@@ -71,10 +71,29 @@ body {
   overflow-y: scroll;
 }
 
-.countries {
+.flag-blank {
+  border: 1px dotted #333;
+}
+
+.flag {
+  position: relative;
+  top: -2px;
+}
+
+.countries, .share {
   list-style: none;
 }
-.countries li {
+
+.share li {
   display: inline;
   margin-left: 16px;
 }
+
+.footer {
+  height: 100px
+}
+
+.share iframe {
+   border:0;
+}
+
