@@ -19,6 +19,12 @@ front.phone checks phone countries files included, so if you include a new count
 
 There's also an Angular.js filter: `vtex-phone-filter.min.js`. (The bundle does not include the filter).
 
+## Countries
+
+We currently cover [these countries](src/countries).
+
+Didn't find your own? Feel free to [contribute](#contributing)!
+
 ## Usage
 
 ### Getting Phone's Info
@@ -123,7 +129,7 @@ Use `grunt` to build and test, and rebuild whenever a file is changed.
 
 Use `grunt dist` to build, test and prepare files on the `dist` folder.
 
-## Contributins
+## Contributing
 
 Anyone is welcome to contribute to this project.
 We now are urging for pull requests of new countries' phones.
