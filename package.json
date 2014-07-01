@@ -1,9 +1,9 @@
 {
   "name": "front-phone",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "readmeFilename": "README.md",
-  "description": "A phone component",
-  "main": "dist/vtex-phone-bundle.js",
+  "description": "front.phone is a Javascript library that identifies, validates and formats phone numbers",
+  "main": "dist/vtex-phone-bundle.min.js",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.7.0",
