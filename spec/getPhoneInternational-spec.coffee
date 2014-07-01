@@ -214,6 +214,28 @@ describe 'Should get a', ->
 			expect(result.valid).toBe(true)
 			expect(result.isMobile).toBe(true)
 
+	describe 'mexican phone with', ->
+
+		it '8 numbers', ->
+			# Arrange
+			number = "+52 81 1111 2222"
+
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it '7 numbers', ->
+			# Arrange
+			number = "+52 222 111 2222"
+
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
 describe 'Should not get a', ->
 
 	it '"almost" mobile number from Colombia', ->

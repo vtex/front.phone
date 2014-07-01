@@ -175,23 +175,45 @@ describe 'Should split', ->
 
 	describe 'a paraguayan', ->
 
-			it 'number with 7 digits', ->
-				# Arrange
-				number = "9896565"
+		it 'number with 7 digits', ->
+			# Arrange
+			number = "9896565"
 
-				# Act
-				result = vtex.phone.countries['595'].splitNumber(number)
+			# Act
+			result = vtex.phone.countries['595'].splitNumber(number)
 
-				# Assert
-				expect(result.length).toBe(2)
+			# Assert
+			expect(result.length).toBe(2)
 
-			it 'number with 6 digits', ->
-				# Arrange
-				number = "896565"
+		it 'number with 6 digits', ->
+			# Arrange
+			number = "896565"
 
-				# Act
-				result = vtex.phone.countries['595'].splitNumber(number)
+			# Act
+			result = vtex.phone.countries['595'].splitNumber(number)
 
-				# Assert
-				expect(result.length).toBe(2)
+			# Assert
+			expect(result.length).toBe(2)
+
+	describe 'a mexican', ->
+
+		it 'number with 7 digits', ->
+			# Arrange
+			number = "1112222"
+
+			# Act
+			result = vtex.phone.countries['52'].splitNumber(number)
+
+			# Assert
+			expect(result).toEqual(['111', '2222'])
+
+		it 'number with 8 digits', ->
+			# Arrange
+			number = "11112222"
+
+			# Act
+			result = vtex.phone.countries['52'].splitNumber(number)
+
+			# Assert
+			expect(result).toEqual(['1111', '2222'])
 

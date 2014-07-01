@@ -209,6 +209,28 @@ describe 'Should validate a', ->
 			# Assert
 			expect(result).toBe(true)
 
+	describe 'a mexican phone with a', ->
+
+		it 'a number with 8 digits', ->
+			# Arrange
+			number = "+52 81 1212 1212"
+
+			# Act
+			result = vtex.phone.validate(number)
+
+			# Assert
+			expect(result).toBe(true)
+
+		it 'a number with 7 digits', ->
+			# Arrange
+			number = "+52 222 566 6565"
+
+			# Act
+			result = vtex.phone.validate(number)
+
+			# Assert
+			expect(result).toBe(true)
+
 describe 'Should not get a', ->
 
 	it '"almost" mobile number from Colombia', ->
