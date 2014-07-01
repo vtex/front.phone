@@ -1,0 +1,173 @@
+@import "http://fonts.googleapis.com/css?family=Montserrat";
+@import "variables";
+
+body {
+  font-family: @lab-font;
+  color: @lab-black;
+}
+.btn {
+  border: 1px solid #fff;
+  border-bottom-width: 3px;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  background: @bg-hero;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+  &.btn-default {
+    color: lighten(@bg-hero, 10%);
+    border-color: lighten(@bg-hero, 10%);
+    background: none;
+  }
+  &:hover, &:active, &:focus {
+    background: none;
+    border-color: darken(@bg-hero, 10%);
+    color: darken(@bg-hero, 10%);
+    &:after {
+      top: 50%;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 150%;
+    height: 200%;
+    top: -190%;
+    left: 50%;
+    background: lighten(@bg-hero, 30%);
+    -webkit-transform: translateX(-50%) translateY(-50%) skew(0,5deg);
+    -moz-transform: translateX(-50%) translateY(-50%) skew(0,5deg);
+    -ms-transform: translateX(-50%) translateY(-50%) skew(0,5deg);
+    transform: translateX(-50%) translateY(-50%) skew(0,5deg);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  &.btn-block {
+    &:after {
+      height: 250%;
+      width: 200%;
+      -webkit-transform: translateX(-50%) translateY(-50%) skew(0,2deg);
+      -moz-transform: translateX(-50%) translateY(-50%) skew(0,2deg);
+      -ms-transform: translateX(-50%) translateY(-50%) skew(0,2deg);
+      transform: translateX(-50%) translateY(-50%) skew(0,2deg);
+    }
+  }
+  &:active {
+    border-bottom-width: 1px;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    transition: none;
+    -webkit-transform: translate(0, 2px);
+    -moz-transform: translate(0, 2px);
+    -ms-transform: translate(0, 2px);
+    transform: translate(0, 2px);
+  }
+}
+.hero {
+  background-color: @bg-hero;
+  color: #fff;
+  padding: 90px 0 40px;
+  
+  h1 {
+    font-weight: @lab-font-bold;
+    font-size: 6em;
+    color: rgba(255,255,255,.5);
+  }
+  h2 {
+    font-weight: @lab-font-thin;
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  small {
+    color: rgba(0,0,0,.4);
+  }
+  .btn {
+    display: inline-block;
+    &.btn-default {
+      color: lighten(@bg-hero, 22%);
+      border-color: lighten(@bg-hero, 22%);
+      background: none;
+    }
+    &:hover, &:active, &:focus {
+      border-color: #fff;
+      color: darken(@bg-hero, 40%);
+    }
+    &:after {
+      background: rgba(255,255,255,.5);
+    }
+  }
+  .container {
+    position: relative;
+    z-index: 10;
+  }
+}
+.social {
+  background-color: @bg-hero;
+  padding: 30px 0 140px;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      float: left;
+      margin-right: 15px;
+      width: 100px;
+    }
+  }
+}
+
+.clipper, .clipper-footer {
+  background-color: #fff;
+  height: 90px;
+  width: 100%;
+  position: relative;
+  top: -40px;
+  -webkit-transform: skew(0,2deg);
+  -moz-transform: skew(0,2deg);
+  -ms-transform: skew(0,2deg);
+  transform: skew(0,2deg);
+  pointer-events: none;
+  z-index: 1;
+}
+.clipper-footer {top: 0;}
+
+section.content {
+  position: relative;
+  top: -110px;
+  margin-bottom: -100px;
+  z-index: 10;
+
+  h2 {
+    color: @lab-blue;
+    font-weight: @lab-font-thin;
+    font-size: 40px;
+  }
+}
+
+footer {
+  background-color: @lab-grey-light;
+  color: @lab-grey;
+  padding: 100px 0 40px;
+  margin-top: -40px;
+  .pull-left {margin-right: 20px;}
+  .logo {
+    float: left;
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: -10px;
+    .circle{
+      stroke: @lab-grey; 
+      stroke-width:4; 
+      fill: none;
+    }
+    .polygon{fill: @lab-grey;}
+  }
+}
