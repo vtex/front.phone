@@ -1,5 +1,29 @@
 describe 'Should get a', ->
 
+	describe 'united kingdom phone with a', ->
+
+		number = ''
+
+		afterEach ->
+			# Act
+			result = vtex.phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).toBe(true)
+
+		it 'standard formatted number', ->
+			# Arrange
+			number = "+442030005555"
+
+		it 'specially formatted number', ->
+			# Arrange
+			number = "+44 (20) 3000 5555"
+
+		it 'national destination code starting with the optional digit', ->
+			# Arrange
+			number = "+44 020 3000 5555"
+	
+
 	describe 'brazilian phone with a', ->
 
 		number = ''
