@@ -1,4 +1,107 @@
 describe 'Should split', ->
+	describe 'a united kingdom', ->
+
+		it 'number starting with 2?, 55, 56, 70, 76 (excluding 7624) with 10 digits', ->
+			# Arrange
+			number = "5555555555"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)
+
+		it 'number starting with 11d, 1d1, 3dd, 9dd with 10 digits', ->
+			# Arrange
+			number = "1515555555"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)			
+
+		it 'number starting with 1dddd with 9 or 10 digits', ->
+			# Arrange
+			number = "138731234"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)
+
+		it 'number starting with 1ddd with 9 or 10 digits', ->
+			# Arrange
+			number = "121111234"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)
+
+
+		it 'number starting with 7ddd (including 7624) (not 70, 76) with 10 digits', ->
+			# Arrange
+			number = "7246731234"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)
+
+		it 'number starting with 800 1111 with 7 digits : UK ChildLine', ->
+			# Arrange
+			number = "8001111"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)		
+
+		it 'number starting with 845 46 47 with 7 digits : UK NHS Direct', ->
+			# Arrange
+			number = "8454647"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)	
+
+		it 'number starting with 84d, 87d with 10 digits', ->
+			# Arrange
+			number = "8451101111"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)	
+
+		it 'number starting with 80d (including 800) with 10 digits', ->
+			# Arrange
+			number = "8001221111"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(3)	
+
+		it 'number starting with 500, 800 with 9 digitse', ->
+			# Arrange
+			number = "800111223"
+
+			# Act
+			result = vtex.phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result.length).toBe(2)																				
+
 
 	describe 'a brazilian', ->
 
