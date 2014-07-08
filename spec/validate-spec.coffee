@@ -1,4 +1,31 @@
 describe 'Should validate a', ->
+	describe 'a uk phone with a', ->
+
+		number = ''
+
+		afterEach ->
+			# Act
+			result = vtex.phone.validate(number, "44")
+
+			# Assert
+			expect(result).toBe(true)
+
+		it 'standard formatted number', ->
+			# Arrange
+			number = "+44203000555"
+
+		it 'specially formatted number', ->
+			# Arrange
+			number = "+44 20 3000 5555"
+
+		it 'national destination code starting with the optional digit', ->
+			# Arrange
+			number = "+44 020 3000 5555"
+		it 'mobile number', ->
+			# Arrange
+			number = "+447400123456"
+
+
 
 	describe 'brazilian phone with a', ->
 
