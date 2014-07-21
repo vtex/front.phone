@@ -1,5 +1,7 @@
 # front.phone
 
+[![Build Status](https://travis-ci.org/vtex/front.phone.svg?branch=master)](https://travis-ci.org/vtex/front.phone)
+
 front.phone is a Javascript library that identifies, validates and formats phone numbers.
 
 **[Demo](https://vtex.github.io/front.phone/)**
