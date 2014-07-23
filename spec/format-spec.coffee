@@ -138,3 +138,14 @@ describe 'Should format a number', ->
 		# Assert
 		expect(result).toMatch(/\(21\) 987 8765/)
 
+	it 'in national format from Paraguay with 6 digits', ->
+		# Arrange
+		number = "59521505270"
+		phone = vtex.phone.getPhoneInternational(number)
+
+		# Act
+		result = vtex.phone.format(phone, vtex.phone.NATIONAL)
+
+		# Assert
+		expect(result).toMatch(/\(21\) 505 270/)
+

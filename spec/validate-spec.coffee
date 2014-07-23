@@ -226,9 +226,29 @@ describe 'Should validate a', ->
 			# Assert
 			expect(result).toBe(true)
 
-		it 'a number with 6 digits', ->
+		it 'a number with 6 digits and 3 digit area code', ->
 			# Arrange
-			number = "+595 220 56 6565"
+			number = "+595 535 566 565"
+
+			# Act
+			result = vtex.phone.validate(number)
+
+			# Assert
+			expect(result).toBe(true)
+
+		it 'a number with 6 digits and 2 digit area code padded with 0', ->
+			# Arrange
+			number = "+595 021 566 565"
+
+			# Act
+			result = vtex.phone.validate(number)
+
+			# Assert
+			expect(result).toBe(true)
+
+		it 'a number with 6 digits and 2 digit area code', ->
+			# Arrange
+			number = "+595 21 566 565"
 
 			# Act
 			result = vtex.phone.validate(number)
