@@ -73,6 +73,10 @@ describe 'Should validate a', ->
 			# Arrange
 			number = "+54 220 8787656"
 
+		it 'a number with a rio negro destination code', ->
+			# Arrange
+			number = "+54 298 1234567"
+
 		it 'a mobile number', ->
 			# Arrange
 			number = "+54 9 11 87876565"

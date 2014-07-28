@@ -82,13 +82,9 @@ class Phone
 		if givenCountryCode
 			return vtex.phone.countries[givenCountryCode].regex.test(number)
 		else
-			valid = false
 			for countryCode, countryObj of vtex.phone.countries
-				#console.log countryObj.regex.test(number)
-				if countryObj.regex.test(number)
-					valid = true
-					break
-			return valid
+				return true if countryObj.regex.test(number)
+			return false
 
 	testCountryCode: (countryCode, number) =>
 		countryCodeRegex = new RegExp "^"+countryCode

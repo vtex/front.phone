@@ -117,7 +117,7 @@
     };
 
     Phone.prototype.validate = function(number, givenCountryCode) {
-      var countryCode, countryObj, valid, _ref;
+      var countryCode, countryObj, _ref;
       if (number === null) {
         return false;
       }
@@ -125,16 +125,14 @@
       if (givenCountryCode) {
         return vtex.phone.countries[givenCountryCode].regex.test(number);
       } else {
-        valid = false;
         _ref = vtex.phone.countries;
         for (countryCode in _ref) {
           countryObj = _ref[countryCode];
           if (countryObj.regex.test(number)) {
-            valid = true;
-            break;
+            return true;
           }
         }
-        return valid;
+        return false;
       }
     };
 
