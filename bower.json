@@ -9,7 +9,6 @@
 		"README.md",
 		"bower.json",
 		"karma.conf.coffee",
-		"package.json",
 		"remote.json",
 		"spec/",
 		"src/"
