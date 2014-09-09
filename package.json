@@ -1,6 +1,6 @@
 {
   "name": "front-phone",
-  "version": "3.8.1",
+  "version": "3.8.2",
   "readmeFilename": "README.md",
   "description": "front.phone is a Javascript library that identifies, validates and formats phone numbers",
   "main": "dist/vtex-phone-bundle.min.js",
