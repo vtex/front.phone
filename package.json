@@ -18,6 +18,7 @@
     "type": "git",
     "url": "git://github.com/vtex/front.phone.git"
   },
+  "homepage": "https://vtex.github.io/front.phone/",
   "keywords": [
     "phone"
   ],

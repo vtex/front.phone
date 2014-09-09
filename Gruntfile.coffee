@@ -7,7 +7,7 @@ module.exports = (grunt) ->
 
 	# Project configuration.
 	grunt.initConfig
-		bower: grunt.file.readJSON('bower.json')
+		package: grunt.file.readJSON('package.json')
 
 		relativePath: ''
 
@@ -40,7 +40,7 @@ module.exports = (grunt) ->
 
 		uglify:
 			options:
-			  banner: '/*! <%= bower.name %> - v<%= bower.version %> - <%= bower.repository %> */\n'
+			  banner: '/*! <%= package.name %> - v<%= package.version %> - <%= package.homepage %> */\n'
 			main:
 				files:
 					'dist/vtex-phone-core.min.js':   'dist/vtex-phone-core.js'
