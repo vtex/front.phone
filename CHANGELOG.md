@@ -1,3 +1,8 @@
+## 3.8.3
+- Fix dist files comments
+- Remove version from bower.json
+- Remove package.json from bower's ignore
+
 ## 3.8.2
 - Fix peruvian phones
 
