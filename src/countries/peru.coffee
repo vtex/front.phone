@@ -17,7 +17,7 @@ class Peru
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, '', withoutNDC)
+		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
 		if ndc is '1' and withoutNDC.length is 7			
 			return phone
 		else if ndc is '9' and withoutNDC.length is 8

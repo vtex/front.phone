@@ -192,6 +192,7 @@ describe 'Should get a', ->
 
 			# Assert
 			expect(result.valid).toBe(true)
+			expect(result.nationalDestinationCode).toBe('1')
 
 		it 'land line number', ->
 			# Arrange

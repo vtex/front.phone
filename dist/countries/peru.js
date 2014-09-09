@@ -19,7 +19,7 @@
 
     Peru.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
       var phone;
-      phone = new vtex.phone.PhoneNumber(this.countryCode, '', withoutNDC);
+      phone = new vtex.phone.PhoneNumber(this.countryCode, ndc, withoutNDC);
       if (ndc === '1' && withoutNDC.length === 7) {
         return phone;
       } else if (ndc === '9' && withoutNDC.length === 8) {
