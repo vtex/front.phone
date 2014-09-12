@@ -19,22 +19,21 @@ class Brazil
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		# Needs to be updated in 2015 (as in link (1) above)
-		newMobileNDC = ['11','12','13','14','15','16','17','18','19','21','22','24','27','28']
-		newMobilePattern = new RegExp "^(0|)("+newMobileNDC.join("|")+")"
+		nineDigitsNDC = ['11','12','13','14','15','16','17','18','19','21','22','24','27','28']
+		nineDigitsPattern = new RegExp "^(0|)("+nineDigitsNDC.join("|")+")"
 		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
 		
-		if newMobilePattern.test(withoutCountryCode)
-			ndcRest = withoutCountryCode.replace(newMobilePattern, "")
-			if ndcRest.length is 9 or ndcRest.length is 8 then return phone
+		if withoutNDC.length is 9 and withoutNDC.indexOf("9") is 0 and nineDigitsPattern.test(ndc)
+			phone.isMobile = true
+			return phone
 		else
 			if withoutNDC.length is 8 then return phone
 
 	splitNumber: (number) =>
 		if number.length is 8
 			return vtex.phone.compact number.split(/(\d{4})(\d{4})/)
-		else if number.length is 9
-			if number.indexOf("9") is 0
-				return vtex.phone.compact number.split(/(\d{5})(\d{4})/)
+		else if number.length is 9 and number.indexOf("9") is 0
+			return vtex.phone.compact number.split(/(\d{5})(\d{4})/)
 
 		return [number]
 

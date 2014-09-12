@@ -51,6 +51,10 @@ describe 'Should get a', ->
 			# Arrange
 			number = "+55 021 998986565"
 
+		it 'national destination code that accept nine digits but the number has only eight', ->
+			# Arrange
+			number = "+55 11 3111-1111"
+
 	describe 'argentinian phone with', ->
 
 		number = ''
@@ -266,6 +270,16 @@ describe 'Should not get a', ->
 	it '"almost" mobile number from Colombia', ->
 		# Arrange
 		number = "+57 501 9898656"
+
+		# Act
+		result = vtex.phone.getPhoneInternational(number)
+
+		# Assert
+		expect(result).toBe(null)
+
+	it 'brazilian phone with nine digits that doesn\'t start with nine', ->
+		# Arrange
+		number = "+55 11 1111-11111"
 
 		# Act
 		result = vtex.phone.getPhoneInternational(number)

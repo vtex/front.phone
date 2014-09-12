@@ -19,7 +19,7 @@ describe 'Should split', ->
 			result = vtex.phone.countries['44'].splitNumber(number)
 
 			# Assert
-			expect(result.length).toBe(3)			
+			expect(result.length).toBe(3)
 
 		it 'number starting with 1dddd with 9 or 10 digits', ->
 			# Arrange
