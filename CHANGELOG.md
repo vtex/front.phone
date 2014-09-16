@@ -1,3 +1,6 @@
+## 3.8.4
+- Fix brazilian nine digits numbers
+
 ## 3.8.3
 - Fix dist files comments
 - Remove version from bower.json

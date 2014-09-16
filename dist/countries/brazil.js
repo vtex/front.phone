@@ -18,15 +18,13 @@
     }
 
     Brazil.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
-      var ndcRest, newMobileNDC, newMobilePattern, phone;
-      newMobileNDC = ['11', '12', '13', '14', '15', '16', '17', '18', '19', '21', '22', '24', '27', '28'];
-      newMobilePattern = new RegExp("^(0|)(" + newMobileNDC.join("|") + ")");
+      var nineDigitsNDC, nineDigitsPattern, phone;
+      nineDigitsNDC = ['11', '12', '13', '14', '15', '16', '17', '18', '19', '21', '22', '24', '27', '28'];
+      nineDigitsPattern = new RegExp("^(0|)(" + nineDigitsNDC.join("|") + ")");
       phone = new vtex.phone.PhoneNumber(this.countryCode, ndc, withoutNDC);
-      if (newMobilePattern.test(withoutCountryCode)) {
-        ndcRest = withoutCountryCode.replace(newMobilePattern, "");
-        if (ndcRest.length === 9 || ndcRest.length === 8) {
-          return phone;
-        }
+      if (withoutNDC.length === 9 && withoutNDC.indexOf("9") === 0 && nineDigitsPattern.test(ndc)) {
+        phone.isMobile = true;
+        return phone;
       } else {
         if (withoutNDC.length === 8) {
           return phone;
@@ -37,10 +35,8 @@
     Brazil.prototype.splitNumber = function(number) {
       if (number.length === 8) {
         return vtex.phone.compact(number.split(/(\d{4})(\d{4})/));
-      } else if (number.length === 9) {
-        if (number.indexOf("9") === 0) {
-          return vtex.phone.compact(number.split(/(\d{5})(\d{4})/));
-        }
+      } else if (number.length === 9 && number.indexOf("9") === 0) {
+        return vtex.phone.compact(number.split(/(\d{5})(\d{4})/));
       }
       return [number];
     };
