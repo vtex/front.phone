@@ -19,7 +19,7 @@ class Brazil
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		# Needs to be updated in 2015 (as in link (1) above)
-		nineDigitsNDC = ['11','12','13','14','15','16','17','18','19','21','22','24','27','28']
+		nineDigitsNDC = ['11','12','13','14','15','16','17','18','19','21','22','24','27','28', '91', '92', '93', '94', '95', '96', '97', '98', '99']
 		nineDigitsPattern = new RegExp "^(0|)("+nineDigitsNDC.join("|")+")"
 		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
 		

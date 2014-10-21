@@ -49,6 +49,7 @@ module.exports = (grunt) ->
     dev: ['nolr', 'build', 'test', 'watch']
     default: ['build', 'connect', 'test', 'watch']
     devmin: ['build', 'min', 'connect:http:keepalive'] # Minifies files and serve
+    getTags: []
 
   # Project configuration.
   grunt.initConfig config
