@@ -1,3 +1,6 @@
+## 3.9.0
+- Change project folder structure
+
 ## 3.8.4
 - Fix brazilian nine digits numbers
 
