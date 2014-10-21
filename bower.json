@@ -1,6 +1,6 @@
 {
 	"name": "front-phone",
-	"main": ["dist/vtex-phone-bundle.js"],
+	"main": ["dist/vtex-phone-bundle.min.js"],
 	"ignore": [
 		".gitignore",
 		"CONTRIBUTING.md",

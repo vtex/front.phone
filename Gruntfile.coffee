@@ -1,71 +1,56 @@
+GruntVTEX = require 'grunt-vtex'
+
 module.exports = (grunt) ->
-	pkg = grunt.file.readJSON('package.json')
+  pkg = grunt.file.readJSON 'package.json'
+  r = {}
+  # Parts of the index we wish to replace on deploy
+  r[pkg.paths[0] + '/'] = "/"
+  r['{version}'] = pkg.version
 
-	replacements =
-		'VTEX_IO_HOST': 'io.vtex.com.br'
-		'VERSION': pkg.version
+  rDev = {}
+  rDev['{version}'] = "#{pkg.version}"
 
-	# Project configuration.
-	grunt.initConfig
-		package: grunt.file.readJSON('package.json')
+  config = GruntVTEX.generateConfig grunt, pkg,
+    replaceMap: r
+    devReplaceMap: rDev
+    replaceGlob: "build/**/index.html"
+    relativePath: "front.phone"
+    open: 'http://basedevmkp.vtexlocal.com.br/front.phone/'
 
-		relativePath: ''
+  config.karma =
+    unit:
+      configFile: 'karma.conf.coffee'
+      singleRun: true
 
-		# Tasks
-		clean: 
-			build: ['build']
-			dist: ['dist']
+  config['gh-pages'] =
+    options:
+      base: 'build/<%= relativePath %>'
+    src: ['**']
 
-		coffee:
-			main:
-				files: [
-					expand: true
-					cwd: 'src'
-					src: ['**/*.coffee']
-					dest: 'build/<%= relativePath %>/'
-					ext: '.js'
-				]
+  config.concat.templates = {}
+  config.copy.deploy.files = [
+    expand: true
+    cwd: "build/<%= relativePath %>/script/"
+    src: ['**']
+    dest: "dist/"
+  ]
 
-		concat:
-			main:
-				src: ['build/vtex-phone-core.js', 'build/countries/*.js']
-				dest: 'build/vtex-phone-bundle.js'
+  config.uglify.options.banner = "/*! #{pkg.name} - v#{pkg.version} - #{pkg.homepage} */\n"
 
-		copy:
-			dist:
-				expand: true
-				cwd: 'build/'
-				src: ['**/*']
-				dest: 'dist/'
+  tasks =
+  # Building block tasks
+    build: ['clean', 'copy:main', 'copy:dev', 'coffee', 'less']
+    min: ['useminPrepare', 'concat', 'uglify', 'usemin'] # minifies files
+    test: ['karma:unit']
+  # Deploy tasks
+    dist: ['build', 'test', 'min', 'copy:deploy'] # Dist - minifies files
+    publish: ['build', 'test', 'gh-pages'] # Publish to Github Pages
+  # Development tasks
+    dev: ['nolr', 'build', 'test', 'watch']
+    default: ['build', 'connect', 'test', 'watch']
+    devmin: ['build', 'min', 'connect:http:keepalive'] # Minifies files and serve
 
-		uglify:
-			options:
-			  banner: '/*! <%= package.name %> - v<%= package.version %> - <%= package.homepage %> */\n'
-			main:
-				files:
-					'dist/vtex-phone-core.min.js':   'dist/vtex-phone-core.js'
-					'dist/vtex-phone-bundle.min.js': 'dist/vtex-phone-bundle.js'
-					'dist/vtex-phone-filter.min.js': 'dist/vtex-phone-filter.js'
-
-		karma:
-			unit:
-				configFile: 'karma.conf.coffee'
-				singleRun: true
-
-		'gh-pages':
-			options:
-				base: 'build/<%= relativePath %>'
-			src: ['**']
-
-		watch:
-			main:
-				files: ['src/**/*', 'spec/**/*']
-				tasks: ['build', 'test']
-
-	grunt.loadNpmTasks name for name of pkg.devDependencies when name[0..5] is 'grunt-'
-
-	grunt.registerTask 'build', ['clean:build', 'coffee', 'concat']
-	grunt.registerTask 'test', ['karma:unit']
-
-	grunt.registerTask 'default', ['build', 'test', 'watch']
-	grunt.registerTask 'dist', ['build', 'test', 'clean:dist', 'copy:dist', 'uglify', 'gh-pages']
+  # Project configuration.
+  grunt.initConfig config
+  grunt.loadNpmTasks name for name of pkg.devDependencies when name[0..5] is 'grunt-' and name isnt 'grunt-vtex'
+  grunt.registerTask taskName, taskArray for taskName, taskArray of tasks
