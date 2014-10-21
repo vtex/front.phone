@@ -52,6 +52,11 @@ module.exports = (grunt) ->
 				configFile: 'karma.conf.coffee'
 				singleRun: true
 
+		'gh-pages':
+			options:
+				base: 'build/<%= relativePath %>'
+			src: ['**']
+
 		watch:
 			main:
 				files: ['src/**/*', 'spec/**/*']
@@ -63,4 +68,4 @@ module.exports = (grunt) ->
 	grunt.registerTask 'test', ['karma:unit']
 
 	grunt.registerTask 'default', ['build', 'test', 'watch']
-	grunt.registerTask 'dist', ['build', 'test', 'clean:dist', 'copy:dist', 'uglify']
+	grunt.registerTask 'dist', ['build', 'test', 'clean:dist', 'copy:dist', 'uglify', 'gh-pages']
