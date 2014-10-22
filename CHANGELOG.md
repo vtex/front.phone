@@ -1,3 +1,6 @@
+## 3.9.1
+- Update brazilian nine digits mobile phone numbers range according to the national change plan
+
 ## 3.9.0
 - Change project folder structure
 
