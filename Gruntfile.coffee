@@ -1,57 +1,103 @@
 GruntVTEX = require 'grunt-vtex'
+webpack = require 'webpack'
 
 module.exports = (grunt) ->
   pkg = grunt.file.readJSON 'package.json'
-  r = {}
+  
   # Parts of the index we wish to replace on deploy
-  r[pkg.paths[0] + '/'] = "/"
-  r['{version}'] = pkg.version
+  replaceMap = {}
+  replaceMap[pkg.paths[0] + '/'] = "/"
+  replaceMap['{version}'] = pkg.version
 
-  rDev = {}
-  rDev['{version}'] = "#{pkg.version}"
+  devReplaceMap = {}
+  devReplaceMap['{version}'] = "#{pkg.version}"
 
-  config = GruntVTEX.generateConfig grunt, pkg,
-    replaceMap: r
-    devReplaceMap: rDev
-    replaceGlob: "build/**/index.html"
-    relativePath: "front.phone"
-    open: 'http://basedevmkp.vtexlocal.com.br/front.phone/'
+  defaultConfig = GruntVTEX.generateConfig grunt, pkg,
+    followHttps: true
+    replaceMap: replaceMap
+    devReplaceMap: devReplaceMap
+    livereload: !grunt.option('no-lr')
+    open: false
+    copyIgnore: ['!script/**/*.js', '!script/{countries}']
 
-  config.karma =
-    unit:
-      configFile: 'karma.conf.coffee'
-      singleRun: true
+  delete defaultConfig.watch.coffee
 
-  config['gh-pages'] =
-    options:
-      base: 'build/<%= relativePath %>'
-    src: ['**']
+  uglifyOptions =
+    mangle: false
+    warnings: false
+    compress:
+      warnings: false
 
-  config.concat.templates = {}
-  config.copy.deploy.files = [
-    expand: true
-    cwd: "build/<%= relativePath %>/script/"
-    src: ['**']
-    dest: "dist/"
-  ]
+  webpackPlugins = [ new webpack.optimize.CommonsChunkPlugin("vtex-phone.js") ]
+  webpackPlugins = []
 
-  config.uglify.options.banner = "/*! #{pkg.name} - v#{pkg.version} - #{pkg.homepage} */\n"
+  # Add custom configuration here as needed
+  customConfig =
+    publicPath: "/<%= relativePath %>"
+
+    concat:
+      templates: {}
+
+    copy:
+      deploy:
+        files = [
+          expand: true
+          cwd: "build/<%= relativePath %>/script/"
+          src: ['**']
+          dest: "dist/"
+        ]
+
+    mochaTest:
+      main:
+        options:
+          reporter: 'spec'
+        src: ['spec/**/*-spec.coffee']
+
+    'gh-pages':
+      options:
+        base: 'build/<%= relativePath %>'
+      src: ['**']
+
+    uglify:
+      options:
+        banner: "/*! #{pkg.name} - v#{pkg.version} - #{pkg.homepage} */\n"
+
+    watch:
+      main:
+        tasks: ['copy:main', 'copy:dev']
+
+    webpack:
+      options:
+        module:
+          loaders: [
+            { test: /\.coffee$/, loader: "coffee-loader" }
+          ]
+        devtool: "source-map"
+      main:
+        entry:
+          allCountries: "./src/script/AllCountries.coffee"
+        output:
+          path: "build/<%= relativePath %>/script/"
+          publicPath: "<%= publicPath %>/script/"
+          filename: "[name]-bundle.js"
+        plugins: webpackPlugins
+        resolve:
+          modulesDirectories: ["src/script/"]
+          extensions: ["", ".js", ".coffee"]
 
   tasks =
-  # Building block tasks
-    build: ['clean', 'copy:main', 'copy:dev', 'coffee', 'less']
-    min: ['useminPrepare', 'concat', 'uglify', 'usemin'] # minifies files
-    test: ['karma:unit']
-  # Deploy tasks
-    dist: ['build', 'test', 'min', 'copy:deploy'] # Dist - minifies files
+    # Building block tasks
+    build: ['clean', 'webpack:main', 'copy:main', 'copy:dev', 'copy:pkg']
+    test: ['mochaTest']
+    # Deploy tasks
+    dist: ['clean', 'distConfig', 'webpack:main', 'copy:main', 'copy:pkg', 'copy:deploy'] # Dist - minifies files
     publish: ['build', 'test', 'gh-pages'] # Publish to Github Pages
-  # Development tasks
+    # Development tasks
     dev: ['nolr', 'build', 'test', 'watch']
     default: ['build', 'connect', 'test', 'watch']
-    devmin: ['build', 'min', 'connect:http:keepalive'] # Minifies files and serve
-    getTags: []
 
   # Project configuration.
-  grunt.initConfig config
+  grunt.config.init defaultConfig
+  grunt.config.merge customConfig
   grunt.loadNpmTasks name for name of pkg.devDependencies when name[0..5] is 'grunt-' and name isnt 'grunt-vtex'
   grunt.registerTask taskName, taskArray for taskName, taskArray of tasks
