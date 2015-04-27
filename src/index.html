@@ -9,28 +9,9 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro:200,400,600">
 
-  <link rel="stylesheet" href="/front.phone/style/style.css"/>
+  <link rel="stylesheet" href="/front.phone/style/style.css"/>  
   
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.min.js"></script>
-  
-  <!-- build:js /front.phone/script/vtex-phone-bundle.min.js -->
-  <script src="/front.phone/script/vtex-phone-core.js"></script>
-  <script src="/front.phone/script/countries/argentina.js"></script>
-  <script src="/front.phone/script/countries/brazil.js"></script>
-  <script src="/front.phone/script/countries/chile.js"></script>
-  <script src="/front.phone/script/countries/colombia.js"></script>
-  <script src="/front.phone/script/countries/ecuador.js"></script>
-  <script src="/front.phone/script/countries/gbr.js"></script>
-  <script src="/front.phone/script/countries/mexico.js"></script>
-  <script src="/front.phone/script/countries/paraguay.js"></script>
-  <script src="/front.phone/script/countries/peru.js"></script>
-  <script src="/front.phone/script/countries/uruguay.js"></script>
-  <script src="/front.phone/script/countries/usa.js"></script>
-  <!-- endbuild -->
-
-  <!-- build:js /front.phone/script/vtex-phone-filter.min.js -->
-  <script src="/front.phone/script/vtex-phone-filter.js"></script>
-  <!-- endbuild -->
+  <script src="script/allCountries-bundle.js"></script>
 
 </head>
 <body ng-app="app">
@@ -269,21 +250,7 @@
   </div>
 
   <script>
-    angular.module("app", ["vtex.phoneFilter"])
-        .controller("AppCtrl", function($scope) {
-          $scope.getInfo = {value: "+1 (303) 448-1730"};
-          $scope.format = {value: "13034481730"};
-          $scope.validate = {value: "+1 (303) 448-1730"};
-
-          $scope.$watch('getInfo.value', function(v) {
-            var result = vtex.phone.getPhoneInternational(v);
-            $scope.getInfo.result = JSON.stringify(result, undefined, 2);
-          });
-
-          $scope.$watch('validate.value', function(v) {
-            $scope.validate.result = vtex.phone.validate(v);
-          });
-        });
+    
   </script>
 
 </body>

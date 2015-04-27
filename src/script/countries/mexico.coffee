@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # http://www.sre.gob.mx/austin/Util/LadasMexico.html
@@ -17,16 +19,19 @@ class Mexico
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		if withoutNDC.length is 7 or withoutNDC.length is 8
-			return new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+			return new PhoneNumber(@countryCode, ndc, withoutNDC)
 
 	splitNumber: (number) =>
 		if number.length is 7
-			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 		else if number.length is 8
-			return vtex.phone.compact number.split(/(\d{4})(\d{4})/)
+			return Phone.compact number.split(/(\d{4})(\d{4})/)
 
 		return [number]
 
+# register
+mexico = new Mexico()
+Phone.countries['52'] = mexico
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['52'] = new Mexico()
+module.exports = mexico

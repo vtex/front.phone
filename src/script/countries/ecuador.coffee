@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Ecuador
@@ -17,7 +19,7 @@ class Ecuador
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
 		if withoutNDC.length is 7 and ndc isnt '9'
 			return phone
 		else if ndc is '9'and withoutNDC.length is 8
@@ -28,13 +30,16 @@ class Ecuador
 
 	splitNumber: (number) =>
 		if number.length is 7
-			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 		else if number.length is 9
 			if number.indexOf("9") is 0
-				return vtex.phone.compact number.split(/(\d{2})(\d{3})(\d{4})/)
+				return Phone.compact number.split(/(\d{2})(\d{3})(\d{4})/)
 
 		return [number]
 
+# register
+ecuador = new Ecuador()
+Phone.countries['593'] = ecuador
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['593'] = new Ecuador()
+module.exports = ecuador

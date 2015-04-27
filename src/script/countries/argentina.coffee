@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
@@ -18,13 +20,13 @@ class Argentina
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
 		if ndc is '9'
 				withoutCountryCode = withoutNDC
 
 				ndcArray = @nationalDestinationCode.slice(1)
 				for nationalDestinationCode in ndcArray
-					[foundNDC, ndcRegex] = vtex.phone.testNDC(nationalDestinationCode, @, withoutCountryCode)
+					[foundNDC, ndcRegex] = Phone.testNDC(nationalDestinationCode, @, withoutCountryCode)
 					break if foundNDC is true
 				return null if !foundNDC
 				withoutNDC = withoutCountryCode.replace(ndcRegex, "")
@@ -46,40 +48,43 @@ class Argentina
 	splitNumber: (number) =>
 		switch number.length
 			when 8
-				return vtex.phone.compact number.split(/(\d{4})(\d{4})/)
+				return Phone.compact number.split(/(\d{4})(\d{4})/)
 			when 7
-				return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+				return Phone.compact number.split(/(\d{3})(\d{4})/)
 			when 6
-				return vtex.phone.compact number.split(/(\d{2})(\d{4})/)
+				return Phone.compact number.split(/(\d{2})(\d{4})/)
 
 		return [number]
 
-	format: (phone, format = vtex.phone.INTERNATIONAL) =>
+	format: (phone, format = Phone.INTERNATIONAL) =>
 		resultString = ""
 
-		splitNumber = vtex.phone.countries[phone.countryCode].splitNumber(phone.number)
+		splitNumber = Phone.countries[phone.countryCode].splitNumber(phone.number)
 
 		switch format
-			when vtex.phone.INTERNATIONAL
+			when Phone.INTERNATIONAL
 				resultString = "+" + phone.countryCode + " "
 				if phone.isMobile then resultString += "9 "
 				if phone.nationalDestinationCode
 					resultString += phone.nationalDestinationCode + " "
 				resultString += splitNumber.join(" ")
-			when vtex.phone.NATIONAL
+			when Phone.NATIONAL
 				if phone.nationalDestinationCode
 					resultString += "(" + phone.nationalDestinationCode + ") "
-				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
+				separator = Phone.countries[phone.countryCode].nationalNumberSeparator
 				if phone.isMobile then resultString += "15 "
 				resultString += splitNumber.join(separator)
-			when vtex.phone.LOCAL
-				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
+			when Phone.LOCAL
+				separator = Phone.countries[phone.countryCode].nationalNumberSeparator
 				resultString = splitNumber.join(separator)
 			else
 				resultString = ""
 
 		return resultString
 
+# register
+argentina = new Argentina()
+Phone.countries['54'] = argentina
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['54'] = new Argentina()
+module.exports = argentina

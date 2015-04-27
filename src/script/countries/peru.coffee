@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
@@ -17,7 +19,7 @@ class Peru
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
 		if ndc is '1' and withoutNDC.length is 7			
 			return phone
 		else if ndc is '9' and withoutNDC.length is 8
@@ -30,14 +32,17 @@ class Peru
 
 	splitNumber: (number) =>
 		if number.length is 6
-			return vtex.phone.compact number.split(/(\d{3})(\d{3})/)
+			return Phone.compact number.split(/(\d{3})(\d{3})/)
 		else if number.length is 7
-			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 		else if number.length is 9
-			return vtex.phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
+			return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
 
 		return [number]
 
+# register
+peru = new Peru()
+Phone.countries['51'] = peru
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['51'] = new Peru()
+module.exports = peru

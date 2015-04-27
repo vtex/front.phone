@@ -1,3 +1,5 @@
+# TODO 
+###
 angular.module('vtex.phoneFilter', [])
 .filter 'phone', ->
 	return (ph, toFormat, nationalCode) ->
@@ -14,3 +16,4 @@ angular.module('vtex.phoneFilter', [])
 			toFormat = vtex.phone[toFormat.toUpperCase()]
 
 		return vtex.phone.format(phoneObject, toFormat)
+###

@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # http://countrycode.org/usa
@@ -17,14 +19,17 @@ class USA
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		if withoutNDC.length is 7
-			return new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+			return new PhoneNumber(@countryCode, ndc, withoutNDC)
 
 	splitNumber: (number) =>
 		if number.length is 7
-			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 
 		return [number]
 
+# register
+usa = new USA()
+Phone.countries['1'] = usa
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['1'] = new USA()
+module.exports = usa

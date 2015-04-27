@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay
@@ -18,7 +20,7 @@ class Uruguay
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
 		if (ndc.length + withoutNDC.length) is 8
 			if ndc is '9'
 				phone.isMobile = true
@@ -28,12 +30,15 @@ class Uruguay
 
 	splitNumber: (number) =>
 		if number.length is 7
-			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 		else if number.length is 8
-			return vtex.phone.compact number.split(/(\d{4})(\d{4})/)
+			return Phone.compact number.split(/(\d{4})(\d{4})/)
 
 		return [number]
 
+# register
+uruguay = new Uruguay()
+Phone.countries['598'] = uruguay
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['598'] = new Uruguay()
+module.exports = uruguay

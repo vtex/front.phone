@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
@@ -18,7 +20,7 @@ class Chile
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
 		switch ndc
 			when '2'
 				if withoutNDC.length is 8 then return phone
@@ -37,16 +39,19 @@ class Chile
 	splitNumber: (number) =>
 		switch number.length
 			when 9
-				return vtex.phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
+				return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
 			when 8
-				return vtex.phone.compact number.split(/(\d{4})(\d{4})/)
+				return Phone.compact number.split(/(\d{4})(\d{4})/)
 			when 7
-				return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+				return Phone.compact number.split(/(\d{3})(\d{4})/)
 			when 6
-				return vtex.phone.compact number.split(/(\d{2})(\d{4})/)
+				return Phone.compact number.split(/(\d{2})(\d{4})/)
 
 		return [number]
 
+# register
+chile = new Chile()
+Phone.countries['56'] = chile
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['56'] = new Chile()
+module.exports = chile
