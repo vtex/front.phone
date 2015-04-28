@@ -1,16 +1,16 @@
 Phone = require('./Phone')
 
-argentina = require('./countries/argentina')
-brazil    = require('./countries/brazil')
-chile     = require('./countries/chile')
-colombia  = require('./countries/colombia')
-ecuador   = require('./countries/ecuador')
-gbr       = require('./countries/gbr')
-mexico    = require('./countries/mexico')
-paraguay  = require('./countries/paraguay')
-peru      = require('./countries/peru')
-uruguay   = require('./countries/uruguay')
-usa       = require('./countries/usa')
+argentina = require('./countries/ARG')
+brazil    = require('./countries/BRA')
+chile     = require('./countries/CHL')
+colombia  = require('./countries/COL')
+ecuador   = require('./countries/ECU')
+gbr       = require('./countries/GBR')
+mexico    = require('./countries/MEX')
+paraguay  = require('./countries/PRY')
+peru      = require('./countries/PER')
+uruguay   = require('./countries/URY')
+usa       = require('./countries/USA')
 
 window.vtex = window.vtex || {}
 window.vtex.phone = Phone
