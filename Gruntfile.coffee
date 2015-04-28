@@ -79,6 +79,7 @@ module.exports = (grunt) ->
       main:
         entry:
           "main": "./src/script/main.coffee"
+          "phone-all-bundle": "./src/script/phone-all-countries.coffee"
           "phone-filter": "./src/script/phone-filter.coffee"
         output:
           path: "build/<%= relativePath %>/script/"
