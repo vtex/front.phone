@@ -1,6 +1,4 @@
-# TODO 
-###
-angular.module('vtex.phoneFilter', [])
+window.angular.module('vtex.phoneFilter', [])
 .filter 'phone', ->
 	return (ph, toFormat, nationalCode) ->
 		return 'N/A' unless ph
@@ -16,4 +14,3 @@ angular.module('vtex.phoneFilter', [])
 			toFormat = vtex.phone[toFormat.toUpperCase()]
 
 		return vtex.phone.format(phoneObject, toFormat)
-###

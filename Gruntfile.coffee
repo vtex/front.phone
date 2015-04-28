@@ -64,22 +64,26 @@ module.exports = (grunt) ->
 
     watch:
       main:
-        tasks: ['copy:main', 'copy:dev']
+        tasks: ['webpack:main', 'copy:main', 'copy:dev']
 
     webpack:
       options:
         module:
           loaders: [
             { test: /\.coffee$/, loader: "coffee-loader" }
+            { test: /\.less$/, loader: "style!css!less" }
+            { test: /\.png$/, loader: "url-loader?limit=100000" }
+            { test: /\.jpg$/, loader: "file-loader" }
           ]
         devtool: "source-map"
       main:
         entry:
-          allCountries: "./src/script/AllCountries.coffee"
+          "main": "./src/script/main.coffee"
+          "phone-filter": "./src/script/phone-filter.coffee"
         output:
           path: "build/<%= relativePath %>/script/"
           publicPath: "<%= publicPath %>/script/"
-          filename: "[name]-bundle.js"
+          filename: "[name].js"
         plugins: webpackPlugins
         resolve:
           modulesDirectories: ["src/script/"]
