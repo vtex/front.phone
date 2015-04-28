@@ -46,7 +46,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: 'src/script'
-          src: ['**/*.coffee']
+          src: ['**/*.coffee', '!**/main.coffee']
           dest: "./"
           rename: (path, filename) ->
             path + filename.replace("coffee", "js")
