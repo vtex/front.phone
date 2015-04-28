@@ -20,14 +20,6 @@ module.exports = (grunt) ->
     open: false
     copyIgnore: ['!script/**/*.js', '!script/{countries}']
 
-  delete defaultConfig.watch.coffee
-
-  uglifyOptions =
-    mangle: false
-    warnings: false
-    compress:
-      warnings: false
-
   webpackPlugins = [ new webpack.optimize.CommonsChunkPlugin("vtex-phone.js") ]
   webpackPlugins = []
 
@@ -37,15 +29,6 @@ module.exports = (grunt) ->
 
     concat:
       templates: {}
-
-    copy:
-      deploy:
-        files = [
-          expand: true
-          cwd: "build/<%= relativePath %>/script/"
-          src: ['**']
-          dest: "dist/"
-        ]
 
     mochaTest:
       main:
@@ -58,11 +41,21 @@ module.exports = (grunt) ->
         base: 'build/<%= relativePath %>'
       src: ['**']
 
-    uglify:
-      options:
-        banner: "/*! #{pkg.name} - v#{pkg.version} - #{pkg.homepage} */\n"
+    coffee:
+      dist:
+        files: [
+          expand: true
+          cwd: 'src/script'
+          src: ['**/*.coffee']
+          dest: "./"
+          rename: (path, filename) ->
+            path + filename.replace("coffee", "js")
+        ]
 
     watch:
+      coffee:
+        files: ['src/script/**/*.coffee']
+        tasks: ['coffee:main']
       main:
         tasks: ['webpack:main', 'copy:main', 'copy:dev']
 
@@ -95,7 +88,7 @@ module.exports = (grunt) ->
     build: ['clean', 'webpack:main', 'copy:main', 'copy:dev', 'copy:pkg']
     test: ['mochaTest']
     # Deploy tasks
-    dist: ['clean', 'distConfig', 'webpack:main', 'copy:main', 'copy:pkg', 'copy:deploy'] # Dist - minifies files
+    dist: ['coffee:dist'] # Dist
     publish: ['build', 'test', 'gh-pages'] # Publish to Github Pages
     # Development tasks
     dev: ['nolr', 'build', 'test', 'watch']
