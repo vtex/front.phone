@@ -88,7 +88,7 @@ module.exports = (grunt) ->
     build: ['clean', 'webpack:main', 'copy:main', 'copy:dev', 'copy:pkg']
     test: ['mochaTest']
     # Deploy tasks
-    dist: ['coffee:dist'] # Dist
+    dist: ['build', 'test', 'coffee:dist'] # Dist
     publish: ['build', 'test', 'gh-pages'] # Publish to Github Pages
     # Development tasks
     dev: ['nolr', 'build', 'test', 'watch']

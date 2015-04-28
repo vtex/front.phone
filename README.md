@@ -10,20 +10,9 @@ The main goal of this project is to create a trustful component to input phone n
 
 We are compliant to the [E.123](http://en.wikipedia.org/wiki/E.123) notation.
 
-## Installing
-
-Depending on you application scope, you may want or not to use all countries available in this library. You can follow this rule:
-
-- All countries: `vtex-phone-bundle.min.js`
-- Just some countries: `vtex-phone-core.min.js` + `usa.js` + `brazil.js` + etc
-
-front.phone checks phone countries files included, so if you include a new country file, it will recognize and validate as expected.
-
-There's also an Angular.js filter: `vtex-phone-filter.min.js`. (The bundle does not include the filter).
-
 ## Countries
 
-We currently cover [these countries](src/countries).
+We currently cover [these countries](countries/).
 
 Didn't find your own? Feel free to [contribute](#contributing)!
 
