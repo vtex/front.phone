@@ -1,5 +1,9 @@
-# TODO 
+# TODO
+
 ###
+expect = require('chai').expect
+Phone = require('./helpers/require-all')
+
 describe "front.phone filter", ->
 
 	beforeEach module("vtex.phoneFilter")
