@@ -1,3 +1,11 @@
+## 4.0.0
+Breaking Changes:
+- Remove Bower support
+- Remove compiled files from git
+- Use CommonJS
+
+The project is now available on npm, so you may now use it with Webpack and React.
+
 ## 3.9.2
 - Fix brazilian regex
 
