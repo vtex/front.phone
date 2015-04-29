@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
@@ -17,7 +19,7 @@ class Colombia
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, '', withoutNDC)
+		phone = new PhoneNumber(@countryCode, '', withoutNDC)
 		if withoutCountryCode.indexOf('3') is 0 and withoutCountryCode.length is 10
 			phone.isMobile = true
 			phone.number = withoutCountryCode
@@ -30,12 +32,15 @@ class Colombia
 
 	splitNumber: (number) =>
 		if number.length is 7
-			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 		else if number.length is 10
-			return vtex.phone.compact number.split(/(\d{3})(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{3})(\d{4})/)
 
 		return [number]
 
+# register
+colombia = new Colombia()
+Phone.countries['57'] = colombia
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['57'] = new Colombia()
+module.exports = colombia

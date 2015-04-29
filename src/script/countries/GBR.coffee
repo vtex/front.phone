@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # http://www.aa-asterisk.org.uk/index.php/Regular_Expressions_for_Validating_and_Formatting_GB_Telephone_Numbers#Formatting_GB_telephone_numbers
@@ -169,7 +171,7 @@ class UnitedKingdom
 		
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
 		if withoutNDC.length is 10 and @mobileRegex.test(withoutNDC)
 			phone.isMobile = true
 
@@ -185,11 +187,13 @@ class UnitedKingdom
 		splitter = findSplitter(number, @splitRegexs)
 
 		if splitter
-			return vtex.phone.compact number.split(splitter.pattern)
+			return Phone.compact number.split(splitter.pattern)
 		else  
 			return [number]
 
+# register
+uk = new UnitedKingdom()
+Phone.countries['44'] = uk
 
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['44'] = new UnitedKingdom()
+module.exports = uk

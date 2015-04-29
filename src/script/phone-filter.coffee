@@ -1,4 +1,4 @@
-angular.module('vtex.phoneFilter', [])
+window.angular.module('vtex.phoneFilter', [])
 .filter 'phone', ->
 	return (ph, toFormat, nationalCode) ->
 		return 'N/A' unless ph

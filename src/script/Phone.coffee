@@ -1,14 +1,3 @@
-root = exports ? this
-
-class PhoneNumber
-	constructor: (countryCode, nationalDestinationCode, number) ->
-		@countryCode = countryCode
-		@nationalDestinationCode = nationalDestinationCode
-		@number = number
-		@isMobile = null
-
-	valid: (isValid) =>
-		@valid = isValid
 
 class Phone
 	constructor: ->
@@ -21,11 +10,13 @@ class Phone
 		# And: 9898-6565
 		@LOCAL = 2
 
+		@countries = {}
+
 	getPhoneNational: (nationalNumber, givenCountryCode, givenNationalDestinationCode) =>
 		return null if nationalNumber is null
 		nationalNumber = @normalize(nationalNumber) # Clean up number
 
-		countryObj = root.vtex.phone.countries[givenCountryCode]
+		countryObj = @countries[givenCountryCode]
 		if not countryObj then return null
 
 		if givenNationalDestinationCode
@@ -56,7 +47,7 @@ class Phone
 			countryCode = givenCountryCode
 			[foundCountryCode, countryCodeRegex] = @testCountryCode(countryCode, number)
 		else
-			for countryCode, countryObj of vtex.phone.countries
+			for countryCode, countryObj of @countries
 				[foundCountryCode, countryCodeRegex] = @testCountryCode(countryCode, number)
 				break if foundCountryCode is true
 
@@ -80,9 +71,9 @@ class Phone
 		number = @normalize(number)
 
 		if givenCountryCode
-			return vtex.phone.countries[givenCountryCode].regex.test(number)
+			return @countries[givenCountryCode].regex.test(number)
 		else
-			for countryCode, countryObj of vtex.phone.countries
+			for countryCode, countryObj of @countries
 				return true if countryObj.regex.test(number)
 			return false
 
@@ -97,46 +88,44 @@ class Phone
 
 		if ndcRegex.test(number) then [true, ndcRegex] else [false, null]
 
-	format: (phone, format = vtex.phone.INTERNATIONAL) =>
+	format: (phone, format = @INTERNATIONAL) =>
 		return null if phone is null
 
-		if vtex.phone.countries[phone.countryCode].format
-			return vtex.phone.countries[phone.countryCode].format(phone, format)
+		if @countries[phone.countryCode].format
+			return @countries[phone.countryCode].format(phone, format)
 
 		resultString = ""
 
-		splitNumber = vtex.phone.countries[phone.countryCode].splitNumber(phone.number)
+		splitNumber = @countries[phone.countryCode].splitNumber(phone.number)
 
 		switch format
-			when vtex.phone.INTERNATIONAL
+			when @INTERNATIONAL
 				resultString = "+" + phone.countryCode + " "
 				if phone.nationalDestinationCode
 					resultString += phone.nationalDestinationCode + " "
 				resultString += splitNumber.join(" ")
 
-			when vtex.phone.NATIONAL
+			when @NATIONAL
 				if phone.nationalDestinationCode
 					resultString += "(" + phone.nationalDestinationCode + ") "
-				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
+				separator = @countries[phone.countryCode].nationalNumberSeparator
 				resultString += splitNumber.join(separator)
 
-			when vtex.phone.LOCAL
-				separator = vtex.phone.countries[phone.countryCode].nationalNumberSeparator
+			when @LOCAL
+				separator = @countries[phone.countryCode].nationalNumberSeparator
 				resultString = splitNumber.join(separator)
 
 		return resultString
 
 	getCountryCodeByName: (name) =>
-		for key, value of vtex.phone.countries
+		for key, value of @countries
 			if value.countryName is name
 				return value.countryCode
 
 	getCountryCodeByNameAbbr: (nameAbbr) =>
-		for key, value of vtex.phone.countries
+		for key, value of @countries
 			if value.countryNameAbbr is nameAbbr
 				return value.countryCode
 
 # exports
-root.vtex = root.vtex || {}
-root.vtex.phone = new Phone()
-root.vtex.phone.PhoneNumber = PhoneNumber
+module.exports = new Phone()

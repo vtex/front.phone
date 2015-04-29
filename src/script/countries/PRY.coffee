@@ -1,4 +1,6 @@
-root = exports ? this
+
+Phone = require('../Phone.coffee')
+PhoneNumber = require('../PhoneNumber.coffee')
 
 # For more info check:
 # http://www.copaco.com.py/portal/index.php/atencion-al-cliente/8-empresa/74-codigos-de-area.html
@@ -17,7 +19,7 @@ class Paraguay
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new vtex.phone.PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
 
 		if ndc.length is 3 and ndc[0] is '9'
 			phone.isMobile = true
@@ -26,12 +28,15 @@ class Paraguay
 
 	splitNumber: (number) =>
 		if number.length is 7
-			return vtex.phone.compact number.split(/(\d{3})(\d{4})/)
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 		else
-			return vtex.phone.compact number.split(/(\d{3})(\d{3})/)
+			return Phone.compact number.split(/(\d{3})(\d{3})/)
 
 		return [number]
 
+# register
+paraguay = new Paraguay()
+Phone.countries['595'] = paraguay
+
 # exports
-root.vtex.phone.countries = root.vtex.phone.countries || {}
-root.vtex.phone.countries['595'] = new Paraguay()
+module.exports = paraguay

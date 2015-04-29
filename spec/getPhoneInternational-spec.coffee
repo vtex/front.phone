@@ -1,3 +1,6 @@
+expect = require('chai').expect
+Phone = require('./helpers/require-all')
+
 describe 'Should get a', ->
 
 	describe 'united kingdom phone with a', ->
@@ -6,10 +9,10 @@ describe 'Should get a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'standard formatted number', ->
 			# Arrange
@@ -30,10 +33,10 @@ describe 'Should get a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'standard formatted number', ->
 			# Arrange
@@ -61,10 +64,10 @@ describe 'Should get a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'an average number from Buenos Aires', ->
 			# Arrange
@@ -84,10 +87,10 @@ describe 'Should get a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'number with national destination code with 1 digit', ->
 			# Arrange
@@ -99,10 +102,10 @@ describe 'Should get a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'number with destination national code 2', ->
 			# Arrange
@@ -130,10 +133,10 @@ describe 'Should get a', ->
 
 		afterEach ->
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'number', ->
 			# Arrange
@@ -146,21 +149,21 @@ describe 'Should get a', ->
 			number = "+57 1 9898656"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'mobile number', ->
 			# Arrange
 			number = "+57 301 9898656"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
-			expect(result.nationalDestinationCode.length).toBe(0)
+			expect(result.valid).to.be.true
+			expect(result.nationalDestinationCode.length).to.equal(0)
 
 	describe 'ecuadorian phone with a', ->
 
@@ -169,21 +172,21 @@ describe 'Should get a', ->
 			number = "+593 2 989 6565"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'mobile number', ->
 			# Arrange
 			number = "+593 92 989 6565"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
-			expect(result.nationalDestinationCode.length).toBe(0)
+			expect(result.valid).to.be.true
+			expect(result.nationalDestinationCode.length).to.equal(0)
 
 	describe 'peruvian phone with a', ->
 
@@ -192,33 +195,33 @@ describe 'Should get a', ->
 			number = "+51 1 878 6565"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
-			expect(result.nationalDestinationCode).toBe('1')
+			expect(result.valid).to.be.true
+			expect(result.nationalDestinationCode).to.equal('1')
 
 		it 'land line number', ->
 			# Arrange
 			number = "+51 41 878 656"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'mobile number', ->
 			# Arrange
 			number = "+51 987 876 565"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
-			expect(result.nationalDestinationCode.length).toBe(0)
-			expect(result.isMobile).toBe(true)
+			expect(result.valid).to.be.true
+			expect(result.nationalDestinationCode.length).to.equal(0)
+			expect(result.isMobile).to.be.true
 
 	describe 'paraguayan phone with a', ->
 
@@ -227,21 +230,21 @@ describe 'Should get a', ->
 			number = "+595 21 987 8765"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it 'mobile number', ->
 			# Arrange
 			number = "+595 992 987 8765"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
-			expect(result.isMobile).toBe(true)
+			expect(result.valid).to.be.true
+			expect(result.isMobile).to.be.true
 
 	describe 'mexican phone with', ->
 
@@ -250,20 +253,20 @@ describe 'Should get a', ->
 			number = "+52 81 1111 2222"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 		it '7 numbers', ->
 			# Arrange
 			number = "+52 222 111 2222"
 
 			# Act
-			result = vtex.phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number)
 
 			# Assert
-			expect(result.valid).toBe(true)
+			expect(result.valid).to.be.true
 
 describe 'Should not get a', ->
 
@@ -272,17 +275,17 @@ describe 'Should not get a', ->
 		number = "+57 501 9898656"
 
 		# Act
-		result = vtex.phone.getPhoneInternational(number)
+		result = Phone.getPhoneInternational(number)
 
 		# Assert
-		expect(result).toBe(null)
+		expect(result).to.be.null
 
 	it 'brazilian phone with nine digits that doesn\'t start with nine', ->
 		# Arrange
 		number = "+55 11 1111-11111"
 
 		# Act
-		result = vtex.phone.getPhoneInternational(number)
+		result = Phone.getPhoneInternational(number)
 
 		# Assert
-		expect(result).toBe(null)
+		expect(result).to.be.null

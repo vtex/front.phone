@@ -1,7 +1,10 @@
+expect = require('chai').expect
+Phone = require('./helpers/require-all')
+
 describe 'front.phone component', ->
 
 	it 'should be defined', ->
-		expect(vtex.phone).toBeDefined()
+		expect(Phone).to.exist
 	
 	it 'should load the countries rules', ->
 		# Arrange
@@ -9,15 +12,15 @@ describe 'front.phone component', ->
 		countryCodeUSA = '1'
 		# Act
 		# Assert
-		expect(vtex.phone.countries[countryCodeBrazil]).toBeDefined()
-		expect(vtex.phone.countries[countryCodeUSA]).toBeDefined()
+		expect(Phone.countries[countryCodeBrazil]).to.exist
+		expect(Phone.countries[countryCodeUSA]).to.exist
 
 	it 'should normalize number', ->
 		# Arrange
 		number = "+55 (21) 9898-6565"
 
 		# Act
-		result = vtex.phone.normalize(number)
+		result = Phone.normalize(number)
 
 		# Assert
-		expect(/\D/g.test(result)).toBeFalsy()
+		expect(/\D/g.test(result)).to.be.false

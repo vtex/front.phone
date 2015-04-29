@@ -1,3 +1,9 @@
+# TODO
+
+###
+expect = require('chai').expect
+Phone = require('./helpers/require-all')
+
 describe "front.phone filter", ->
 
 	beforeEach module("vtex.phoneFilter")
@@ -22,3 +28,4 @@ describe "front.phone filter", ->
 
 	it "formats national phones to local format", inject (phoneFilter) ->
 		expect(phoneFilter('2189898989', 'local', "55")).toBe "8989-8989"
+###
