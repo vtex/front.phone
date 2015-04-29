@@ -8,3 +8,5 @@ npm-debug.log
 tmp-deploy/
 .tmp/
 .grunt/
+countries/
+*.js
