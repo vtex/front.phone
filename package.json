@@ -5,7 +5,7 @@
   "paths": [
     "/front.phone"
   ],
-  "main": "src/script/Phone.coffee",
+  "main": "./Phone.js",
   "hosts": [
     "*.vtexcommerce.com.br",
     "*.vtexcommercebeta.com.br",
