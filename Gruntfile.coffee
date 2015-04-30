@@ -86,13 +86,13 @@ module.exports = (grunt) ->
   tasks =
     # Building block tasks
     build: ['clean', 'webpack:main', 'copy:main', 'copy:dev', 'copy:pkg']
-    test: ['mochaTest']
+    test: ['build', 'mochaTest']
     # Deploy tasks
-    dist: ['build', 'test', 'coffee:dist'] # Dist
-    publish: ['build', 'test', 'gh-pages'] # Publish to Github Pages
+    dist: ['build', 'mochaTest', 'coffee:dist'] # Dist
+    publish: ['build', 'mochaTest', 'gh-pages'] # Publish to Github Pages
     # Development tasks
-    dev: ['nolr', 'build', 'test', 'watch']
-    default: ['build', 'connect', 'test', 'watch']
+    dev: ['nolr', 'build', 'mochaTest', 'watch']
+    default: ['build', 'connect', 'mochaTest', 'watch']
 
   # Project configuration.
   grunt.config.init defaultConfig
