@@ -1,6 +1,6 @@
 
-Phone = require('../Phone.coffee')
-PhoneNumber = require('../PhoneNumber.coffee')
+Phone = require('../Phone')
+PhoneNumber = require('../PhoneNumber')
 
 # For more info check:
 # http://www.aa-asterisk.org.uk/index.php/Regular_Expressions_for_Validating_and_Formatting_GB_Telephone_Numbers#Formatting_GB_telephone_numbers

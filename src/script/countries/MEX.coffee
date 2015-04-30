@@ -1,6 +1,6 @@
 
-Phone = require('../Phone.coffee')
-PhoneNumber = require('../PhoneNumber.coffee')
+Phone = require('../Phone')
+PhoneNumber = require('../PhoneNumber')
 
 # For more info check:
 # http://www.sre.gob.mx/austin/Util/LadasMexico.html

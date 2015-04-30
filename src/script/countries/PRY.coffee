@@ -1,6 +1,6 @@
 
-Phone = require('../Phone.coffee')
-PhoneNumber = require('../PhoneNumber.coffee')
+Phone = require('../Phone')
+PhoneNumber = require('../PhoneNumber')
 
 # For more info check:
 # http://www.copaco.com.py/portal/index.php/atencion-al-cliente/8-empresa/74-codigos-de-area.html
