@@ -10,7 +10,7 @@ class Peru
 		@countryName = "Peru"
 		@countryNameAbbr = "PER"
 		@countryCode = '51'
-		@regex = /^(?:(?:\+|)51|)(?:0|)(?:(?:1\d{7})|(?:9\d{8})|(?:(?:4[1234]|5[12346]|6[1234567]|7[2346]|8[234])\d{6}))$/
+		@regex = /^(?:(?:\+|)51|)(?:0|)(?:(?:1\d{7})|(?:9\d{8})|(?:(?:4[1-4]|5[1-46]|6[1-7]|7[2346]|8[234])\d{6}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
