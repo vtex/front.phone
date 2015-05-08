@@ -1,11 +1,11 @@
 {
   "name": "@vtex/phone",
   "description": "front.phone is a Javascript library that identifies, validates and formats phone numbers",
-  "version": "4.0.0",
+  "version": "4.0.3",
   "paths": [
     "/front.phone"
   ],
-  "main": "src/script/Phone.coffee",
+  "main": "./Phone.js",
   "hosts": [
     "*.vtexcommerce.com.br",
     "*.vtexcommercebeta.com.br",
@@ -18,7 +18,7 @@
   "readmeFilename": "README.md",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register --reporter spec spec/*-spec.coffee",
-    "prepublish": "grunt dist"
+    "prepublish": "grunt dist gh-pages"
   },
   "devDependencies": {
     "bundle-loader": "^0.5.3",

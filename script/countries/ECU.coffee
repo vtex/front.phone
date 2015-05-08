@@ -1,6 +1,6 @@
 
-Phone = require('../Phone.coffee')
-PhoneNumber = require('../PhoneNumber.coffee')
+Phone = require('../Phone')
+PhoneNumber = require('../PhoneNumber')
 
 # For more info check:
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Ecuador
