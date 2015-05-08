@@ -18,7 +18,7 @@
   "readmeFilename": "README.md",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register --reporter spec spec/*-spec.coffee",
-    "prepublish": "grunt dist"
+    "prepublish": "grunt dist gh-pages"
   },
   "devDependencies": {
     "bundle-loader": "^0.5.3",
