@@ -268,6 +268,30 @@ describe 'Should get a', ->
 			# Assert
 			expect(result.valid).to.be.true
 
+	describe 'guatemalan phone with', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "+502 2222 1234"
+
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).to.be.true
+			expect(result.isMobile).to.be.false
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+502 5555 1234"
+
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).to.be.true
+			expect(result.isMobile).to.be.true
+
 describe 'Should not get a', ->
 
 	it '"almost" mobile number from Colombia', ->

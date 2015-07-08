@@ -323,3 +323,24 @@ describe 'Should split', ->
 			# Assert
 			expect(result).to.deep.equal(['1111', '2222'])
 
+	describe 'a guatemalan', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "22221234"
+
+			# Act
+			result = Phone.countries['502'].splitNumber(number)
+
+			# Assert
+			expect(result).to.deep.equal(['2222', '1234'])
+
+		it 'mobile number', ->
+			# Arrange
+			number = "55551234"
+
+			# Act
+			result = Phone.countries['502'].splitNumber(number)
+
+			# Assert
+			expect(result).to.deep.equal(['5555', '1234'])

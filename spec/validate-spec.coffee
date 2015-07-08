@@ -285,6 +285,28 @@ describe 'Should validate a', ->
 			# Assert
 			expect(result).to.be.true
 
+	describe 'a guatemalan phone with a', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "+502 2222 1234"
+
+			# Act
+			result = Phone.validate(number)
+
+			# Assert
+			expect(result).to.be.true
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+502 5555 1234"
+
+			# Act
+			result = Phone.validate(number)
+
+			# Assert
+			expect(result).to.be.true
+
 describe 'Should not get a', ->
 
 	it '"almost" mobile number from Colombia', ->

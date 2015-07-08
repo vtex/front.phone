@@ -152,3 +152,13 @@ describe 'Should format a number', ->
 		# Assert
 		expect(result).to.match(/\(21\) 505 270/)
 
+	it 'in international format from Guatemala', ->
+		# Arrange
+		number = "50223457898"
+		phone = Phone.getPhoneInternational(number)
+
+		# Act
+		result = Phone.format(phone, Phone.INTERNATIONAL)
+
+		# Assert
+		expect(result).to.match(/\+502 2345 7898/)
