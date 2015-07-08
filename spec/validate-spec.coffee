@@ -117,7 +117,7 @@ describe 'Should validate a', ->
 		it 'number with 7 digits', ->
 			# Arrange
 			number = "+56 35 9898656"
-		
+
 		it 'number with 6 digits', ->
 			# Arrange
 			number = "+56 35 989865"

@@ -63,7 +63,7 @@ describe 'Should format a number', ->
 
 		# Assert
 		expect(result).to.match(/301 987 9654/)
-	
+
 	it 'in international format mobile from Argentina', ->
 		# Arrange
 		number = "5491198986565"

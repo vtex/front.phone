@@ -25,7 +25,7 @@ describe 'Should get a', ->
 		it 'national destination code starting with the optional digit', ->
 			# Arrange
 			number = "+44 020 3000 5555"
-	
+
 
 	describe 'brazilian phone with a', ->
 
@@ -114,7 +114,7 @@ describe 'Should get a', ->
 		it 'number with 7 digits', ->
 			# Arrange
 			number = "+56 35 9898656"
-		
+
 		it 'number with 6 digits', ->
 			# Arrange
 			number = "+56 35 989865"

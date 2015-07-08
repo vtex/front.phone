@@ -63,7 +63,7 @@ describe 'Should split', ->
 			result = Phone.countries['44'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(2)		
+			expect(result.length).to.equal(2)
 
 		it 'number starting with 845 46 47 with 7 digits : UK NHS Direct', ->
 			# Arrange
@@ -73,7 +73,7 @@ describe 'Should split', ->
 			result = Phone.countries['44'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(3)	
+			expect(result.length).to.equal(3)
 
 		it 'number starting with 84d, 87d with 10 digits', ->
 			# Arrange
@@ -83,7 +83,7 @@ describe 'Should split', ->
 			result = Phone.countries['44'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(3)	
+			expect(result.length).to.equal(3)
 
 		it 'number starting with 80d (including 800) with 10 digits', ->
 			# Arrange
@@ -93,7 +93,7 @@ describe 'Should split', ->
 			result = Phone.countries['44'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(3)	
+			expect(result.length).to.equal(3)
 
 		it 'number starting with 500, 800 with 9 digitse', ->
 			# Arrange
@@ -103,7 +103,7 @@ describe 'Should split', ->
 			result = Phone.countries['44'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(2)																				
+			expect(result.length).to.equal(2)
 
 
 	describe 'a brazilian', ->
@@ -182,7 +182,7 @@ describe 'Should split', ->
 		it 'number with 8 digits', ->
 			# Arrange
 			number = "98986565"
-			
+
 		it 'number with 7 digits', ->
 			# Arrange
 			number = "8986565"
