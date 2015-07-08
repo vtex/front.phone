@@ -2,3 +2,5 @@ src/
 spec/
 build/
 Gruntfile.coffee
+.tmp
+.grunt
