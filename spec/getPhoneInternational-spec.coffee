@@ -25,7 +25,7 @@ describe 'Should get a', ->
 		it 'national destination code starting with the optional digit', ->
 			# Arrange
 			number = "+44 020 3000 5555"
-	
+
 
 	describe 'brazilian phone with a', ->
 
@@ -114,7 +114,7 @@ describe 'Should get a', ->
 		it 'number with 7 digits', ->
 			# Arrange
 			number = "+56 35 9898656"
-		
+
 		it 'number with 6 digits', ->
 			# Arrange
 			number = "+56 35 989865"
@@ -267,6 +267,30 @@ describe 'Should get a', ->
 
 			# Assert
 			expect(result.valid).to.be.true
+
+	describe 'guatemalan phone with', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "+502 2222 1234"
+
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).to.be.true
+			expect(result.isMobile).to.be.false
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+502 5555 1234"
+
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).to.be.true
+			expect(result.isMobile).to.be.true
 
 describe 'Should not get a', ->
 

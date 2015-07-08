@@ -117,7 +117,7 @@ describe 'Should validate a', ->
 		it 'number with 7 digits', ->
 			# Arrange
 			number = "+56 35 9898656"
-		
+
 		it 'number with 6 digits', ->
 			# Arrange
 			number = "+56 35 989865"
@@ -278,6 +278,28 @@ describe 'Should validate a', ->
 		it 'a number with 7 digits', ->
 			# Arrange
 			number = "+52 222 566 6565"
+
+			# Act
+			result = Phone.validate(number)
+
+			# Assert
+			expect(result).to.be.true
+
+	describe 'a guatemalan phone with a', ->
+
+		it 'land line number', ->
+			# Arrange
+			number = "+502 2222 1234"
+
+			# Act
+			result = Phone.validate(number)
+
+			# Assert
+			expect(result).to.be.true
+
+		it 'mobile number', ->
+			# Arrange
+			number = "+502 5555 1234"
 
 			# Act
 			result = Phone.validate(number)
