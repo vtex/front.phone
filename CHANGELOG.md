@@ -1,3 +1,7 @@
+## 4.1.0
+- New country! Welcome, Guatemala!
+- Fix .gitignore
+
 ## 4.0.0
 Breaking Changes:
 - Remove Bower support
