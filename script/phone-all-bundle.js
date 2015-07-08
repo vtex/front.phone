@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Phone, argentina, brazil, chile, colombia, ecuador, gbr, mexico, paraguay, peru, uruguay, usa;
+	var Phone, argentina, brazil, chile, colombia, ecuador, gbr, guatemala, mexico, paraguay, peru, uruguay, usa;
 	
 	Phone = __webpack_require__(1);
 	
@@ -58,17 +58,19 @@
 	
 	ecuador = __webpack_require__(6);
 	
-	gbr = __webpack_require__(7);
+	guatemala = __webpack_require__(7);
 	
-	mexico = __webpack_require__(8);
+	gbr = __webpack_require__(8);
 	
-	paraguay = __webpack_require__(9);
+	mexico = __webpack_require__(9);
 	
-	peru = __webpack_require__(10);
+	paraguay = __webpack_require__(10);
 	
-	uruguay = __webpack_require__(11);
+	peru = __webpack_require__(11);
 	
-	usa = __webpack_require__(12);
+	uruguay = __webpack_require__(12);
+	
+	usa = __webpack_require__(13);
 	
 	window.vtex = window.vtex || {};
 	
@@ -294,7 +296,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Argentina = (function() {
 	  function Argentina() {
@@ -414,7 +416,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Brazil = (function() {
 	  function Brazil() {
@@ -473,7 +475,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Chile = (function() {
 	  function Chile() {
@@ -551,7 +553,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Colombia = (function() {
 	  function Colombia() {
@@ -611,7 +613,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Ecuador = (function() {
 	  function Ecuador() {
@@ -665,13 +667,90 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Guatemala, Phone, PhoneNumber, guatemala,
+	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+	  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+	
+	Phone = __webpack_require__(1);
+	
+	PhoneNumber = __webpack_require__(16);
+	
+	Guatemala = (function() {
+	  function Guatemala() {
+	    this.splitNumber = bind(this.splitNumber, this);
+	    this.format = bind(this.format, this);
+	    this.specialRules = bind(this.specialRules, this);
+	    this.countryName = "Guatemala";
+	    this.countryNameAbbr = "GTM";
+	    this.countryCode = '502';
+	    this.regex = /^(?:(?:\+|)502|)(?:[2-7]\d{7})$/;
+	    this.nationalNumberSeparator = ' ';
+	    this.nationalDestinationCode = ['2', '6', '7', '3', '4', '5'];
+	    this.mobileNumbers = ['3', '4', '5'];
+	  }
+	
+	  Guatemala.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
+	    var phone, ref;
+	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    if (withoutCountryCode.length !== 8) {
+	      return null;
+	    }
+	    if (ndc && (ref = withoutNDC[0], indexOf.call(this.mobileNumbers, ref) >= 0)) {
+	      phone.isMobile = true;
+	      phone.nationalDestinationCode = '';
+	      phone.number = withoutCountryCode;
+	    } else {
+	      phone.isMobile = false;
+	    }
+	    return phone;
+	  };
+	
+	  Guatemala.prototype.format = function(phone, format) {
+	    var resultString, separator, splitNumber;
+	    resultString = "";
+	    splitNumber = this.splitNumber(phone.number);
+	    switch (format) {
+	      case Phone.INTERNATIONAL:
+	        resultString = "+" + phone.countryCode + " ";
+	        resultString += splitNumber.join(" ");
+	        break;
+	      default:
+	        separator = this.nationalNumberSeparator;
+	        resultString += splitNumber.join(separator);
+	    }
+	    return resultString;
+	  };
+	
+	  Guatemala.prototype.splitNumber = function(number) {
+	    switch (number.length) {
+	      case 8:
+	        return Phone.compact(number.split(/(\d{4})(\d{4})/));
+	    }
+	    return [number];
+	  };
+	
+	  return Guatemala;
+	
+	})();
+	
+	guatemala = new Guatemala();
+	
+	Phone.countries['502'] = guatemala;
+	
+	module.exports = guatemala;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var Phone, PhoneNumber, UnitedKingdom, uk,
 	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
 	  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	UnitedKingdom = (function() {
 	  function UnitedKingdom() {
@@ -782,7 +861,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Mexico, Phone, PhoneNumber, mexico,
@@ -790,7 +869,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Mexico = (function() {
 	  function Mexico() {
@@ -832,7 +911,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Paraguay, Phone, PhoneNumber, paraguay,
@@ -840,7 +919,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Paraguay = (function() {
 	  function Paraguay() {
@@ -885,7 +964,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Peru, Phone, PhoneNumber, peru,
@@ -893,7 +972,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Peru = (function() {
 	  function Peru() {
@@ -946,7 +1025,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Phone, PhoneNumber, Uruguay, uruguay,
@@ -954,7 +1033,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	Uruguay = (function() {
 	  function Uruguay() {
@@ -1003,7 +1082,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Phone, PhoneNumber, USA, usa,
@@ -1011,7 +1090,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(15);
+	PhoneNumber = __webpack_require__(16);
 	
 	USA = (function() {
 	  function USA() {
@@ -1051,9 +1130,9 @@
 
 
 /***/ },
-/* 13 */,
 /* 14 */,
-/* 15 */
+/* 15 */,
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var PhoneNumber,
