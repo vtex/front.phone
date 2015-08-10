@@ -37,6 +37,7 @@ describe 'Should get a', ->
 
 			# Assert
 			expect(result.valid).to.be.true
+			expect(result.countryNameAbbr).to.equal('BRA')
 
 		it 'standard formatted number', ->
 			# Arrange
@@ -137,10 +138,27 @@ describe 'Should get a', ->
 
 			# Assert
 			expect(result.valid).to.be.true
+			expect(result.countryNameAbbr).to.equal('USA')
 
 		it 'number', ->
 			# Arrange
 			number = "+1 201 9898656"
+
+	describe 'canadian phone with a', ->
+
+		number = ''
+
+		afterEach ->
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result.valid).to.be.true
+			expect(result.countryNameAbbr).to.equal('CAN')
+
+		it 'number', ->
+			# Arrange
+			number = "+1 204 9898656"
 
 	describe 'colombian phone with a', ->
 

@@ -145,6 +145,21 @@ describe 'Should validate a', ->
 			# Arrange
 			number = "+1 201 9898656"
 
+	describe 'canadian phone with a', ->
+
+		number = ''
+
+		afterEach ->
+			# Act
+			result = Phone.validate(number)
+
+			# Assert
+			expect(result).to.be.true
+
+		it 'number', ->
+			# Arrange
+			number = "+1 204 9898656"
+
 	describe 'colombian phone with a', ->
 
 		it 'land line number', ->

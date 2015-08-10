@@ -2,6 +2,7 @@ Phone = require('../../src/script/Phone')
 
 argentina = require('../../src/script/countries/ARG')
 brazil    = require('../../src/script/countries/BRA')
+canada    = require('../../src/script/countries/CAN')
 chile     = require('../../src/script/countries/CHL')
 colombia  = require('../../src/script/countries/COL')
 ecuador   = require('../../src/script/countries/ECU')
