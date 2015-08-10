@@ -3,7 +3,7 @@ webpack = require 'webpack'
 
 module.exports = (grunt) ->
   pkg = grunt.file.readJSON 'package.json'
-  
+
   # Parts of the index we wish to replace on deploy
   replaceMap = {}
   replaceMap[pkg.paths[0] + '/'] = "/"
@@ -20,8 +20,10 @@ module.exports = (grunt) ->
     open: false
     copyIgnore: ['!script/**/*.js', '!script/{countries}']
 
-  webpackPlugins = [ new webpack.optimize.CommonsChunkPlugin("vtex-phone.js") ]
-  webpackPlugins = []
+  webpackPlugins = [
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.BannerPlugin('front-phone - v'+pkg.version+' - https://vtex.github.io/front.phone/', {entryOnly: true})
+  ]
 
   # Add custom configuration here as needed
   customConfig =
@@ -63,10 +65,10 @@ module.exports = (grunt) ->
       options:
         module:
           loaders: [
-            { test: /\.coffee$/, loader: "coffee-loader" }
-            { test: /\.less$/, loader: "style!css!less" }
-            { test: /\.png$/, loader: "url-loader?limit=100000" }
-            { test: /\.jpg$/, loader: "file-loader" }
+            { test: /\.coffee$/, loader: "coffee-loader", exclude: /node_modules/ }
+            { test: /\.less$/, loader: "style!css!less", exclude: /node_modules/ }
+            { test: /\.png$/, loader: "url-loader?limit=100000", exclude: /node_modules/ }
+            { test: /\.jpg$/, loader: "file-loader", exclude: /node_modules/ }
           ]
         devtool: "source-map"
       main:
