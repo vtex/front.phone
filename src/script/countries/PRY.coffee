@@ -32,8 +32,6 @@ class Paraguay
 		else
 			return Phone.compact number.split(/(\d{3})(\d{3})/)
 
-		return [number]
-
 # register
 paraguay = new Paraguay()
 Phone.countries['595'] = paraguay
