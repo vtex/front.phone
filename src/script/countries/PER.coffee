@@ -19,15 +19,15 @@ class Peru
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
-		if ndc is '1' and withoutNDC.length is 7			
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
+		if ndc is '1' and withoutNDC.length is 7
 			return phone
 		else if ndc is '9' and withoutNDC.length is 8
-			phone.isMobile = true			
+			phone.isMobile = true
 			phone.nationalDestinationCode = ''
 			phone.number = withoutCountryCode
 			return phone
-		else if ndc.length is 2 and withoutNDC.length is 6				
+		else if ndc.length is 2 and withoutNDC.length is 6
 			return phone
 
 	splitNumber: (number) =>

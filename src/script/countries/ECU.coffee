@@ -19,7 +19,7 @@ class Ecuador
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 		if withoutNDC.length is 7 and ndc isnt '9'
 			return phone
 		else if ndc is '9'and withoutNDC.length is 8

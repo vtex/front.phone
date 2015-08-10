@@ -19,7 +19,7 @@ class Paraguay
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
 		if ndc.length is 3 and ndc[0] is '9'
 			phone.isMobile = true

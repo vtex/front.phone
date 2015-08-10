@@ -20,7 +20,7 @@ class Uruguay
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 		if (ndc.length + withoutNDC.length) is 8
 			if ndc is '9'
 				phone.isMobile = true

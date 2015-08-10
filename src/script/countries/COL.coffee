@@ -19,7 +19,7 @@ class Colombia
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryCode, '', withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, '', withoutNDC)
 		if withoutCountryCode.indexOf('3') is 0 and withoutCountryCode.length is 10
 			phone.isMobile = true
 			phone.number = withoutCountryCode

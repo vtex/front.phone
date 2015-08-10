@@ -1,6 +1,7 @@
 
 class PhoneNumber
-	constructor: (countryCode, nationalDestinationCode, number) ->
+	constructor: (countryNameAbbr, countryCode, nationalDestinationCode, number) ->
+		@countryNameAbbr = countryNameAbbr
 		@countryCode = countryCode
 		@nationalDestinationCode = nationalDestinationCode
 		@number = number
