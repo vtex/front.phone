@@ -19,7 +19,7 @@ class Mexico
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		if withoutNDC.length is 7 or withoutNDC.length is 8
-			return new PhoneNumber(@countryCode, ndc, withoutNDC)
+			return new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
 	splitNumber: (number) =>
 		if number.length is 7

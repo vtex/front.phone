@@ -16,7 +16,7 @@ class Guatemala
 		@mobileNumbers = ['3', '4', '5']
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
 		if withoutCountryCode.length isnt 8
 			return null

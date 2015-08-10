@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Phone, argentina, brazil, chile, colombia, ecuador, gbr, guatemala, mexico, paraguay, peru, uruguay, usa;
+	var Phone, argentina, brazil, canada, chile, colombia, ecuador, gbr, guatemala, mexico, paraguay, peru, uruguay, usa;
 	
 	Phone = __webpack_require__(1);
 	
@@ -54,23 +54,25 @@
 	
 	chile = __webpack_require__(4);
 	
-	colombia = __webpack_require__(5);
+	canada = __webpack_require__(5);
 	
-	ecuador = __webpack_require__(6);
+	colombia = __webpack_require__(6);
 	
-	guatemala = __webpack_require__(7);
+	ecuador = __webpack_require__(7);
 	
-	gbr = __webpack_require__(8);
+	guatemala = __webpack_require__(8);
 	
-	mexico = __webpack_require__(9);
+	gbr = __webpack_require__(9);
 	
-	paraguay = __webpack_require__(10);
+	mexico = __webpack_require__(10);
 	
-	peru = __webpack_require__(11);
+	paraguay = __webpack_require__(11);
 	
-	uruguay = __webpack_require__(12);
+	peru = __webpack_require__(12);
 	
-	usa = __webpack_require__(13);
+	uruguay = __webpack_require__(13);
+	
+	usa = __webpack_require__(14);
 	
 	window.vtex = window.vtex || {};
 	
@@ -296,7 +298,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Argentina = (function() {
 	  function Argentina() {
@@ -314,7 +316,7 @@
 	
 	  Argentina.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var foundNDC, i, len, nationalDestinationCode, ndcArray, ndcRegex, phone, ref;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if (ndc === '9') {
 	      withoutCountryCode = withoutNDC;
 	      ndcArray = this.nationalDestinationCode.slice(1);
@@ -416,7 +418,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Brazil = (function() {
 	  function Brazil() {
@@ -435,7 +437,7 @@
 	    var nineDigitsNDC, nineDigitsPattern, phone;
 	    nineDigitsNDC = ['11', '12', '13', '14', '15', '16', '17', '18', '19', '21', '22', '24', '27', '28', '91', '92', '93', '94', '95', '96', '97', '98', '99'];
 	    nineDigitsPattern = new RegExp("^(0|)(" + nineDigitsNDC.join("|") + ")");
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if (withoutNDC.length === 9 && withoutNDC.indexOf("9") === 0 && nineDigitsPattern.test(ndc)) {
 	      phone.isMobile = true;
 	      return phone;
@@ -475,7 +477,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Chile = (function() {
 	  function Chile() {
@@ -492,7 +494,7 @@
 	
 	  Chile.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    switch (ndc) {
 	      case '2':
 	        if (withoutNDC.length === 8) {
@@ -548,12 +550,27 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Phone, PhoneNumber, nanp;
+	
+	Phone = __webpack_require__(1);
+	
+	PhoneNumber = __webpack_require__(17);
+	
+	nanp = __webpack_require__(18);
+	
+	module.exports = nanp;
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var Colombia, Phone, PhoneNumber, colombia,
 	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Colombia = (function() {
 	  function Colombia() {
@@ -570,7 +587,7 @@
 	
 	  Colombia.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone;
-	    phone = new PhoneNumber(this.countryCode, '', withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, '', withoutNDC);
 	    if (withoutCountryCode.indexOf('3') === 0 && withoutCountryCode.length === 10) {
 	      phone.isMobile = true;
 	      phone.number = withoutCountryCode;
@@ -605,7 +622,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Ecuador, Phone, PhoneNumber, ecuador,
@@ -613,7 +630,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Ecuador = (function() {
 	  function Ecuador() {
@@ -630,7 +647,7 @@
 	
 	  Ecuador.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if (withoutNDC.length === 7 && ndc !== '9') {
 	      return phone;
 	    } else if (ndc === '9' && withoutNDC.length === 8) {
@@ -664,7 +681,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Guatemala, Phone, PhoneNumber, guatemala,
@@ -673,7 +690,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Guatemala = (function() {
 	  function Guatemala() {
@@ -691,7 +708,7 @@
 	
 	  Guatemala.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone, ref;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if (withoutCountryCode.length !== 8) {
 	      return null;
 	    }
@@ -741,7 +758,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Phone, PhoneNumber, UnitedKingdom, uk,
@@ -750,7 +767,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	UnitedKingdom = (function() {
 	  function UnitedKingdom() {
@@ -821,7 +838,7 @@
 	
 	  UnitedKingdom.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if (withoutNDC.length === 10 && this.mobileRegex.test(withoutNDC)) {
 	      phone.isMobile = true;
 	    }
@@ -861,7 +878,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Mexico, Phone, PhoneNumber, mexico,
@@ -869,7 +886,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Mexico = (function() {
 	  function Mexico() {
@@ -886,7 +903,7 @@
 	
 	  Mexico.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    if (withoutNDC.length === 7 || withoutNDC.length === 8) {
-	      return new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	      return new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    }
 	  };
 	
@@ -911,7 +928,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Paraguay, Phone, PhoneNumber, paraguay,
@@ -919,7 +936,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Paraguay = (function() {
 	  function Paraguay() {
@@ -936,7 +953,7 @@
 	
 	  Paraguay.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if (ndc.length === 3 && ndc[0] === '9') {
 	      phone.isMobile = true;
 	    }
@@ -964,7 +981,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Peru, Phone, PhoneNumber, peru,
@@ -972,7 +989,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Peru = (function() {
 	  function Peru() {
@@ -989,7 +1006,7 @@
 	
 	  Peru.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if (ndc === '1' && withoutNDC.length === 7) {
 	      return phone;
 	    } else if (ndc === '9' && withoutNDC.length === 8) {
@@ -1025,7 +1042,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Phone, PhoneNumber, Uruguay, uruguay,
@@ -1033,7 +1050,7 @@
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
 	Uruguay = (function() {
 	  function Uruguay() {
@@ -1050,7 +1067,7 @@
 	
 	  Uruguay.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
 	    var phone;
-	    phone = new PhoneNumber(this.countryCode, ndc, withoutNDC);
+	    phone = new PhoneNumber(this.countryNameAbbr, this.countryCode, ndc, withoutNDC);
 	    if ((ndc.length + withoutNDC.length) === 8) {
 	      if (ndc === '9') {
 	        phone.isMobile = true;
@@ -1082,65 +1099,33 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Phone, PhoneNumber, USA, usa,
-	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+	var Phone, PhoneNumber, nanp;
 	
 	Phone = __webpack_require__(1);
 	
-	PhoneNumber = __webpack_require__(16);
+	PhoneNumber = __webpack_require__(17);
 	
-	USA = (function() {
-	  function USA() {
-	    this.splitNumber = bind(this.splitNumber, this);
-	    this.specialRules = bind(this.specialRules, this);
-	    this.countryName = "USA";
-	    this.countryNameAbbr = "USA";
-	    this.countryCode = '1';
-	    this.regex = /^(?:(?:(?:\+|)(?:1|))|)(?:1|)(?:2(?:0[1-35-9]|1[02-9]|2[457-9]|3[149]|4[08]|5[1-46]|6[0279]|7[0468]|8[13])|3(?:0[1-57-9]|1[02-9]|2[0235]|3[014679]|4[17]|5[12]|6[0149]|8[056])|4(?:0[124-9]|1[02-579]|2[345]|3[0245]|4[023578]|6[49]|7[0589]|8[04]|50[1-57-9])|5(?:1[0235-8]|20|3[014]|4[01]|5[179]|6[1-47]|7[013-5]|8[056])|6(?:0[1-35-9]|1[024-9]|2[036-8]|3[016]|4[16]|5[0179]|6[01279]|7[89]|8[129])|7(?:0[1-46-8]|1[2-9]|2[047]|3[01247]|4[07]|5[247]|6[02-59]|7[02-59]|8[156])|8(?:0[1-68]|1[0-8]|28|3[0-25]|4[3578]|5[06-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0578]|3[15-8]|4[0179]|5[124679]|7[0-3589]|8[045]|89))\d{7}$/;
-	    this.optionalTrunkPrefix = '1';
-	    this.nationalNumberSeparator = ' ';
-	    this.nationalDestinationCode = ['201', '202', '203', '205', '206', '207', '208', '209', '209', '210', '212', '213', '214', '215', '216', '217', '218', '219', '224', '225', '227', '228', '229', '231', '234', '239', '240', '248', '251', '252', '253', '254', '256', '260', '262', '267', '269', '270', '274', '276', '278', '281', '283', '301', '302', '303', '304', '305', '307', '308', '309', '310', '312', '313', '314', '315', '316', '317', '318', '319', '320', '321', '323', '325', '330', '331', '334', '336', '337', '339', '341', '347', '351', '352', '360', '361', '364', '369', '380', '385', '386', '401', '402', '404', '405', '406', '407', '408', '409', '410', '412', '413', '414', '415', '417', '419', '423', '424', '425', '430', '432', '434', '435', '440', '442', '443', '445', '447', '458', '464', '469', '470', '475', '478', '479', '480', '484', '501', '502', '503', '504', '505', '507', '508', '509', '510', '512', '513', '515', '516', '517', '518', '520', '530', '531', '534', '540', '541', '551', '557', '559', '561', '562', '563', '564', '567', '570', '571', '573', '574', '575', '580', '585', '586', '601', '602', '603', '605', '606', '607', '608', '609', '610', '612', '614', '615', '616', '617', '618', '619', '620', '623', '626', '627', '628', '630', '631', '636', '641', '646', '650', '651', '657', '659', '660', '661', '662', '667', '669', '678', '679', '681', '682', '689', '701', '702', '703', '704', '706', '707', '708', '712', '713', '714', '715', '716', '717', '718', '719', '720', '724', '727', '730', '731', '732', '734', '737', '740', '747', '752', '754', '757', '760', '762', '763', '764', '765', '769', '770', '772', '773', '774', '775', '779', '781', '785', '786', '801', '802', '803', '804', '805', '806', '808', '810', '812', '813', '814', '815', '816', '817', '818', '828', '830', '831', '832', '835', '843', '845', '847', '848', '850', '856', '857', '858', '859', '860', '862', '863', '864', '865', '870', '872', '878', '901', '903', '904', '906', '907', '908', '909', '910', '912', '913', '914', '915', '916', '917', '918', '919', '920', '925', '927', '928', '931', '935', '936', '937', '938', '940', '941', '947', '949', '951', '952', '954', '956', '957', '959', '970', '971', '972', '973', '975', '978', '979', '980', '984', '985', '989'];
-	  }
+	nanp = __webpack_require__(18);
 	
-	  USA.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
-	    if (withoutNDC.length === 7) {
-	      return new PhoneNumber(this.countryCode, ndc, withoutNDC);
-	    }
-	  };
-	
-	  USA.prototype.splitNumber = function(number) {
-	    if (number.length === 7) {
-	      return Phone.compact(number.split(/(\d{3})(\d{4})/));
-	    }
-	    return [number];
-	  };
-	
-	  return USA;
-	
-	})();
-	
-	usa = new USA();
-	
-	Phone.countries['1'] = usa;
-	
-	module.exports = usa;
+	module.exports = nanp;
 
 
 /***/ },
-/* 14 */,
 /* 15 */,
-/* 16 */
+/* 16 */,
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var PhoneNumber,
 	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 	
 	PhoneNumber = (function() {
-	  function PhoneNumber(countryCode, nationalDestinationCode, number) {
+	  function PhoneNumber(countryNameAbbr, countryCode, nationalDestinationCode, number) {
 	    this.valid = bind(this.valid, this);
+	    this.countryNameAbbr = countryNameAbbr;
 	    this.countryCode = countryCode;
 	    this.nationalDestinationCode = nationalDestinationCode;
 	    this.number = number;
@@ -1156,6 +1141,61 @@
 	})();
 	
 	module.exports = PhoneNumber;
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var NANP, Phone, PhoneNumber, nanp,
+	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+	  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+	
+	Phone = __webpack_require__(1);
+	
+	PhoneNumber = __webpack_require__(17);
+	
+	NANP = (function() {
+	  function NANP() {
+	    this.splitNumber = bind(this.splitNumber, this);
+	    this.specialRules = bind(this.specialRules, this);
+	    this.countryName = "NANP";
+	    this.countryNameAbbr = "USA/CAN";
+	    this.countryCode = '1';
+	    this.regex = /^(?:(?:(?:\+|)(?:1|))|)(?:1|)(?:2(?:0[1-9]|1[02-9]|2[4-9]|3[1469]|4[089]|5[01-46]|6[0279]|7[0468]|8[139])|3(?:0[1-9]|1[02-9]|2[0235]|3[014679]|4[137]|5[12]|6[01459]|8[056])|4(?:0[1-9]|1[02-9]|2[345]|3[0-24578]|4[023578]|50|6[49]|7[0589]|8[04]|50[1-57-9])|5(?:06|1[02-5-89]|20|3[014]|4[01]|5[179]|6[1-47]|7[013-59]|8[01567])|6(?:0[1-9]|1[0234-9]|2[036-8]|3[0169]|4[167]|5[0179]|6[01279]|7[89]|8[129])|7(?:0[1-9]|1[2-9]|2[047]|3[01247]|4[07]|5[247]|6[02-59]|7[02-589]|8[0156])|8(?:0[1-8]|1[0-9]|28|3[0-25]|4[3578]|5[06-9]|6[02-57]|7[0238])|9(?:0[1-9]|1[02-9]|2[0578]|3[15-8]|4[0179]|5[124679]|7[0-3589]|8[045]|89))\d{7}$/;
+	    this.optionalTrunkPrefix = '1';
+	    this.nationalNumberSeparator = ' ';
+	    this.usaNationalDestinationCode = ['201', '202', '203', '205', '206', '207', '208', '209', '209', '210', '212', '213', '214', '215', '216', '217', '218', '219', '224', '225', '227', '228', '229', '231', '234', '239', '240', '248', '251', '252', '253', '254', '256', '260', '262', '267', '269', '270', '274', '276', '278', '281', '283', '301', '302', '303', '304', '305', '307', '308', '309', '310', '312', '313', '314', '315', '316', '317', '318', '319', '320', '321', '323', '325', '330', '331', '334', '336', '337', '339', '341', '347', '351', '352', '360', '361', '364', '369', '380', '385', '386', '401', '402', '404', '405', '406', '407', '408', '409', '410', '412', '413', '414', '415', '417', '419', '423', '424', '425', '430', '432', '434', '435', '440', '442', '443', '445', '447', '458', '464', '469', '470', '475', '478', '479', '480', '484', '501', '502', '503', '504', '505', '507', '508', '509', '510', '512', '513', '515', '516', '517', '518', '520', '530', '531', '534', '540', '541', '551', '557', '559', '561', '562', '563', '564', '567', '570', '571', '573', '574', '575', '580', '585', '586', '601', '602', '603', '605', '606', '607', '608', '609', '610', '612', '614', '615', '616', '617', '618', '619', '620', '623', '626', '627', '628', '630', '631', '636', '641', '646', '650', '651', '657', '659', '660', '661', '662', '667', '669', '678', '679', '681', '682', '689', '701', '702', '703', '704', '706', '707', '708', '712', '713', '714', '715', '716', '717', '718', '719', '720', '724', '727', '730', '731', '732', '734', '737', '740', '747', '752', '754', '757', '760', '762', '763', '764', '765', '769', '770', '772', '773', '774', '775', '779', '781', '785', '786', '801', '802', '803', '804', '805', '806', '808', '810', '812', '813', '814', '815', '816', '817', '818', '828', '830', '831', '832', '835', '843', '845', '847', '848', '850', '856', '857', '858', '859', '860', '862', '863', '864', '865', '870', '872', '878', '901', '903', '904', '906', '907', '908', '909', '910', '912', '913', '914', '915', '916', '917', '918', '919', '920', '925', '927', '928', '931', '935', '936', '937', '938', '940', '941', '947', '949', '951', '952', '954', '956', '957', '959', '970', '971', '972', '973', '975', '978', '979', '980', '984', '985', '989'];
+	    this.canadaNationalDestinationCode = ['204', '226', '236', '249', '250', '289', '306', '343', '365', '403', '416', '418', '431', '437', '438', '450', '506', '514', '519', '579', '581', '587', '604', '613', '639', '647', '705', '709', '778', '780', '807', '819', '867', '873', '902', '905'];
+	    this.nationalDestinationCode = this.usaNationalDestinationCode.concat(this.canadaNationalDestinationCode);
+	  }
+	
+	  NANP.prototype.specialRules = function(withoutCountryCode, withoutNDC, ndc) {
+	    if (withoutNDC.length === 7) {
+	      if (indexOf.call(this.canadaNationalDestinationCode, ndc) >= 0) {
+	        return new PhoneNumber('CAN', this.countryCode, ndc, withoutNDC);
+	      } else {
+	        return new PhoneNumber('USA', this.countryCode, ndc, withoutNDC);
+	      }
+	    }
+	  };
+	
+	  NANP.prototype.splitNumber = function(number) {
+	    if (number.length === 7) {
+	      return Phone.compact(number.split(/(\d{3})(\d{4})/));
+	    }
+	    return [number];
+	  };
+	
+	  return NANP;
+	
+	})();
+	
+	nanp = new NANP();
+	
+	Phone.countries['1'] = nanp;
+	
+	module.exports = nanp;
 
 
 /***/ }

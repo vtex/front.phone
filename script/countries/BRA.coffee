@@ -23,8 +23,8 @@ class Brazil
 		# Needs to be updated in 2015 (as in link (1) above)
 		nineDigitsNDC = ['11','12','13','14','15','16','17','18','19','21','22','24','27','28', '91', '92', '93', '94', '95', '96', '97', '98', '99']
 		nineDigitsPattern = new RegExp "^(0|)("+nineDigitsNDC.join("|")+")"
-		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
-		
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
+
 		if withoutNDC.length is 9 and withoutNDC.indexOf("9") is 0 and nineDigitsPattern.test(ndc)
 			phone.isMobile = true
 			return phone

@@ -20,7 +20,7 @@ class Chile
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 		switch ndc
 			when '2'
 				if withoutNDC.length is 8 then return phone
