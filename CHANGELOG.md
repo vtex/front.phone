@@ -1,3 +1,7 @@
+## 4.2.0
+- New country! Welcome, Canada!
+- Add more phone info to the resulting object, now it includes `countryNameAbbr` (eg: USA, CAN). That is useful for same cases like phones from NANP.
+
 ## 4.1.0
 - New country! Welcome, Guatemala!
 - Fix .gitignore
