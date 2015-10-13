@@ -28,8 +28,6 @@ describe 'Should validate a', ->
 			# Arrange
 			number = "+447400123456"
 
-
-
 	describe 'brazilian phone with a', ->
 
 		number = ''
