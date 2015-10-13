@@ -1,7 +1,7 @@
 style = require('../style/style.less')
 
 window.angular.module("app", ["vtex.phoneFilter"])
-	.controller "AppCtrl", ($scope) ->
+	.controller "AppCtrl", ['$scope', ($scope) ->
 		$scope.getInfo = {value: "+1 (303) 448-1730"}
 		$scope.format = {value: "+13034481730"}
 		$scope.validate = {value: "+1 (303) 448-1730"}
@@ -12,3 +12,4 @@ window.angular.module("app", ["vtex.phoneFilter"])
 
 		$scope.$watch 'validate.value', (v) ->
 			$scope.validate.result = vtex.phone.validate(v)
+	]
