@@ -1,3 +1,6 @@
+## 4.2.2
+- Fix brazilian validation regex
+
 ## 4.2.1
 - Update brazilian phones with the ninth digit
 
