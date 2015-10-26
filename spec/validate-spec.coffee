@@ -24,6 +24,7 @@ describe 'Should validate a', ->
 		it 'national destination code starting with the optional digit', ->
 			# Arrange
 			number = "+44 020 3000 5555"
+
 		it 'mobile number', ->
 			# Arrange
 			number = "+447400123456"
@@ -54,6 +55,10 @@ describe 'Should validate a', ->
 		it 'mobile number (extra digit)', ->
 			# Arrange
 			number = "+55 021 998986565"
+
+		it 'mobile number (extra digit, from new batch)', ->
+			# Arrange
+			number = "+55 31 998986565"
 
 	describe 'argentinian phone with', ->
 
