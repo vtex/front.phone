@@ -1,3 +1,6 @@
+## 4.3.0
+- New country! Welcome, Bolivia!
+
 ## 4.2.2
 - Fix brazilian validation regex
 
