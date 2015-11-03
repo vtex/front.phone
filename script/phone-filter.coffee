@@ -1,16 +1,17 @@
 window.angular.module('vtex.phoneFilter', [])
-.filter 'phone', ->
+.filter('phone', ['$window', (($window) ->
 	return (ph, toFormat, nationalCode) ->
 		return 'N/A' unless ph
 
 		if nationalCode
-			phoneObject = vtex.phone.getPhoneNational(ph, nationalCode)
+			phoneObject = $window.vtex.phone.getPhoneNational(ph, nationalCode)
 		if !phoneObject or !nationalCode
-			phoneObject = vtex.phone.getPhoneInternational(ph)
+			phoneObject = $window.vtex.phone.getPhoneInternational(ph)
 
 		if !toFormat
-			toFormat = vtex.phone.INTERNATIONAL
+			toFormat = $window.vtex.phone.INTERNATIONAL
 		else
-			toFormat = vtex.phone[toFormat.toUpperCase()]
+			toFormat = $window.vtex.phone[toFormat.toUpperCase()]
 
-		return vtex.phone.format(phoneObject, toFormat)
+		return $window.vtex.phone.format(phoneObject, toFormat)
+	)])
