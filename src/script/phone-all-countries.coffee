@@ -1,6 +1,7 @@
 Phone = require('./Phone')
 
 argentina = require('./countries/ARG')
+bolivia   = require('./countries/BOL')
 brazil    = require('./countries/BRA')
 chile     = require('./countries/CHL')
 canada    = require('./countries/CAN')
