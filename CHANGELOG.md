@@ -1,3 +1,6 @@
+## 4.3.1
+- Fix Mexico's validation for phones with national destination code starting with 42
+
 ## 4.3.0
 - New country! Welcome, Bolivia!
 
