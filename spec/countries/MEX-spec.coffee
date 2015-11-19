@@ -69,3 +69,13 @@ describe 'Mexico', ->
 
 			# Assert
 			expect(result).to.be.true
+
+		it 'number with national destionation code starting with 42', ->
+			# Arrange
+			number = "+52 428 106 8349"
+
+			# Act
+			result = Phone.validate(number)
+
+			# Assert
+			expect(result).to.be.true
