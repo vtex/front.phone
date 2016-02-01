@@ -124,8 +124,13 @@ class Phone
 
 	getCountryCodeByNameAbbr: (nameAbbr) =>
 		for key, value of @countries
-			if value.countryNameAbbr is nameAbbr
-				return value.countryCode
+			if value.countryNameAbbr.constructor is Array
+				for abbr in value.countryNameAbbr
+					if abbr is nameAbbr
+						return value.countryCode
+			else
+				if value.countryNameAbbr is nameAbbr
+					return value.countryCode
 
 # exports
 module.exports = new Phone()

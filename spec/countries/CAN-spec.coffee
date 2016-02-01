@@ -34,3 +34,11 @@ describe 'Canada', ->
 		it 'number', ->
 			# Arrange
 			number = "+1 204 9898656"
+
+	describe 'Utility method', ->
+
+		it 'should get the country code given the abbr', ->
+
+			countryCode = Phone.getCountryCodeByNameAbbr('CAN')
+
+			expect(countryCode).to.equal('1')
