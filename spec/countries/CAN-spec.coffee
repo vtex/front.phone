@@ -8,7 +8,10 @@ describe 'Canada', ->
 
 		number = ''
 
-		afterEach ->
+		it 'a number', ->
+			# Arrange
+			number = "+1 204 9898656"
+
 			# Act
 			result = Phone.getPhoneInternational(number)
 
@@ -16,9 +19,17 @@ describe 'Canada', ->
 			expect(result.valid).to.be.true
 			expect(result.countryNameAbbr).to.equal('CAN')
 
-		it 'a number', ->
+		it 'a national number', ->
 			# Arrange
-			number = "+1 204 9898656"
+			number = "(204) 123 1234"
+
+			# Act
+			result = Phone.getPhoneNational(number, '1')
+
+			# Assert
+			expect(result.valid).to.be.true
+			expect(result.countryNameAbbr).to.equal('CAN')
+
 
 	describe 'Should validate a', ->
 
