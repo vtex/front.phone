@@ -1,3 +1,17 @@
+## 4.3.7
+- Travis deploying! :tada:
+
+## 4.3.4, 4.3.5, 4.3.6
+- Series of releases trying to setup Travis to deploy :disappointed:
+
+## 4.3.3
+- Fix chilean regex
+- Fix angular version in `package.json`, so tests pass
+- Stop setting prepublish script
+
+## 4.3.2
+- Fix `getCountryCodeByNameAbbr` when `countryNameAbbr` is an array, like [NANP](https://github.com/vtex/front.phone/blob/922aa44076cf860ad5d8d7161dabfa7b64d9319b/src/script/countries/NANP.coffee#L12)
+
 ## 4.3.1
 - Fix Mexico's validation for phones with national destination code starting with 42
 
