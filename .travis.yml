@@ -18,5 +18,5 @@ deploy:
   on:
     tags: true
     repo: vtex/front.phone
-  key:
+  api_key:
     secure: "dA4rUdiL8XPX1gK3MCrQlmYv9vLdsaOtehrtozoXd3TX0cNjVBj/L43blP5GzoFp4Dyj4thNYa9cuASytIBe8UDEXzZ68D90IMQ/f7IdckYZfMWB8rKvSg21QyeJiqwFHyG8Y6Ko/i4/LwqNZQS50AaCv3EyiB3PXHwcUlP3gBU="
