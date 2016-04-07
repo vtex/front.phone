@@ -18,4 +18,4 @@ deploy:
     tags: true
     repo: vtex/front.phone
   key:
-    secure: APiGXZVeyWMHT9lxX23wAnkQYmejF5/vH/zdRWr9L4p1KjYzgCbduI8dw+WgAbwJRVfiI3RFw/ye1dqal2808UTr8tH6WmRDuGZxFyEjOSpgqJHHS5FLUxsxWZLqs6b5j70+v5ruKTfgi31w4vstbydX2qpW4CvTMYGHlFs5W3c=
+    secure: "dA4rUdiL8XPX1gK3MCrQlmYv9vLdsaOtehrtozoXd3TX0cNjVBj/L43blP5GzoFp4Dyj4thNYa9cuASytIBe8UDEXzZ68D90IMQ/f7IdckYZfMWB8rKvSg21QyeJiqwFHyG8Y6Ko/i4/LwqNZQS50AaCv3EyiB3PXHwcUlP3gBU="
