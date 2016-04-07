@@ -1,8 +1,21 @@
 language: node_js
 sudo: false
 node_js:
-  - "4.0"
+- '4.0'
+cache:
+  directories:
+  - node_modules
 env:
-  - NODE_ENV=test
+- NODE_ENV=test
 before_install:
-  - npm install -g grunt-cli
+- npm install -g grunt-cli
+before_deploy:
+- npm run dist
+deploy:
+  provider: npm
+  email: breno+npm@vtex.com.br
+  on:
+    tags: true
+    repo: vtex/front.phone
+  key:
+    secure: APiGXZVeyWMHT9lxX23wAnkQYmejF5/vH/zdRWr9L4p1KjYzgCbduI8dw+WgAbwJRVfiI3RFw/ye1dqal2808UTr8tH6WmRDuGZxFyEjOSpgqJHHS5FLUxsxWZLqs6b5j70+v5ruKTfgi31w4vstbydX2qpW4CvTMYGHlFs5W3c=
