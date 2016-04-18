@@ -1,3 +1,6 @@
+## 4.3.8
+- Fix Guatemala's format function
+
 ## 4.3.7
 - Travis deploying! :tada:
 
