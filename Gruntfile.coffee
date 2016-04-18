@@ -21,7 +21,7 @@ module.exports = (grunt) ->
     copyIgnore: ['!script/**/*.js', '!script/{countries}']
 
   webpackPlugins = [
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({compress: { warnings: false }}),
     new webpack.BannerPlugin('front-phone - v'+pkg.version+' - https://vtex.github.io/front.phone/', {entryOnly: true})
   ]
 
