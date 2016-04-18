@@ -32,7 +32,8 @@ class Guatemala
 	format: (phone, format) =>
 		resultString = ""
 
-		splitNumber = @splitNumber(phone.number)
+		fullNumber = phone.nationalDestinationCode + phone.number
+		splitNumber = @splitNumber(fullNumber)
 
 		switch format
 			when Phone.INTERNATIONAL

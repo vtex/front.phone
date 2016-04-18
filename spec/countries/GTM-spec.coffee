@@ -17,6 +17,17 @@ describe 'Guatemala', ->
 			# Assert
 			expect(result).to.match(/\+502 2345 7898/)
 
+		it 'land line number with 21', ->
+			# Arrange
+			number = "+502 2121 2121"
+			phone = Phone.getPhoneInternational(number)
+
+			# Act
+			result = Phone.format(phone, Phone.INTERNATIONAL)
+
+			# Assert
+			expect(result).to.match(/\+502 2121 2121/)
+
 	describe 'Should get a', ->
 
 		it 'land line number', ->
