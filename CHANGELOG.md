@@ -1,3 +1,6 @@
+## 4.3.9
+- Update brazilian ninth digit
+
 ## 4.3.8
 - Fix Guatemala's format function
 
