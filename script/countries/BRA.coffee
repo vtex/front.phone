@@ -11,7 +11,7 @@ class Brazil
 		@countryName = "Brazil"
 		@countryNameAbbr = "BRA"
 		@countryCode = '55'
-		@regex = /^(?:(?:(?:\+|)(?:55|)|))(?:0|)(?:(?:(?:1[1-9]|2[12478]|3[1-8]|7[134579]|8[1-9]|9[1-9])(?:9\d{8}|\d{8}))|(?:(?:4[1-9]|5[1-5]|6[1-9])\d{8}))$/
+		@regex = /^(?:(?:(?:\+|)(?:55|)|))(?:0|)(?:(?:(?:1[1-9]|2[12478]|3[1-8]|6[1-9]|7[134579]|8[1-9]|9[1-9])(?:9\d{8}|\d{8}))|(?:(?:4[1-9]|5[1-5])\d{8}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = '-'
 		@nationalDestinationCode =
@@ -21,7 +21,7 @@ class Brazil
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		# Needs to be updated in 2015 (as in link (1) above)
-		noNineDigitsNDC = ['41', '42', '43', '44', '45', '46', '47', '48', '49', '51', '53', '54', '55', '61', '62', '63', '64', '65', '66', '67', '68', '69']
+		noNineDigitsNDC = ['41', '42', '43', '44', '45', '46', '47', '48', '49', '51', '53', '54', '55']
 		noNineDigitsPattern = new RegExp "^(0|)("+noNineDigitsNDC.join("|")+")"
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
