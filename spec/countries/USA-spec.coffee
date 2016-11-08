@@ -29,9 +29,9 @@ describe 'USA', ->
 			# Assert
 			expect(result.length).to.equal(2)
 
-	describe 'Should validate a', ->
+	describe 'Should validate', ->
 
-		it 'number', ->
+		it 'a number', ->
 			# Arrange
 			number = "+1 201 9898656"
 
@@ -40,3 +40,34 @@ describe 'USA', ->
 
 			# Assert
 			expect(result).to.be.true
+
+		it 'all american NDCs', ->
+			# Arrange
+			prefix = "+1 "
+			suffix = " 9898656"
+
+			# Act
+			for ndc in Phone.countries['1'].usaNationalDestinationCode
+				number = prefix + ndc + suffix
+				result = Phone.validate(number)
+
+				# Assert
+				if !result
+					console.log 'NDC missing: ', ndc
+				expect(result).to.be.true
+
+
+		it 'all canadian NDCs', ->
+			# Arrange
+			prefix = "+1 "
+			suffix = " 9898656"
+
+			# Act
+			for ndc in Phone.countries['1'].canadaNationalDestinationCode
+				number = prefix + ndc + suffix
+				result = Phone.validate(number)
+
+				# Assert
+				if !result
+					console.log 'NDC missing: ', ndc
+				expect(result).to.be.true
