@@ -133,4 +133,4 @@ describe 'Brazil', ->
 
 		it 'mobile number (extra digit, from new batch)', ->
 			# Arrange
-			number = "+55 31 998986565"
+			number = "+55 41 998986565"
