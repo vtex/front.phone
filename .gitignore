@@ -11,3 +11,4 @@ tmp-deploy/
 countries/*
 !src/countries
 *.js
+.DS_Store
