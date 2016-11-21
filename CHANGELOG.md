@@ -1,3 +1,6 @@
+## 4.3.13
+- Remove console.log
+
 ## 4.3.12
 - Add missing Bolivian phone number validation
 
