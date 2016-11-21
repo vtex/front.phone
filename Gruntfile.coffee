@@ -21,8 +21,8 @@ module.exports = (grunt) ->
     copyIgnore: ['!script/**/*.js', '!script/{countries}']
 
   webpackPlugins = [
-    new webpack.optimize.UglifyJsPlugin({compress: { warnings: false }}),
     new webpack.BannerPlugin('front-phone - v'+pkg.version+' - https://vtex.github.io/front.phone/', {entryOnly: true})
+    new webpack.optimize.UglifyJsPlugin({compress: { warnings: false }}),
   ]
 
   # Add custom configuration here as needed
@@ -70,7 +70,7 @@ module.exports = (grunt) ->
             { test: /\.png$/, loader: "url-loader?limit=100000", exclude: /node_modules/ }
             { test: /\.jpg$/, loader: "file-loader", exclude: /node_modules/ }
           ]
-        devtool: "source-map"
+        devtool: "eval"
       main:
         entry:
           "main": "./src/script/main.coffee"
