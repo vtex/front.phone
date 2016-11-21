@@ -70,7 +70,7 @@ module.exports = (grunt) ->
             { test: /\.png$/, loader: "url-loader?limit=100000", exclude: /node_modules/ }
             { test: /\.jpg$/, loader: "file-loader", exclude: /node_modules/ }
           ]
-        devtool: "eval"
+        # devtool: "eval"
       main:
         entry:
           "main": "./src/script/main.coffee"
