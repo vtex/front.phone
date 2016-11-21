@@ -19,8 +19,6 @@ class Brazil
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		# Needs to be updated in 2015 (as in link (1) above)
-		noNineDigitsNDC = ['41', '42', '43', '44', '45', '46', '47', '48', '49', '51', '53', '54', '55']
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
 		if withoutNDC.length is 9 and withoutNDC.indexOf("9") is 0
