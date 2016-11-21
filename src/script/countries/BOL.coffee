@@ -17,8 +17,6 @@ class Bolivia
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
-		console.log(phone)
-
 		if ndc in ['6', '7']
 			phone.isMobile = true
 			phone.nationalDestinationCode = ''
