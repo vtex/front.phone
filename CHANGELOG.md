@@ -1,5 +1,8 @@
+## 4.3.12
+- Add missing Bolivian phone number validation
+
 ## 4.3.11
-- Update brazilian ninth digit
+- Update Brazilian ninth digit
 
 ## 4.3.10
 - Add missing national destination codes of USA
