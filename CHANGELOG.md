@@ -1,3 +1,6 @@
+## 4.3.14
+- Add missing paraguayan NDC
+
 ## 4.3.13
 - Remove console.log
 
