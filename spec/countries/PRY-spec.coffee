@@ -87,7 +87,7 @@ describe 'Paraguay', ->
 
 		it 'number with 6 digits and 3 digit area code', ->
 			# Arrange
-			number = "+595 535 566 565"
+			number = "+595 994 566 565"
 
 			# Act
 			result = Phone.validate(number)
