@@ -143,13 +143,6 @@ Anyone is welcome to contribute to this project.
 We now are urging for pull requests of new countries' phones.
 But before you do, please read the [guidelines for contributing](CONTRIBUTING.md).
 
-## Authors
-
-* [@brenoc](https://github.com/brenoc)
-* [@gberger](https://github.com/gberger)
-
 ## License
-
-Copyright 2014 VTEX
 
 Licensed under the MIT License
