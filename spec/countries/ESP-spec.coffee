@@ -2,7 +2,7 @@ expect = require('chai').expect
 Phone = require('../../src/script/Phone')
 spain  = require('../../src/script/countries/ESP')
 
-describe.only 'Spain', ->
+describe 'Spain', ->
 
 	describe 'Should get a', ->
 
