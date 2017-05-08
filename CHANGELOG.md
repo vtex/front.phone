@@ -1,3 +1,6 @@
+## 4.4.1
+- Add Spain to build of all countries
+
 ## 4.4.0
 - New country! Welcome, Spain!
 
