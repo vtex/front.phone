@@ -1,7 +1,7 @@
 {
   "name": "@vtex/phone",
   "description": "front.phone is a Javascript library that identifies, validates and formats phone numbers",
-  "version": "4.3.15",
+  "version": "4.4.0",
   "paths": [
     "/front.phone"
   ],
