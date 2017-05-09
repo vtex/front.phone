@@ -1,3 +1,6 @@
+## 4.4.2
+- Fix false-positive validations
+
 ## 4.4.1
 - Add Spain to build of all countries
 
