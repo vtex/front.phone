@@ -18,6 +18,7 @@
   "readmeFilename": "README.md",
   "scripts": {
     "test": "grunt test",
+    "testWatch": "mocha --watch spec/**/*-spec.coffee --compilers coffee:coffee-script/register",
     "dist": "grunt dist"
   },
   "devDependencies": {
