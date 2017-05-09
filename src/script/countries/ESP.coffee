@@ -20,12 +20,14 @@ class Spain
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, '', withoutNDC)
 
-		if ndc is '6' or ndc is '7'
-			phone.isMobile = true
-			phone.number = withoutCountryCode
-			phone.nationalDestinationCode = ''
-
-		return phone
+		if withoutNDC.length is 8
+			if ndc is '6' or ndc is '7'
+				phone.isMobile = true
+				phone.number = withoutCountryCode
+				phone.nationalDestinationCode = ''
+			else
+				phone.isMobile = false
+			return phone
 
 	splitNumber: (number) =>
 		if number.length is 9

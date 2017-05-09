@@ -4,12 +4,6 @@ bolivia  = require('../../src/script/countries/BOL')
 
 describe 'Bolivia', ->
 
-expect = require('chai').expect
-Phone = require('../../src/script/Phone')
-uruguay  = require('../../src/script/countries/URY')
-
-describe 'Bolivia', ->
-
 	describe 'Should get a', ->
 
 		it 'number', ->
@@ -78,3 +72,15 @@ describe 'Bolivia', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Should not', ->
+
+		it 'get an invalid phone', ->
+			# Arrange
+			number = "+591 2 323"
+
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result).to.be.null

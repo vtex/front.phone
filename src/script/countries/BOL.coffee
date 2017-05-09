@@ -17,14 +17,14 @@ class Bolivia
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
-		if ndc in ['6', '7']
-			phone.isMobile = true
-			phone.nationalDestinationCode = ''
-			phone.number = withoutCountryCode
-		else
-			phone.isMobile = false
-
-		return phone
+		if withoutNDC.length is 7
+			if ndc in ['6', '7']
+				phone.isMobile = true
+				phone.nationalDestinationCode = ''
+				phone.number = withoutCountryCode
+			else
+				phone.isMobile = false
+			return phone
 
 	splitNumber: (number) =>
 		if number.length is 7

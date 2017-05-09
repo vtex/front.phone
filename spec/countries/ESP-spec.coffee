@@ -47,7 +47,29 @@ describe 'Spain', ->
 			number = "+34 612 878 878"
 
 			# Act
-			result = Phone.validate(number)
+			result = Phone.validate(number, '34')
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Should not', ->
+
+		it 'get an invalid number', ->
+			# Arrange
+			number = "+34 671 123"
+
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result).to.be.null
+
+		it 'validate an invalid number', ->
+			# Arrange
+			number = "+34 671 123"
+
+			# Act
+			result = Phone.validate(number, '34')
+
+			# Assert
+			expect(result).to.be.false

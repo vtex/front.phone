@@ -114,3 +114,15 @@ describe 'Paraguay', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Should not', ->
+
+		it 'get an invalid phone number', ->
+			# Arrange
+			number = "+595 21 566"
+
+			# Act
+			result = Phone.getPhoneInternational(number)
+
+			# Assert
+			expect(result).to.be.null
