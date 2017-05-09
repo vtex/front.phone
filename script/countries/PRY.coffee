@@ -21,10 +21,10 @@ class Paraguay
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
-		if ndc.length is 3 and ndc[0] is '9'
-			phone.isMobile = true
-
-		return phone
+		if withoutNDC.length is 6 or withoutNDC.length is 7
+			if ndc.length is 3 and ndc[0] is '9'
+				phone.isMobile = true
+			return phone
 
 	splitNumber: (number) =>
 		if number.length is 7
