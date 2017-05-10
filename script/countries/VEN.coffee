@@ -19,15 +19,15 @@ class Venezuela
 			["212","234","235","237","238","239","240","241","242","243","244","245","246","247","248","249","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","281","282","283","284","285","286","287","288","289","291","292","293","294","295","412","414","415","416","417","418","426"]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryNameAbbr, @countryCode, '', withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
 		if withoutNDC.length is 7
 			phone.isMobile = ndc[0] is '4'
 			return phone
 
 	splitNumber: (number) =>
-		if number.length is 10
-			return Phone.compact number.split(/(\d{3})(\d{3})(\d{4})/)
+		if number.length is 7
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
 
 		return [number]
 
