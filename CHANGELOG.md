@@ -1,3 +1,6 @@
+## 4.5.0
+- New country! Welcome, Venezuela!
+
 ## 4.4.2
 - Fix false-positive validations
 
