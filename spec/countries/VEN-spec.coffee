@@ -26,19 +26,31 @@ describe 'Venezuela', ->
 			# Assert
 			expect(result.valid).to.be.true
 			expect(result.isMobile).to.be.true
-			expect(result.nationalDestinationCode.length).to.equal(0)
+
+	describe 'Should format a number', ->
+
+		it 'in international format', ->
+			# Arrange
+			number = "582348788787"
+			phone = Phone.getPhoneInternational(number)
+
+			# Act
+			result = Phone.format(phone, Phone.INTERNATIONAL)
+
+			# Assert
+			expect(result).to.match(/\+58 234 878 8787/)
 
 	describe 'Should split', ->
 
 		it 'number', ->
 			# Arrange
-			number = "2138788787"
+			number = "8788787"
 
 			# Act
 			result = Phone.countries['58'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(3)
+			expect(result.length).to.equal(2)
 
 	describe 'Should validate a', ->
 

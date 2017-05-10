@@ -28,11 +28,24 @@ describe 'Spain', ->
 			expect(result.isMobile).to.be.true
 			expect(result.nationalDestinationCode.length).to.equal(0)
 
+	describe 'Should format a number', ->
+
+		it 'in international format', ->
+			# Arrange
+			number = "34911878878"
+			phone = Phone.getPhoneInternational(number)
+
+			# Act
+			result = Phone.format(phone, Phone.INTERNATIONAL)
+
+			# Assert
+			expect(result).to.match(/\+34 911 878 878/)
+
 	describe 'Should split', ->
 
 		it 'number', ->
 			# Arrange
-			number = "911878878"
+			number = "987878787"
 
 			# Act
 			result = Phone.countries['34'].splitNumber(number)
