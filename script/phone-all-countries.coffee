@@ -15,6 +15,7 @@ peru      = require('./countries/PER')
 paraguay  = require('./countries/PRY')
 uruguay   = require('./countries/URY')
 usa       = require('./countries/USA')
+venezuela = require('./countries/VEN')
 
 window.vtex = window.vtex || {}
 window.vtex.phone = Phone
