@@ -1,3 +1,6 @@
+## 4.5.1
+- Fix formatting of Spanish and Venezuelian phone numbers
+
 ## 4.5.0
 - New country! Welcome, Venezuela!
 
