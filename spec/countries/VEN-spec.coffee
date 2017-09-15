@@ -72,7 +72,7 @@ describe 'Venezuela', ->
 
 			# Act
 			result = Phone.getPhoneInternational(number)
-			console.log result
+
 			# Assert
 			expect(result).to.be.null
 
