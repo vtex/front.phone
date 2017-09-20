@@ -15,7 +15,7 @@ describe 'Paraguay', ->
 			result = Phone.format(phone, Phone.NATIONAL)
 
 			# Assert
-			expect(result).to.match(/\(21\) 987 8765/)
+			expect(result).to.match(/21 987 8765/)
 
 		it 'in national format with 6 digits', ->
 			# Arrange
@@ -26,7 +26,7 @@ describe 'Paraguay', ->
 			result = Phone.format(phone, Phone.NATIONAL)
 
 			# Assert
-			expect(result).to.match(/\(21\) 505 270/)
+			expect(result).to.match(/21 505 270/)
 
 	describe 'Should get a', ->
 

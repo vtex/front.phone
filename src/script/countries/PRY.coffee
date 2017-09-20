@@ -32,6 +32,22 @@ class Paraguay
 		else
 			return Phone.compact number.split(/(\d{3})(\d{3})/)
 
+	format: (phone, format) =>
+		resultString = ""
+
+		splitNumber = @splitNumber(phone.number)
+
+		switch format
+			when Phone.INTERNATIONAL
+				resultString = "+" + phone.countryCode + " "
+				resultString += phone.nationalDestinationCode + " "
+				resultString += splitNumber.join(" ")
+			else
+				resultString += phone.nationalDestinationCode + " "
+				resultString += splitNumber.join(" ")
+
+		return resultString
+
 # register
 paraguay = new Paraguay()
 Phone.countries['595'] = paraguay
