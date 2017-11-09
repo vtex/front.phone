@@ -1,3 +1,6 @@
+## 4.6.0
+- New country! Welcome, Costa Rica!
+
 ## 4.5.1
 - Fix formatting of Spanish and Venezuelian phone numbers
 
