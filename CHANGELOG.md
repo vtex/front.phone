@@ -1,3 +1,6 @@
+## 4.7.0
+- New country! Welcome, Panama!
+
 ## 4.6.0
 - New country! Welcome, Costa Rica!
 
