@@ -153,6 +153,10 @@ describe 'Great Britain', ->
 			# Arrange
 			number = "+44 020 3000 5555"
 
+		it 'national formatted number', ->
+			# Arrange
+			number = "20 3000 5555"
+
 		it 'mobile number', ->
 			# Arrange
 			number = "+447400123456"
