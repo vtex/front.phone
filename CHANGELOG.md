@@ -1,3 +1,15 @@
+## 4.9.0
+- New country! Welcome, France!
+
+## 4.8.0
+- New country! Welcome, Korea!
+
+## 4.7.2
+- Fix Panama regex
+
+## 4.7.1
+- Fix GBR regex
+
 ## 4.7.0
 - New country! Welcome, Panama!
 
