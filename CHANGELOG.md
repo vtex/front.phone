@@ -1,10 +1,13 @@
-## 4.9.1
+## 4.8.2
+- Fix npm build
+
+## 4.8.1
 - Add new Mexico NDI 56
 
-## 4.9.0
+## 4.8.0
 - New country! Welcome, France!
 
-## 4.8.0
+## 4.7.3
 - New country! Welcome, Korea!
 
 ## 4.7.2
