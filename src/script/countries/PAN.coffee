@@ -10,7 +10,7 @@ class Panama
 		@countryName = "Panama"
 		@countryNameAbbr = "PAN"
 		@countryCode = '507'
-		@regex = /^(?:(?:(?:\+|)507)|)(?:[36]\d{5,10})$/
+		@regex = /^(?:(?:(?:\+|)507)|)(?:0|)(?:[23479]\d{6}|6\d{7})$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode = ['2', '3', '4', '6', '7', '9']
