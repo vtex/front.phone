@@ -55,7 +55,7 @@ describe 'Panama', ->
 
 		it 'number', ->
 			# Arrange
-			number = "+507 30000000000"
+			number = "+507 232 3234"
 
 			# Act
 			result = Phone.validate(number, "507")
