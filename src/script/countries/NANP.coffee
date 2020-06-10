@@ -9,9 +9,9 @@ PhoneNumber = require('../PhoneNumber')
 class NANP
 	constructor: ->
 		@countryName = "NANP"
-		@countryNameAbbr = ["USA", "CAN"]
+		@countryNameAbbr = ["USA", "CAN", "ASM", "GUM", "MNP", "PRI", "VIR"]
 		@countryCode = '1'
-		@regex = /^(?:(?:(?:\+|)(?:1|))|)(?:1|)(?:2(?:0[1-9]|1[02-9]|2[4-9]|3[1469]|4[089]|5[01-46]|6[0279]|7[0468]|8[139])|3(?:0[1-9]|1[02-9]|2[01235]|3[014679]|4[1367]|5[12]|6[01459]|8[056])|4(?:0[1-9]|1[02-9]|2[345]|3[0-24578]|4[023578]|5[08]|6[49]|7[0589]|8[04]|50[1-57-9])|5(?:0[1-9]|1[02-9]|20|3[014]|4[01]|5[179]|6[1-47]|7[013-59]|8[01567])|6(?:0[1-9]|1[0234-9]|2[036-8]|3[0169]|4[167]|5[0179]|6[01279]|7[89]|8[129])|7(?:0[1-9]|1[2-9]|2[047]|3[01247]|4[07]|5[247]|6[02-59]|7[02-589]|8[0156])|8(?:0[1-8]|1[0-9]|28|3[0-25]|4[3578]|5[06-9]|6[02-57]|7[0238])|9(?:0[1-9]|1[02-9]|2[0578]|3[15-8]|4[0179]|5[124679]|7[0-3589]|8[045]|89))\d{7}$/
+		@regex = /^(?:(?:(?:\+|)(?:1|))|)(?:1|)(?:2(?:0[1-9]|1[02-9]|2[4-9]|3[1469]|4[089]|5[01-46]|6[0279]|7[0468]|8[139])|3(?:0[1-9]|1[02-9]|2[01235]|3[014679]|4[01367]|5[12]|6[01459]|8[056])|4(?:0[1-9]|1[02-9]|2[345]|3[0-24578]|4[023578]|5[08]|6[49]|7[0589]|8[04]|50[1-57-9])|5(?:0[1-9]|1[02-9]|20|3[014]|4[01]|5[179]|6[1-47]|7[013-59]|8[01567])|6(?:0[1-9]|1[0234-9]|2[036-8]|3[0169]|4[167]|5[0179]|6[01279]|7[0189]|8[1249])|7(?:0[1-9]|1[2-9]|2[047]|3[01247]|4[07]|5[247]|6[02-59]|7[02-589]|8[01567])|8(?:0[1-8]|1[0-9]|28|3[0-25]|4[3578]|5[06-9]|6[02-57]|7[0238])|9(?:0[1-9]|1[02-9]|2[0578]|3[15-9]|4[0179]|5[124679]|7[0-3589]|8[045]|89))\d{7}$/
 		@optionalTrunkPrefix = '1'
 		@nationalNumberSeparator = ' '
 		@usaNationalDestinationCode =
@@ -22,12 +22,42 @@ class NANP
 			[
 				'204', '226', '236', '249', '250', '289', '306', '343', '365', '403', '416', '418', '431', '437', '438', '450', '506', '514', '519', '579', '581', '587', '604', '613', '639', '647', '705', '709', '778', '780', '807', '819', '867', '873', '902', '905'
 			]
-		@nationalDestinationCode = @usaNationalDestinationCode.concat(@canadaNationalDestinationCode)
+		@asmNationalDestinationCode =
+			[
+				'684'
+			]
+		@gumNationalDestinationCode =
+			[
+				'671'
+			]
+		@mnpNationalDestinationCode =
+			[
+				'670'
+			]
+		@priNationalDestinationCode =
+			[
+				'787', '939'
+			]
+		@virNationalDestinationCode =
+			[
+				'340'
+			]
+		@nationalDestinationCode = @usaNationalDestinationCode.concat(@canadaNationalDestinationCode, @asmNationalDestinationCode, @gumNationalDestinationCode, @mnpNationalDestinationCode, @priNationalDestinationCode, @virNationalDestinationCode)
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		if withoutNDC.length is 7
 			if ndc in @canadaNationalDestinationCode
 				return new PhoneNumber('CAN', @countryCode, ndc, withoutNDC)
+			else if ndc in @asmNationalDestinationCode
+				return new PhoneNumber('ASM', @countryCode, ndc, withoutNDC)
+			else if ndc in @gumNationalDestinationCode
+				return new PhoneNumber('GUM', @countryCode, ndc, withoutNDC)
+			else if ndc in @mnpNationalDestinationCode
+				return new PhoneNumber('MNP', @countryCode, ndc, withoutNDC)
+			else if ndc in @priNationalDestinationCode
+				return new PhoneNumber('PRI', @countryCode, ndc, withoutNDC)
+			else if ndc in @virNationalDestinationCode
+				return new PhoneNumber('VIR', @countryCode, ndc, withoutNDC)
 			else
 				return new PhoneNumber('USA', @countryCode, ndc, withoutNDC)
 

@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.9.0] - 2020-06-10
+
+- New country! Welcome, American Samoa!
+- New country! Welcome, Guam!
+- New country! Welcome, Northern Mariana Islands!
+- New country! Welcome, Puerto Rico!
+- New country! Welcome, U.S. Virgin Islands!
+
 ## [4.8.4] - 2020-05-13
 
 - Fix missing USA state (346 Texas)
