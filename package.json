@@ -23,7 +23,7 @@
     "prepublishOnly": "grunt dist"
   },
   "devDependencies": {
-    "angular": "1.3.14",
+    "angular": "1.8.0",
     "angular-mocks": "1.3.14",
     "bundle-loader": "^0.5.3",
     "chai": "~2.3.0",
