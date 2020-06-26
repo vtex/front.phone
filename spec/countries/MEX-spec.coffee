@@ -94,7 +94,6 @@ describe 'Mexico', ->
 					number = prefix + ndc + suffix
 
 				result = Phone.validate(number)
-				console.log(number, result)
 
 				# Assert
 				if !result
