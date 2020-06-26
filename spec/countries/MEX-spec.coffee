@@ -79,3 +79,24 @@ describe 'Mexico', ->
 
 			# Assert
 			expect(result).to.be.true
+
+		it 'all Mexico NDCs', ->
+			# Arrange
+			prefix  = "+52 "
+			suffix = " 111 2222"
+			suffix8 = "0 111 2222"
+
+			# Act
+			for ndc in Phone.countries['52'].nationalDestinationCode
+				if ndc.length is 2
+					number = prefix + ndc + suffix8
+				else
+					number = prefix + ndc + suffix
+
+				result = Phone.validate(number)
+				console.log(number, result)
+
+				# Assert
+				if !result
+					console.log 'NDC missing: ', ndc
+				expect(result).to.be.true
