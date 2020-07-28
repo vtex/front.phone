@@ -99,5 +99,5 @@ module.exports = (grunt) ->
   # Project configuration.
   grunt.config.init defaultConfig
   grunt.config.merge customConfig
-  grunt.loadNpmTasks name for name of pkg.devDependencies when name[0..5] is 'grunt-' and name isnt 'grunt-vtex'
+  grunt.loadNpmTasks name for name of pkg.devDependencies when name[0..5] is 'grunt-' and name isnt 'grunt-vtex' and name isnt 'grunt-cli'
   grunt.registerTask taskName, taskArray for taskName, taskArray of tasks
