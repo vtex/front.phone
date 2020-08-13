@@ -12,7 +12,7 @@ We are compliant to the [E.123](http://en.wikipedia.org/wiki/E.123) notation.
 
 ## Countries
 
-We currently cover [these countries](countries/).
+We currently cover [these countries](src/script/countries/).
 
 Didn't find your own? Feel free to [contribute](#contributing)!
 
