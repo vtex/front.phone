@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.10.3] - 2021-07-26
+
+- Add '424' code into VEN file
+
 ## [4.10.2] - 2021-03-03
 
 - Add phone code '2984' into ARG file
