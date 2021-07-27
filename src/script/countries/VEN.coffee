@@ -12,7 +12,7 @@ class Venezuela
 		@countryName = "Venezuela"
 		@countryNameAbbr = "VEN"
 		@countryCode = '58'
-		@regex = /^(?:(?:\+|)58|)(?:0|)(?:(?:(?:2(?:12|3[45789]|4[0-9]|5[1-9]|6[0-9]|7[0-9]|8[1-9]|9[1-5])|(?:4(?:1[24-8]|26)))\d{7}))$/
+		@regex = /^(?:(?:\+|)58|)(?:0|)(?:(?:(?:2(?:12|3[45789]|4[0-9]|5[1-9]|6[0-9]|7[0-9]|8[1-9]|9[1-5])|(?:4(?:1[24-8]|2[46])))\d{7}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
