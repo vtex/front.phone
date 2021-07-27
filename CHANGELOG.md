@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.10.4] - 2021-07-27
+### Fixed
+- Validation for VEN national destination code "424".
+
 ## [4.10.3] - 2021-07-26
 
 - Add '424' code into VEN file
