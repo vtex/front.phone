@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.10.5] - 2021-08-31
+
 - Add North American Numbering Plan for National Destination Code
 
 ## [4.10.4] - 2021-07-27
