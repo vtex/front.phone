@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.10.6] - 2021-10-05
+
 - Add '663' into MEX file
 
 ## [4.10.5] - 2021-08-31
