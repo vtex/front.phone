@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.10.8] - 2021-10-25
+### Fixed
+- Regex for NDC 2336 in Argentinian configuration.
+
 ## [4.10.7] - 2021-10-05
 ### Added
 - National destination code '2336' into ARG file.
