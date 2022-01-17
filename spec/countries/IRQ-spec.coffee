@@ -54,7 +54,7 @@ describe 'Iraq', ->
     describe 'Should format a number', ->
 
         it 'in international format', ->
-			# Arrange
+            # Arrange
             number = "964661234567"
             phone = Phone.getPhoneInternational(number)
 
@@ -67,13 +67,13 @@ describe 'Iraq', ->
     describe 'Should split', ->
 
         it 'number', ->
-			# Arrange
+            # Arrange
             number = "1234567"
 
-			# Act
+            # Act
             result = Phone.countries['964'].splitNumber(number)
 
-			# Assert
+            # Assert
             expect(result.length).to.equal(2)
 
     describe 'Should not', ->
