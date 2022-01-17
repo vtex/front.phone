@@ -19,7 +19,15 @@ class Iraq
 		if withoutNDC.length is 7
 			phone.isMobile = ndc[0] is '7'
 			return phone
-		else if withoutNDC.length is 7 or withoutNDC.length is 6 then return phone
+		else if withoutNDC.length is 6 and !(ndc[0] is '7') then return phone
+	
+	splitNumber: (number) =>
+		if number.length is 7
+			return Phone.compact number.split(/(\d{3})(\d{4})/)
+		else if number.length is 6
+			return Phone.compact number.split(/(\d{3})(\d{3})/)
+
+		return [number]
 
 # register
 iraq = new Iraq()
