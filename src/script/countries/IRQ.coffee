@@ -2,9 +2,6 @@
 Phone = require('../Phone')
 PhoneNumber = require('../PhoneNumber')
 
-# For more info check:
-# https://www.numberingplans.com/?page=dialling&sub=areacodes
-# http://en.wikipedia.org/wiki/Local_conventions_for_writing_telephone_numbers#Brazil
 class Iraq
 	constructor: ->
 		@countryName = "Iraq"
