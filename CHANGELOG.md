@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.11.0] - 2022-01-19
+
+### Added
+
+- Iraq configuration.
+
 ## [4.10.8] - 2021-10-25
 ### Fixed
 - Regex for NDC 2336 in Argentinian configuration.
