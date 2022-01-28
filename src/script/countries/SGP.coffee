@@ -10,6 +10,7 @@ class Singapore
 		@regex = /^(?:\+|)65\d{8,12}$/
 		@optionalTrunkPrefix = ' '
 		@nationalNumberSeparator = ' '
+		@nationalDestinationCode = []
 		
 	
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
