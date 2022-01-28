@@ -76,6 +76,16 @@ describe 'Singapore', ->
 
             # Assert
             expect(result).to.be.null
+        
+        it 'get an invalid number with letters', ->
+            # Arrange
+            number = "+65 1sss234567"
+
+            # Act
+            result = Phone.getPhoneInternational(number)
+
+            # Assert
+            expect(result).to.be.null
 
 
 

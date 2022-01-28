@@ -10,6 +10,7 @@ class Singapore
 		@regex = /^(?:\+|)65\d{8,12}$/
 		@optionalTrunkPrefix = ' '
 		@nationalNumberSeparator = ' '
+		@nationalDestinationCode = []
 		
 	
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
@@ -18,6 +19,7 @@ class Singapore
 		if withoutNDC.indexOf("8") is 0 or withoutNDC.indexOf("9") is 0
 			phone.isMobile = true
 			return phone
+		else if withoutNDC.length >= 8 and withoutNDC.length <= 12 then return phone
 	
 	splitNumber: (number) =>
 		if number.length is 8
