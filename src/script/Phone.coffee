@@ -27,7 +27,7 @@ class Phone
 				[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, nationalNumber)
 				break if foundNDC is true
 
-		if not foundNDC then return null
+		if not foundNDC and countryObj.nationalDestinationCode.length > 0 then return null
 
 		withoutNDC = nationalNumber.replace(ndcRegex, "")
 
