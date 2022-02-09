@@ -7,7 +7,7 @@ class Singapore
 		@countryName = "Singapore"
 		@countryNameAbbr = "SGP"
 		@countryCode = '65'
-		@regex = /^(?:\+|)65\d{8,12}$/
+		@regex = /^(?:\+|)(?:65|)\d{8,12}$/
 		@optionalTrunkPrefix = ' '
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode = []
