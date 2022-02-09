@@ -125,7 +125,7 @@ describe 'Colombia', ->
 			number = "+57 501 9898656"
 
 			# Act
-			result = Phone.validate(number)
+			result = Phone.validate(number, "57")
 
 			# Assert
 			expect(result).to.be.false
