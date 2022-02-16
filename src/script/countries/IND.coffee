@@ -2,23 +2,24 @@
 Phone = require('../Phone')
 PhoneNumber = require('../PhoneNumber')
 
-class Iraq
+class India
 	constructor: ->
-		@countryName = "Iraq"
-		@countryNameAbbr = "IRQ"
-		@countryCode = '964'
-		@regex = /^(?:\+|)(?:964|)(?:0|)*\d{10}$/
+		@countryName = "India"
+		@countryNameAbbr = "IND"
+		@countryCode = '91'
+		@regex = /^(?:\+|)(?:91|)(?:0|)*\d{10}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
-		@nationalDestinationCode = []
+		@nationalDestinationCode =
+			[]
 	
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
 		if withoutNDC.length is 10
 			phone.isMobile = true
-			return phone	
-
+			return phone
+	
 	splitNumber: (number) =>
 		if number.length is 10
 			return Phone.compact number.split(/(\d{5})(\d{5})/)
@@ -26,8 +27,8 @@ class Iraq
 		return [number]
 
 # register
-iraq = new Iraq()
-Phone.countries['964'] = iraq
+india = new India()
+Phone.countries['91'] = india
 
 # exports
-module.exports = iraq
+module.exports = india
