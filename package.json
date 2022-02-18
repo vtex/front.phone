@@ -19,7 +19,7 @@
   "scripts": {
     "test": "grunt test",
     "testWatch": "mocha --watch spec/**/*-spec.coffee --compilers coffee:coffee-script/register",
-    "dist": "grunt dist",
+    "build": "grunt dist",
     "prepublishOnly": "grunt dist"
   },
   "devDependencies": {
