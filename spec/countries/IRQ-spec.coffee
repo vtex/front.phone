@@ -8,7 +8,7 @@ describe 'Iraq', ->
 
         it 'landline number', ->
             # Arrange
-            number = "+964 1234567890"
+            number = "964 1234567890"
 
             # Act
             result = Phone.getPhoneInternational(number)
@@ -18,7 +18,7 @@ describe 'Iraq', ->
             expect(result.countryNameAbbr).to.equal('IRQ')
 
         it  'mobile number', ->
-            number = "+964 1234567890"
+            number = "964 1234567890"
             result = Phone.getPhoneInternational(number)
             expect(result.valid).to.be.true
             expect(result.isMobile).to.be.true

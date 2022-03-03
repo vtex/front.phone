@@ -7,7 +7,7 @@ class Iraq
 		@countryName = "Iraq"
 		@countryNameAbbr = "IRQ"
 		@countryCode = '964'
-		@regex = /^(?:\+|)(?:964|)(?:0|)*\d{10}$/
+		@regex = /^(?:964|)(?:0|)*\d{10}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode = []
