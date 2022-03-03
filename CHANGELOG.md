@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Iraq phone rule, removing special character `+`.
+
 ## [4.15.0] - 2022-02-23
 ### Changed
 - Update deploy pipeline to use Jenkins.
