@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.15.1] - 2022-03-25
+
+### Added
+- Dominican Republic phone number rules ('DOM', 'NANP')
+
 ## [4.15.0] - 2022-02-23
 ### Changed
 - Update deploy pipeline to use Jenkins.
@@ -290,3 +295,7 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 
 - New country! Welcome, Paraguay
 - Improve Brazil's regex
+
+
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.15.1...HEAD
+[4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
