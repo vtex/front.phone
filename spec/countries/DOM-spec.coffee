@@ -9,6 +9,16 @@ describe 'Dominican Republic', ->
 
 		expect(result).to.be.true
 
+	it 'should parse number to DOM', ->
+		number = '+1 809 53 55555'
+
+		result = Phone.getPhoneInternational(number)
+
+		expect(result.countryNameAbbr).to.equal('DOM')
+		expect(result.countryCode).to.equal('1')
+		expect(result.nationalDestinationCode).to.equal('809')
+		expect(result.number).to.equal('5355555')
+
 	it 'should validate 829 ndc', ->
 		number = '+1 829 53 55555'
 
