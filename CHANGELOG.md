@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.15.2-beta.0] - 2022-05-03
+
 ## [4.15.2-beta] - 2022-05-03
 ### Fixed
 - Regex for NANP to include the Dominican Republic area codes.
