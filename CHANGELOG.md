@@ -301,7 +301,3 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 
 - New country! Welcome, Paraguay
 - Improve Brazil's regex
-
-
-[Unreleased]: https://github.com/vtex/front.phone/compare/v4.15.1...HEAD
-[4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
