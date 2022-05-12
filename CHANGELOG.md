@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.15.4-beta] - 2022-05-12
+
 ## [4.15.3-beta] - 2022-05-12
 ### Fixed
 - Italy phone number rules ('ITA')
@@ -310,7 +312,8 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/front.phone//compare/v4.15.3-beta...HEAD
+[Unreleased]: https://github.com/front.phone//compare/v4.15.4-beta...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
+[4.15.4-beta]: https://github.com/front.phone//compare/v4.15.3-beta...v4.15.4-beta
 [4.15.3-beta]: https://github.com/front.phone//compare/v4.15.2...v4.15.3-beta
