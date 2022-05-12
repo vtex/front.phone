@@ -7,17 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [4.15.4-beta] - 2022-05-12
-
-## [4.15.3-beta] - 2022-05-12
-### Fixed
-- Italy phone number rules ('ITA')
-
-## 4.15.3-beta - 2022-05-10
-### Added
-- Italy phone number rules ('ITA')
-
-
 ## [4.15.2] - 2022-05-05
 ### Fixed
 - Regex for NANP to include the Dominican Republic area codes.
