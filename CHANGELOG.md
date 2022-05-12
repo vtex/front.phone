@@ -299,10 +299,3 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 
 - New country! Welcome, Paraguay
 - Improve Brazil's regex
-
-
-[Unreleased]: https://github.com/front.phone//compare/v4.15.4-beta...HEAD
-[4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
-
-[4.15.4-beta]: https://github.com/front.phone//compare/v4.15.3-beta...v4.15.4-beta
-[4.15.3-beta]: https://github.com/front.phone//compare/v4.15.2...v4.15.3-beta
