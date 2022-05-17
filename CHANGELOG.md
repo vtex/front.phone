@@ -6,6 +6,52 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- ITA phone number testing.
+
+## [4.15.15-beta] - 2022-05-19
+
+## [4.15.14-beta] - 2022-05-19
+### Fixed
+- ITA phone number testing.
+
+## [4.15.13-beta] - 2022-05-19
+### Fixed
+- ITA phone number testing.
+
+## [4.15.12-beta] - 2022-05-19
+### Added
+- ITA phone number testing.
+
+## [4.15.11-beta] - 2022-05-19
+### Fixed
+- Issue in RegEx due to 39 being the country code and also being allowed as part of the NDCs.
+
+## [4.15.10-beta] - 2022-05-19
+### Fixed
+- Reinserted minimum splitNumber code to check if it is causing issues.
+
+## [4.15.9-beta] - 2022-05-19
+### Fixed
+- Removed splitNumber code to check if it is causing Italy phone rules regex not being used.
+
+## [4.15.8-beta] - 2022-05-18
+
+## [4.15.7-beta] - 2022-05-18
+
+## [4.15.6-beta] - 2022-05-18
+
+## [4.15.5-beta] - 2022-05-18
+### Fixed
+- Italy phone rules regex not being used when a phone number is entered without the country code.
+
+## [4.15.4-beta] - 2022-05-17
+### Fixed
+- Stricter Italy phone rules.
+
+## [4.15.3-beta] - 2022-05-17
+### Added
+- Italy phone rules.
 
 ## [4.15.2] - 2022-05-05
 ### Fixed
@@ -301,5 +347,19 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/vtex/front.phone/compare/v4.15.1...HEAD
+[Unreleased]: https://github.com/front.phone//compare/v4.15.15-beta...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
+
+[4.15.15-beta]: https://github.com/front.phone//compare/v4.15.14-beta...v4.15.15-beta
+[4.15.14-beta]: https://github.com/front.phone//compare/v4.15.13-beta...v4.15.14-beta
+[4.15.13-beta]: https://github.com/front.phone//compare/v4.15.12-beta...v4.15.13-beta
+[4.15.12-beta]: https://github.com/front.phone//compare/v4.15.11-beta...v4.15.12-beta
+[4.15.11-beta]: https://github.com/front.phone//compare/v4.15.10-beta...v4.15.11-beta
+[4.15.10-beta]: https://github.com/front.phone//compare/v4.15.9-beta...v4.15.10-beta
+[4.15.9-beta]: https://github.com/front.phone//compare/v4.15.8-beta...v4.15.9-beta
+[4.15.8-beta]: https://github.com/front.phone//compare/v4.15.7-beta...v4.15.8-beta
+[4.15.7-beta]: https://github.com/front.phone//compare/v4.15.6-beta...v4.15.7-beta
+[4.15.6-beta]: https://github.com/front.phone//compare/v4.15.5-beta...v4.15.6-beta
+[4.15.5-beta]: https://github.com/front.phone//compare/v4.15.4-beta...v4.15.5-beta
+[4.15.4-beta]: https://github.com/front.phone//compare/v4.15.3-beta...v4.15.4-beta
+[4.15.3-beta]: https://github.com/front.phone//compare/v4.15.2...v4.15.3-beta
