@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.15.7-beta] - 2022-05-17
+
 ## [4.15.6-beta] - 2022-05-12
 
 ## [4.15.5-beta] - 2022-05-12
@@ -306,6 +308,7 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/front.phone//compare/v4.15.6-beta...HEAD
+[Unreleased]: https://github.com/front.phone//compare/v4.15.7-beta...HEAD
+[4.15.7-beta]: https://github.com/front.phone//compare/v4.15.6-beta...v4.15.7-beta
 [4.15.6-beta]: https://github.com/front.phone//compare/v4.15.5-beta...v4.15.6-beta
 [4.15.5-beta]: https://github.com/front.phone//compare/v4.15.4-beta...v4.15.5-beta
