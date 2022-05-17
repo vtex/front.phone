@@ -30,13 +30,13 @@ class Italy
 
 	splitNumber: (number) =>
 		if phone.nationalDestinationCode.length is 5
-			return Phone.compact number.split(/(\d{5})/)
+			return Phone.compact number.split(/(\d{5}\d{4,6})/)
 		else if phone.nationalDestinationCode.length is 4
-			return Phone.compact number.split(/(\d{4})/)
+			return Phone.compact number.split(/(\d{4}\d{4,7})/)
 		else if phone.nationalDestinationCode.length is 3
-			return Phone.compact number.split(/(\d{3})/)
+			return Phone.compact number.split(/(\d{3}\d{4,8})/)
 		else if phone.nationalDestinationCode.length is 2
-			return Phone.compact number.split(/(\d{2})/)
+			return Phone.compact number.split(/(\d{2}\d{4,9})/)
 		
 
 		return [number]
