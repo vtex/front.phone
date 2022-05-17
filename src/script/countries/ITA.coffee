@@ -23,21 +23,19 @@ class Italy
 
 		if ndc.indexOf("3") is 0
 			phone.isMobile = true
-			phone.nationalDestinationCode = ''
-			phone.number = withoutCountryCode
 		else
 			phone.isMobile = false
 
 		return phone
 
 	splitNumber: (number) =>
-		if ndc.length is 5
+		if phone.nationalDestinationCode.length is 5
 			return Phone.compact number.split(/(\d{5})/)
-		else if ndc.length is 4
+		else if phone.nationalDestinationCode.length is 4
 			return Phone.compact number.split(/(\d{4})/)
-		else if ndc.length is 3
+		else if phone.nationalDestinationCode.length is 3
 			return Phone.compact number.split(/(\d{3})/)
-		else if ndc.length is 2
+		else if phone.nationalDestinationCode.length is 2
 			return Phone.compact number.split(/(\d{2})/)
 		
 
