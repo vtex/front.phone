@@ -53,7 +53,7 @@ describe 'Italy', ->
 
 		it 'validate an invalid number', ->
 			# Arrange
-			number = "+39 06 712"
+			number = "+39 06 71"
 
 			# Act
 			result = Phone.validate(number, '39')
