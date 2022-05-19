@@ -8,7 +8,7 @@ describe 'Italy', ->
 
 		it 'land line number', ->
 			# Arrange
-			number = "+39 06 8120297"
+			number = "+39068120297"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
@@ -18,7 +18,7 @@ describe 'Italy', ->
 
 		it 'mobile number', ->
 			# Arrange
-			number = "+39 328 4823922"
+			number = "+393284823922"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
@@ -31,7 +31,7 @@ describe 'Italy', ->
 
 		it 'number', ->
 			# Arrange
-			number = "+39 06 8120297"
+			number = "+39068120297"
 
 			# Act
 			result = Phone.validate(number, '39')
@@ -43,7 +43,7 @@ describe 'Italy', ->
 
 		it 'get an invalid number', ->
 			# Arrange
-			number = "+39 06 712"
+			number = "+39067"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
@@ -53,7 +53,7 @@ describe 'Italy', ->
 
 		it 'validate an invalid number', ->
 			# Arrange
-			number = "+39 06 71"
+			number = "+39067"
 
 			# Act
 			result = Phone.validate(number, '39')
