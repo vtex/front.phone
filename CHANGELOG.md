@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.15.12-beta] - 2022-05-19
 ### Added
 - ITA phone number testing.
 
@@ -333,9 +335,10 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/front.phone//compare/v4.15.11-beta...HEAD
+[Unreleased]: https://github.com/front.phone//compare/v4.15.12-beta...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
+[4.15.12-beta]: https://github.com/front.phone//compare/v4.15.11-beta...v4.15.12-beta
 [4.15.11-beta]: https://github.com/front.phone//compare/v4.15.10-beta...v4.15.11-beta
 [4.15.10-beta]: https://github.com/front.phone//compare/v4.15.9-beta...v4.15.10-beta
 [4.15.9-beta]: https://github.com/front.phone//compare/v4.15.8-beta...v4.15.9-beta
