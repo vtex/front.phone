@@ -18,7 +18,7 @@ class Italy
 			]
 	
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryNameAbbr, @countryCode, '', withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
 		if ndc.indexOf("3") is 0
 			phone.isMobile = true
@@ -26,6 +26,9 @@ class Italy
 			phone.isMobile = false
 
 		return phone
+
+	splitNumber: (number) =>
+		return [number]
 
 # register
 italy = new Italy()
