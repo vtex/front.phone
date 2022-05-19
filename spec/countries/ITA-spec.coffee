@@ -27,18 +27,6 @@ describe 'Italy', ->
 			expect(result.valid).to.be.true
 			expect(result.isMobile).to.be.true
 
-	describe 'Should split', ->
-
-		it 'number', ->
-			# Arrange
-			number = "068120297"
-
-			# Act
-			result = Phone.countries['39'].splitNumber(number)
-
-			# Assert
-			expect(result.length).to.equal(3)
-
 	describe 'Should validate a', ->
 
 		it 'number', ->
