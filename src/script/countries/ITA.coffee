@@ -9,7 +9,7 @@ class Italy
 		@countryName = "Italy"
 		@countryNameAbbr = "ITA"
 		@countryCode = '39'
-		@regex = /^(?:(?:\+|)39|)(?:0|)(?:(?:[03][1-9]\d{4,9}))$/
+		@regex = /^(?:(?:\+|)39|)(?:0|)(?:(?:((?!^39)([03][1-9])|391|392|393)\d{4,9}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
