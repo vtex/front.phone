@@ -27,19 +27,6 @@ class Italy
 
 		return phone
 
-	splitNumber: (number) =>
-		if withoutNDC.length is 4
-			return Phone.compact number.split(/(\d{1,4}\d{4})/)
-		else if withoutNDC.length is 5
-			return Phone.compact number.split(/(\d{1,4}\d{5})/)
-		else if withoutNDC.length is 6
-			return Phone.compact number.split(/(\d{1,4}\d{6})/)
-		else if withoutNDC.length is 7
-			return Phone.compact number.split(/(\d{1,4}\d{7})/)
-
-		return [number]
-
-
 # register
 italy = new Italy()
 Phone.countries['39'] = italy

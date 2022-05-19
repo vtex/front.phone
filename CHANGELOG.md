@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Removed splitNumber code to check if it is causing Italy phone rules regex not being used.
 
 ## [4.15.8-beta] - 2022-05-18
 
