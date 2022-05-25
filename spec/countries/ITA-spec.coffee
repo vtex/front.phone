@@ -43,7 +43,7 @@ describe 'Italy', ->
 
 		it 'get an invalid number', ->
 			# Arrange
-			number = "+39067"
+			number = "+390"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
@@ -53,7 +53,7 @@ describe 'Italy', ->
 
 		it 'validate an invalid number', ->
 			# Arrange
-			number = "+39067"
+			number = "+39069"
 
 			# Act
 			result = Phone.validate(number, '39')
