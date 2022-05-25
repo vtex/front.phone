@@ -9,7 +9,7 @@ class Italy
 		@countryName = "Italy"
 		@countryNameAbbr = "ITA"
 		@countryCode = '39'
-		@regex = /^(?:(?:\+|)39|)(?:0|)(?:(?:((?!^39)([03][1-9])|391|392|393)\d{4,9}))$/
+		@regex = /^(?:(?:(?:\+|)(?:39|)|))(?:(?:[03][1-9]\d{4,9}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
@@ -22,10 +22,10 @@ class Italy
 
 		if ndc.indexOf("3") is 0
 			phone.isMobile = true
+			return phone
 		else
 			phone.isMobile = false
-
-		return phone
+			return phone
 
 	splitNumber: (number) =>
 		return [number]
