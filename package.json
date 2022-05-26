@@ -1,7 +1,7 @@
 {
   "name": "front.phone",
   "description": "front.phone is a Javascript library that identifies, validates and formats phone numbers",
-  "version": "4.15.15-beta",
+  "version": "4.17.0",
   "paths": [
     "/front.phone"
   ],
