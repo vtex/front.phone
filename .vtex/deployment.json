@@ -10,6 +10,7 @@
         "AWS_REGION": "us-east-1",
         "SLACK_CHANNEL": "checkout-ui-notifications"
       }
-    }
+    },
+    "iamInstanceProfile": "BeanstalkRole_front.phone"
   }
 ]
