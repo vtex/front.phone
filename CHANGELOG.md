@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.17.0] - 2022-07-20
 ### Added
-- Indonesia ('IDN'), Czech Republic ('CZE') and Slovakia ('SVK') phone rules.
+- Australia ('AUS'), Czech Republic ('CZE'), Indonesia ('IDN'), New Zealand ('NZL') and Slovakia ('SVK') phone rules.
 
 ## [4.16.0] - 2022-05-26
 ### Added
