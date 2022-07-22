@@ -7,7 +7,7 @@ class Australia
 		@countryName = "Australia"
 		@countryNameAbbr = "AUS"
 		@countryCode = '61'
-		@regex = /^(?:(?:(?:\+|)(?:61|)|))[1-5,7-8][0-9]{8}$/
+		@regex = /^(?:(?:(?:\+|)(?:61|)|))([1-5,7-8])[0-9]{8}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
@@ -18,9 +18,8 @@ class Australia
 
 		if withoutCountryCode[0] in ['4', '5']
 			phone.isMobile = true
-			phone.number = withoutCountryCode
 			return phone
-			
+		else return phone
 
 	splitNumber: (number) =>
 		return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
