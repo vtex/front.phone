@@ -27,7 +27,7 @@ describe 'Australia', ->
 
         it 'in international format', ->
             # Arrange
-            number = "298789402"
+            number = "61298789402"
             phone = Phone.getPhoneInternational(number)
 
             # Act

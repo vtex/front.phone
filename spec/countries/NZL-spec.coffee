@@ -39,11 +39,7 @@ describe 'New Zealand', ->
 
         it 'in international format', ->
             # Arrange
-<<<<<<< HEAD
             number = "642102483336"
-=======
-            number = "2102483336"
->>>>>>> cc5d6f6 (New Zealand tests)
             phone = Phone.getPhoneInternational(number)
 
             # Act
