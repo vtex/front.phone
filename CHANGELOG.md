@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- France ('FRA') country rules to remove extra zero before mobile numbers.
+
 ## [4.17.0] - 2022-07-20
 ### Added
 - Australia ('AUS'), Czech Republic ('CZE'), Indonesia ('IDN'), New Zealand ('NZL') and Slovakia ('SVK') phone rules.
