@@ -39,14 +39,14 @@ describe 'New Zealand', ->
 
         it 'in international format', ->
             # Arrange
-            number = "2102483336"
+            number = "642102483336"
             phone = Phone.getPhoneInternational(number)
 
             # Act
             result = Phone.format(phone, Phone.INTERNATIONAL)
 
             # Assert
-            expect(result).to.match(/\+64 210 248 3336/)
+            expect(result).to.match(/\+64 2 10 248 3336/)
 
     describe 'Should split', ->
 

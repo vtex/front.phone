@@ -10,7 +10,7 @@ class France
 		@countryName = "France"
 		@countryNameAbbr = "FRA"
 		@countryCode = '33'
-		@regex = /^(?:(?:(?:\+|)33)|)(?:0|)(?:0|)[1-9]\d{8}$/
+		@regex = /^(?:(?:(?:\+|)33)|)(?:0|)[1-9]\d{8}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -39,7 +39,7 @@ class France
 
 		switch format
 			when Phone.NATIONAL, Phone.LOCAL
-				return @splitNumber('0' + fullNumber).join(separator)
+				return @splitNumber(fullNumber).join(separator)
 			else
 				return "+" + phone.countryCode + " " + @splitNumber(fullNumber).join(separator)
 
