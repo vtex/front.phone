@@ -34,7 +34,7 @@ describe 'Australia', ->
             result = Phone.format(phone, Phone.INTERNATIONAL)
 
             # Assert
-            expect(result).to.match(/\+61 2 9878 9402/)
+            expect(result).to.match(/\+61 2 98789402/)
 
     describe 'Should split', ->
 

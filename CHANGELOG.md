@@ -10,9 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - France ('FRA') country rules to remove extra zero before mobile numbers.
 
+## [4.17.2] - 2022-07-26
+
+## [4.17.1] - 2022-07-26
+### Added
+- Australia ('AUS') and New Zealand ('NZL') phone rules.
+
 ## [4.17.0] - 2022-07-20
 ### Added
-- Australia ('AUS'), Czech Republic ('CZE'), Indonesia ('IDN'), New Zealand ('NZL') and Slovakia ('SVK') phone rules.
+- Indonesia ('IDN'), Czech Republic ('CZE') and Slovakia ('SVK') phone rules.
 
 ## [4.16.0] - 2022-05-26
 ### Added
@@ -312,8 +318,11 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.0...HEAD
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.2...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
+[4.17.2]: https://github.com/vtex/front.phone/compare/v4.17.1...v4.17.2
+[4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
+[4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
 [4.17.0]: https://github.com/vtex/front.phone/compare/v4.16.0...v4.17.0
 [4.16.0]: https://github.com/vtex/front.phone/compare/v4.15.15-beta...v4.16.0
