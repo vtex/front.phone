@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- France ('FRA') country rules to remove extra zero before mobile numbers.
+
 ## [4.17.2] - 2022-07-26
 
 ## [4.17.1] - 2022-07-26

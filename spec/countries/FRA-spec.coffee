@@ -26,7 +26,7 @@ describe 'France', ->
 			result = Phone.format(phone, Phone.NATIONAL)
 
 			# Assert
-			expect(result).to.match(/01 87 87 87 87/)
+			expect(result).to.match(/1 87 87 87 87/)
 
 	describe 'Should get a', ->
 
