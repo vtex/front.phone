@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.17.3] - 2022-08-17
+
 ### Fixed
 - France ('FRA') country rules to remove extra zero before mobile numbers.
 
@@ -320,9 +322,10 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.2...HEAD
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.3...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
+[4.17.3]: https://github.com/vtex/front.phone/compare/v4.17.2...v4.17.3
 [4.17.2]: https://github.com/vtex/front.phone/compare/v4.17.1...v4.17.2
 [4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
 [4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
