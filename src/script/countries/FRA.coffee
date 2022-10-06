@@ -27,7 +27,7 @@ class France
 		if ndc in ['6', '7']
 			phone.isMobile = true
 			phone.nationalDestinationCode = ''
-			phone.number = withoutCountryCode
+			phone.number = ndc + withoutNDC
 		else
 			phone.isMobile = false
 
@@ -39,7 +39,7 @@ class France
 
 		switch format
 			when Phone.NATIONAL, Phone.LOCAL
-				return @splitNumber(fullNumber).join(separator)
+				return @splitNumber('0' + fullNumber).join(separator)
 			else
 				return "+" + phone.countryCode + " " + @splitNumber(fullNumber).join(separator)
 
