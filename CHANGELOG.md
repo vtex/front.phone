@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.17.4-beta] - 2022-10-19
+
 ### Fixed
 - France ('FRA') country rules to save numbers with only one preceding zero.
 
@@ -325,9 +327,10 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.3...HEAD
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.4-beta...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
+[4.17.4-beta]: https://github.com/vtex/front.phone/compare/v4.17.3...v4.17.4-beta
 [4.17.3]: https://github.com/vtex/front.phone/compare/v4.17.2...v4.17.3
 [4.17.2]: https://github.com/vtex/front.phone/compare/v4.17.1...v4.17.2
 [4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
