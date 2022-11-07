@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Mexico ('MEX') country rules to add ndc 446.
+
+### Added
+- Saudi Arabia ('KSA') and United Arab Emirates ('UAE') country rules.
+
 ## [4.17.4] - 2022-10-19
 
 ### Fixed
