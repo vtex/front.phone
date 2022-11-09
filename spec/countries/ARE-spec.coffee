@@ -1,24 +1,24 @@
 expect = require('chai').expect
 Phone = require('../../src/script/Phone')
-saudiarabia  = require('../../src/script/countries/KSA')
+unitedarabemirates  = require('../../src/script/countries/ARE')
 
-describe 'Saudi Arabia', ->
+describe 'United Arab Emirates', ->
 
     describe 'Should get a', ->
 
         it 'landline number', ->
             # Arrange
-            number = "+966 017 725225"
+            number = "+971 050 444400"
 
             # Act
             result = Phone.getPhoneInternational(number)
 
             # Assert
             expect(result.valid).to.be.true
-            expect(result.countryNameAbbr).to.equal('KSA')
+            expect(result.countryNameAbbr).to.equal('ARE')
 
         it  '9-digit mobile number', ->
-            number = "+966 050 646 528"
+            number = "+971 055 646 528"
             result = Phone.getPhoneInternational(number)
             expect(result.valid).to.be.true
             expect(result.isMobile).to.be.true 
@@ -27,23 +27,23 @@ describe 'Saudi Arabia', ->
 
         it 'in international format', ->
             # Arrange
-            number = "966055444400"
+            number = "9710554440400"
             phone = Phone.getPhoneInternational(number)
 
             # Act
             result = Phone.format(phone, Phone.INTERNATIONAL)
 
             # Assert
-            expect(result).to.match(/\+966 055 444400/)
+            expect(result).to.match(/\+971 055 4440400/)
 
     describe 'Should split', ->
 
         it 'number', ->
             # Arrange
-            number = "920001950"
+            number = "097001234"
 
             # Act
-            result = Phone.countries['966'].splitNumber(number)
+            result = Phone.countries['971'].splitNumber(number)
 
             # Assert
             expect(result.length).to.equal(3)
@@ -52,7 +52,7 @@ describe 'Saudi Arabia', ->
 
         it 'get an invalid number', ->
             # Arrange
-            number = "+966 8 700 1234"
+            number = "+971 8 700 1234"
 
             # Act
             result = Phone.getPhoneInternational(number)
@@ -62,10 +62,10 @@ describe 'Saudi Arabia', ->
 
         it 'validate an invalid number', ->
             # Arrange
-            number = "+966 676 5646 6528"
+            number = "+971 666 7564 6528"
 
             # Act
-            result = Phone.validate(number, '966')
+            result = Phone.validate(number, '971')
 
             # Assert
             expect(result).to.be.false

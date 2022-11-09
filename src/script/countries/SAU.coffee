@@ -5,7 +5,7 @@ PhoneNumber = require('../PhoneNumber')
 class SaudiArabia
 	constructor: ->
 		@countryName = "Saudi Arabia"
-		@countryNameAbbr = "KSA"
+		@countryNameAbbr = "SAU"
 		@countryCode = '966'
 		@regex = /^(?:\+|)(?:966|)(?:0|)*\d{9,10}$/
 		@optionalTrunkPrefix = '0'
