@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Mexico ('MEX') country rules to add ndc 446.
 
 ### Added
-- Saudi Arabia ('SAU') and United Arab Emirates ('ARE') country rules.
+- Saudi Arabia ('SAU'), United Arab Emirates ('ARE') and Greece ('GRC') country rules.
 
 ## [4.17.4] - 2022-10-19
 
