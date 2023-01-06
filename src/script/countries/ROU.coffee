@@ -14,6 +14,14 @@ class Romania
 
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
+		if withoutCountryCode[0] is '0'
+			# Sometimes clients may type their phones with a leading zero
+			# we should strip that
+			withoutNDC = withoutCountryCode.slice(1)
+		
+		if withoutCountryCode.slice(0,2) is '40'
+			withoutNDC = withoutCountryCode.slice(2)
+
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 	
 		if withoutCountryCode[0] in ['6','7']
