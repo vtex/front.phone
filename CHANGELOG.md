@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - List of NDCs for MEX to include new area code 479.
+- List of NDCs for ARG to include new area code 2634.
 
 ## [4.17.6] - 2023-01-06
 
