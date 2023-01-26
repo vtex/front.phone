@@ -14,7 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.17.6] - 2023-01-06
 
-
 ### Fixed
 - Romania ('ROU') country rules to remove extra characters.
 
