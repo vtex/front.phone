@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- List of NDCs for MEX to include new area code 479.
+- List of NDCs for ARG to include new area code 2634.
+
 ## [4.17.7-beta] - 2023-01-06
 
 ## [4.17.6-beta] - 2023-01-06
 
+## [4.17.6] - 2023-01-06
 
 ### Fixed
 - Romania ('ROU') country rules to remove extra characters.
@@ -345,6 +351,7 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.1-beta...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
@@ -355,6 +362,12 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 
 [4.17.7-beta]: https://github.com/vtex/front.phone/compare/v4.17.6-beta...v4.17.7-beta
 [4.17.6-beta]: https://github.com/vtex/front.phone/compare/v4.17.5...v4.17.6-beta
+=======
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.6...HEAD
+[4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
+
+[4.17.6]: https://github.com/vtex/front.phone/compare/v4.17.5...v4.17.6
+>>>>>>> update/LOC-9854
 [4.17.5]: https://github.com/vtex/front.phone/compare/v4.17.4...v4.17.5
 [4.17.4]: https://github.com/vtex/front.phone/compare/v4.17.3...v4.17.4
 [4.17.3]: https://github.com/vtex/front.phone/compare/v4.17.2...v4.17.3
