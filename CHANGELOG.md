@@ -7,7 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [4.17.1-beta] - 2022-07-26
+## [4.17.7-beta] - 2023-01-06
+
+## [4.17.6-beta] - 2023-01-06
+
+
+### Fixed
+- Romania ('ROU') country rules to remove extra characters.
+
+## [4.17.5] - 2022-12-06
+
+### Fixed
+- Mexico ('MEX') country rules to add ndc 446.
+
+### Added
+- Romania ('ROU'), Saudi Arabia ('SAU'), United Arab Emirates ('ARE') and Greece ('GRC') country rules.
+
+## [4.17.4] - 2022-10-19
+
+### Fixed
+- France ('FRA') country rules to save numbers with only one preceding zero.
+
+## [4.17.3] - 2022-08-17
+
+### Fixed
+- France ('FRA') country rules to remove extra zero before mobile numbers.
+
+## [4.17.2] - 2022-07-26
+
+## [4.17.1] - 2022-07-26
+
+## [4.17.1] - 2022-07-26
+
 ### Added
 - Australia ('AUS') and New Zealand ('NZL') phone rules.
 
@@ -313,9 +344,23 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
+<<<<<<< HEAD
 [Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.1-beta...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
 [4.17.1-beta]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1-beta
+=======
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.7-beta...HEAD
+[4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
+
+[4.17.7-beta]: https://github.com/vtex/front.phone/compare/v4.17.6-beta...v4.17.7-beta
+[4.17.6-beta]: https://github.com/vtex/front.phone/compare/v4.17.5...v4.17.6-beta
+[4.17.5]: https://github.com/vtex/front.phone/compare/v4.17.4...v4.17.5
+[4.17.4]: https://github.com/vtex/front.phone/compare/v4.17.3...v4.17.4
+[4.17.3]: https://github.com/vtex/front.phone/compare/v4.17.2...v4.17.3
+[4.17.2]: https://github.com/vtex/front.phone/compare/v4.17.1...v4.17.2
+[4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
+[4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
+>>>>>>> 8b0014c0f5dce5f8c6d935fa28f35963cc37d9ae
 [4.17.0]: https://github.com/vtex/front.phone/compare/v4.16.0...v4.17.0
 [4.16.0]: https://github.com/vtex/front.phone/compare/v4.15.15-beta...v4.16.0

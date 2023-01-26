@@ -10,7 +10,7 @@ class France
 		@countryName = "France"
 		@countryNameAbbr = "FRA"
 		@countryCode = '33'
-		@regex = /^(?:(?:(?:\+|)33)|)(?:0|)(?:0|)[1-9]\d{8}$/
+		@regex = /^(?:(?:(?:\+|)33)|)(?:0|)[1-9]\d{8}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -27,7 +27,7 @@ class France
 		if ndc in ['6', '7']
 			phone.isMobile = true
 			phone.nationalDestinationCode = ''
-			phone.number = withoutCountryCode
+			phone.number = ndc + withoutNDC
 		else
 			phone.isMobile = false
 
