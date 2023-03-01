@@ -62,7 +62,7 @@ describe 'Australia', ->
 
         it 'validate an invalid number', ->
             # Arrange
-            number = "+61 2 22234 1234"
+            number = "+61 2 22234 12340"
 
             # Act
             result = Phone.validate(number, '61')

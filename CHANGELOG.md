@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Australia ('AUS') country rules to accept front 0 and more digits.
+
 ## [4.17.7] - 2023-01-26
 
 ### Fixed
