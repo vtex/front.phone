@@ -7,7 +7,7 @@ class Australia
 		@countryName = "Australia"
 		@countryNameAbbr = "AUS"
 		@countryCode = '61'
-		@regex = /^(?:(?:(?:\+|)(?:61|)|))([1-5,7-8])[0-9]{8}$/
+		@regex = /^(?:(?:(?:\+|)(?:61|)(?:0|)|))([1-5,7-8])[0-9]{8,9}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
