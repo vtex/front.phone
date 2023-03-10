@@ -40,10 +40,15 @@ class Australia
 				return "+" + phone.countryCode + " " + phone.nationalDestinationCode + " " + phone.number
 
 	splitNumber: (number) =>
-		if number.length is 11
-			return Phone.compact number.split(/(\d{2})(\d{3})(\d{3})(\d{3})/)
-		else if number.length is 9
-			return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
+		switch number.length
+			when 11 
+				return Phone.compact number.split(/(\d{2})(\d{3})(\d{3})(\d{3})/)
+			when 10 
+				return Phone.compact number.split(/(\d{2})(\d{4})(\d{4})/)
+			when 9 
+				return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
+			when 8
+				return Phone.compact number.split(/(\d{4})(\d{4})/)
 
 		return [number]
 
