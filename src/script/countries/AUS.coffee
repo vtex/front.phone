@@ -26,6 +26,32 @@ class Australia
 
 		return [number]
 
+	format: (phone, format = Phone.NATIONAL) =>
+		resultString = ""
+		fullNumber = phone.nationalDestinationCode + phone.number
+		separator = @nationalNumberSeparator
+
+		switch format
+			when Phone.NATIONAL, Phone.LOCAL
+				if phone.nationalDestinationCode
+					resultString += '(0' + phone.nationalDestinationCode + ') '
+				return resultString + @splitNumber(phone.number).join(separator)
+			else
+				return "+" + phone.countryCode + " " + phone.nationalDestinationCode + " " + phone.number
+
+	splitNumber: (number) =>
+		switch number.length
+			when 11 
+				return Phone.compact number.split(/(\d{2})(\d{3})(\d{3})(\d{3})/)
+			when 10 
+				return Phone.compact number.split(/(\d{2})(\d{4})(\d{4})/)
+			when 9 
+				return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
+			when 8
+				return Phone.compact number.split(/(\d{4})(\d{4})/)
+
+		return [number]
+
 # register
 australia = new Australia()
 Phone.countries['61'] = australia
