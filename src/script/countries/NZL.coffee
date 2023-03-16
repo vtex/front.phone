@@ -7,7 +7,7 @@ class NewZealand
 		@countryName = "New Zealand"
 		@countryNameAbbr = "NZL"
 		@countryCode = '64'
-		@regex = /^(?:(?:(?:\+|)(?:64|)(?:0|)| ))(([2][0-9]{7,9})|([3,4,6,7,9][0-9]{7}))$/
+		@regex = /^(?:(?:(?:\+|)(?:64|)(?:0|)|))([2-4,6-7,9])[0-9]{7,9}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
@@ -16,16 +16,15 @@ class NewZealand
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 
-		# if withoutCountryCode[0] in ['2']
 		if ndc in ['2']
 			phone.isMobile = true
 			return phone
 		else return phone
 
-	splitNumber: (number) =>
-		return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
+	# splitNumber: (number) =>
+	# 	return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
 
-		return [number]
+	# 	return [number]
 
 	format: (phone, format = Phone.NATIONAL) =>
 		resultString = ""
@@ -42,14 +41,12 @@ class NewZealand
 
 	splitNumber: (number) =>
 		switch number.length
+			when 10 
+				return Phone.compact number.split(/(\d{2})(\d{4})(\d{4})/)
+			when 9 
+				return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
 			when 8
-				if number[0] in ['2']
-					return Phone.compact number.split(/(\d{2})(\d{3})(\d{3})/)
-				else return Phone.compact number.split(/(\d{1})(\d{3})(\d{4})/)
-			when 9
-				return Phone.compact number.split(/(\d{2})(\d{3})(\d{4})/)
-			when 10
-				return Phone.compact number.split(/(\d{3})(\d{3})(\d{4})/)
+				return Phone.compact number.split(/(\d{4})(\d{4})/)
 
 		return [number]
 

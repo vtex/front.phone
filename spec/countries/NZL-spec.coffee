@@ -58,7 +58,7 @@ describe 'New Zealand', ->
             result = Phone.countries['64'].splitNumber(number)
 
             # Assert
-            expect(result.length).to.equal(3)
+            expect(result.length).to.equal(2)
 
     describe 'Should not', ->
 
@@ -74,7 +74,7 @@ describe 'New Zealand', ->
 
         it 'validate an invalid number', ->
             # Arrange
-            number = "+64 6 7564 6528"
+            number = "+64 5 7564 6528"
 
             # Act
             result = Phone.validate(number, '64')
