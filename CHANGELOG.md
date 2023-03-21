@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Indonesia ('IDN') regex.
+
 ## [4.17.9] - 2023-03-10
 
 ### Fixed
