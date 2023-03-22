@@ -7,7 +7,7 @@ class Indonesia
 		@countryName = "Indonesia"
 		@countryNameAbbr = "IDN"
 		@countryCode = '62'
-		@regex = /^(?:\+62|\(0\d{2,3}\)|0)\s?(?:361|8[17]\s?\d?)?(?:[ -]?\d{3,4}){2,3}$/
+		@regex = /^\+?(|62)\s?([0-9]{2,3})\s?\-?([0-9]{3,4})\s?\-?([0-9]{4,7})$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
