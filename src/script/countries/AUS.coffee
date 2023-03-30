@@ -33,6 +33,9 @@ class Australia
 
 		switch format
 			when Phone.NATIONAL, Phone.LOCAL
+				if phone.nationalDestinationCode === 4||5
+					resultString += '0'+ phone.nationalDestinationCode + ' '
+				return resultString	+ Phone.compact number.split(/(\d{4})(\d{3})(\d{3})/)
 				if phone.nationalDestinationCode
 					resultString += '(0' + phone.nationalDestinationCode + ') '
 				return resultString + @splitNumber(phone.number).join(separator)

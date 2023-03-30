@@ -66,5 +66,8 @@
     "Breno Calazans <brenocalazans@gmail.com>",
     "Guilherme Berger <guilherme.berger@gmail.com>"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "coffeescript": "^2.7.0"
+  }
 }
