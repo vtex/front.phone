@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Phone rules to accept slash when entering a number
+
 ## [4.17.9] - 2023-03-10
 
 ### Fixed
