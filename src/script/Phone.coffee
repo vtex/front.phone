@@ -107,12 +107,14 @@ class Phone
 				resultString += splitNumber.join(" ")
 
 			when @NATIONAL
+				console.log("ENTROU NO PHONE.COFFEE NATIONAL")
 				if phone.nationalDestinationCode
 					resultString += "(" + phone.nationalDestinationCode + ") "
 				separator = @countries[phone.countryCode].nationalNumberSeparator
 				resultString += splitNumber.join(separator)
 
 			when @LOCAL
+				console.log("ENTROU NO PHONE.COFFEE LOCAL")
 				separator = @countries[phone.countryCode].nationalNumberSeparator
 				resultString = splitNumber.join(separator)
 

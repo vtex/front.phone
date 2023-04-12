@@ -21,10 +21,10 @@ class Australia
 			return phone
 		else return phone
 
-	splitNumber: (number) =>
-		return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
+	# splitNumber: (number) =>
+	# 	return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
 
-		return [number]
+	# 	return [number]
 
 	format: (phone, format = Phone.NATIONAL) =>
 		resultString = ""
@@ -34,26 +34,35 @@ class Australia
 		switch format
 			when Phone.NATIONAL, Phone.LOCAL
 				if phone.nationalDestinationCode is '4'||'5'
-					resultString += '0'+ phone.nationalDestinationCode + ' '
-				return resultString	+ Phone.compact phone.number.split(/(\d{4})(\d{3})(\d{3})/)
-				if phone.nationalDestinationCode
+					console.log("ENTROU NA FORMATAÇÃO DA CAMILA")
+					resultString += '0'+ phone.nationalDestinationCode
+					# return resultString	+ Phone.compact phone.number.split(/(\d{2})(\d{3})(\d{3})/)
+					# return resultString + @splitNumber(phone.number).join(separator)
+				else
+				#  phone.nationalDestinationCode
+					console.log("ENTROU NA FORMATAÇÃO ORIGINAL")
 					resultString += '(0' + phone.nationalDestinationCode + ') '
 				return resultString + @splitNumber(phone.number).join(separator)
 			else
+				console.log("ENTROU NA FORMATAÇÃO FINAL")
 				return "+" + phone.countryCode + " " + phone.nationalDestinationCode + " " + phone.number
 
 	splitNumber: (number) =>
 		switch number.length
 			when 11 
+				console.log("ENTROU NO 11")
 				return Phone.compact number.split(/(\d{2})(\d{3})(\d{3})(\d{3})/)
 			when 10 
+				console.log("ENTROU NO 10")
 				return Phone.compact number.split(/(\d{2})(\d{4})(\d{4})/)
 			when 9 
+				console.log("ENTROU NO 9")
 				return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
 			when 8
+				console.log("ENTROU NO 8")
 				return Phone.compact number.split(/(\d{4})(\d{4})/)
 
-		return [number]
+		return [number]	
 
 # register
 australia = new Australia()
