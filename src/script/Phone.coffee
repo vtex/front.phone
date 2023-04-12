@@ -59,7 +59,7 @@ class Phone
 
 	normalize: (number) =>
 		# Remove whitespaces, parenthesis, slashes, dots, plus sign and letters
-		return number.replace(/\ |\(|\)|\-|\.|[A-z]|\+/g, "")
+		return number.replace(/\/|\ |\(|\)|\-|\.|[A-z]|\+/g, "")
 
 	compact: (array) =>
 		newArray = []
