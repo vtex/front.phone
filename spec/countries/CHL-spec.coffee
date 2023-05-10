@@ -6,7 +6,7 @@ describe 'Chile', ->
 
 	describe 'Should format a number', ->
 
-		it 'in national format mobile', ->
+		it 'in national format', ->
 			# Arrange
 			number = "56998986565"
 			phone = Phone.getPhoneInternational(number)
@@ -32,21 +32,9 @@ describe 'Chile', ->
 			# Arrange
 			number = "+56 2 98986565"
 
-		it 'number with 7 digits', ->
+		it 'number with destination national code 5', ->
 			# Arrange
-			number = "+56 35 9898656"
-
-		it 'number with 6 digits', ->
-			# Arrange
-			number = "+56 35 989865"
-
-		it 'number with destination national code 58', ->
-			# Arrange
-			number = "+56 58 9898656"
-
-		it 'mobile number', ->
-			# Arrange
-			number = "+56 9 98986565"
+			number = "+56 5 89898656"
 
 	describe 'Should split', ->
 
@@ -63,14 +51,6 @@ describe 'Chile', ->
 			# Arrange
 			number = "98986565"
 
-		it 'number with 7 digits', ->
-			# Arrange
-			number = "8986565"
-
-		it 'number with 6 digits', ->
-			# Arrange
-			number = "986565"
-
 	describe 'Should validate a', ->
 
 		number = ''
@@ -86,18 +66,6 @@ describe 'Chile', ->
 			# Arrange
 			number = "+56 2 98986565"
 
-		it 'number with 7 digits', ->
+		it 'number with destination national code 5', ->
 			# Arrange
-			number = "+56 35 9898656"
-
-		it 'number with 6 digits', ->
-			# Arrange
-			number = "+56 35 989865"
-
-		it 'number with destination national code 58', ->
-			# Arrange
-			number = "+56 58 9898656"
-
-		it 'mobile number', ->
-			# Arrange
-			number = "+56 9 98986565"
+			number = "+56 5 89898656"
