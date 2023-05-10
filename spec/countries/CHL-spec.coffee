@@ -45,11 +45,11 @@ describe 'Chile', ->
 			result = Phone.countries['56'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(2)
+			expect(result.length).to.equal(3)
 
-		it 'number with 8 digits', ->
+		it 'number with 9 digits', ->
 			# Arrange
-			number = "98986565"
+			number = "998986565"
 
 	describe 'Should validate a', ->
 
@@ -62,10 +62,10 @@ describe 'Chile', ->
 			# Assert
 			expect(result).to.be.true
 
-		it 'number with destination national code 2', ->
+		it 'number starting with 2', ->
 			# Arrange
 			number = "+56 2 98986565"
 
-		it 'number with destination national code 5', ->
+		it 'number starting with 5', ->
 			# Arrange
 			number = "+56 5 89898656"

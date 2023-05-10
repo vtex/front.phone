@@ -5,7 +5,7 @@ PhoneNumber = require('../PhoneNumber')
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
 # http://www.howtocallabroad.com/chile/
-# (1) http://www.cambionumeracion.cl/?page_id=4
+# https://www.itu.int/oth/T020200002A/en
 class Chile
 	constructor: ->
 		@countryName = "Chile"
@@ -14,18 +14,16 @@ class Chile
 		@regex = /^(?:(?:\+|)56|)([2-9])\d{8}$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
-		@nationalDestinationCode =
-			[
-				'2','3','4','5','6','7','8','9'
-			]
+		@nationalDestinationCode = []
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
+		phone.number = withoutCountryCode
+		phone.nationalDestinationCode = ''
 		return phone
 
 	splitNumber: (number) =>
 		return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
-		return [number]
 
 # register
 chile = new Chile()
