@@ -5,30 +5,31 @@ PhoneNumber = require('../PhoneNumber')
 # For more info check:
 # https://www.numberingplans.com/?page=dialling&sub=areacodes
 # http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia
+# https://www.itu.int/oth/T020200002C/en
+
 class Colombia
 	constructor: ->
 		@countryName = "Colombia"
 		@countryNameAbbr = "COL"
 		@countryCode = '57'
-		@regex = /^(?:(?:\+|)57|)(?:0|)(?:(?:[12345678]\d{7})|(?:3\d{9}))$/
+		@regex = /^(?:(?:\+|)57|)(?:(?:[6][0][1245678]\d{7})|(?:3\d{9}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
 			[
-				'3(\\d{2})', '1', '2', '3', '4', '5', '6', '7', '8'
+				'3(\\d{2})', '601', '602', '604', '605', '606', '607', '608'
 			]
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, '', withoutNDC)
-		if withoutCountryCode.indexOf('3') is 0 and withoutCountryCode.length is 10
+		if withoutCountryCode.indexOf('3') is 0
 			phone.isMobile = true
 			phone.number = withoutCountryCode
 			phone.nationalDestinationCode = ''
 			return phone
 		else
-			if withoutNDC.length is 7
-				phone.nationalDestinationCode = ndc
-				return phone
+			phone.nationalDestinationCode = ndc
+			return phone
 
 	splitNumber: (number) =>
 		if number.length is 7

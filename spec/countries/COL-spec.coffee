@@ -19,14 +19,14 @@ describe 'Colombia', ->
 
 		it 'in national format', ->
 			# Arrange
-			number = "5729898565"
+			number = "576029898565"
 			phone = Phone.getPhoneInternational(number)
 
 			# Act
 			result = Phone.format(phone, Phone.NATIONAL)
 
 			# Assert
-			expect(result).to.match(/\(2\) 989 8565/)
+			expect(result).to.match(/\(602\) 989 8565/)
 
 		it 'in national format mobile', ->
 			# Arrange
@@ -43,7 +43,7 @@ describe 'Colombia', ->
 
 		it 'land line number', ->
 			# Arrange
-			number = "+57 1 9898656"
+			number = "+57 601 9898656"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
@@ -78,13 +78,13 @@ describe 'Colombia', ->
 
 		it 'land line number', ->
 			# Arrange
-			number = "8986565"
+			number = "6018986565"
 
 			# Act
 			result = Phone.countries['57'].splitNumber(number)
 
 			# Assert
-			expect(result.length).to.equal(2)
+			expect(result.length).to.equal(3)
 
 		it 'mobile number', ->
 			# Arrange
@@ -100,7 +100,7 @@ describe 'Colombia', ->
 
 		it 'land line number', ->
 			# Arrange
-			number = "+57 1 9898656"
+			number = "+57 601 9898656"
 
 			# Act
 			result = Phone.validate(number)
