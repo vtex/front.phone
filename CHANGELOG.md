@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Mexico phone rules.
 - COL phone rules to reflect numbering plan changes.
+- CHL phone rules to reflect numbering plan changes.
 
 ## [4.17.10] - 2023-04-12
 
