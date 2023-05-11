@@ -70,7 +70,7 @@ describe 'Mexico', ->
 			# Assert
 			expect(result).to.be.true
 
-		it 'number with national destionation code starting with 42', ->
+		it 'number with national destination code starting with 42', ->
 			# Arrange
 			number = "+52 428 106 8349"
 
