@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Honduras ('HND') country rules.
+
 ## [4.19.0] - 2023-05-25
 
 ### Fixed
