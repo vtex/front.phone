@@ -7,7 +7,7 @@ class NewZealand
 		@countryName = "New Zealand"
 		@countryNameAbbr = "NZL"
 		@countryCode = '64'
-		@regex = /^(?:(?:(?:\+|)(?:64|)|))(([2][0-9]{7,9})|([3,4,6,7,9][0-9]{7}))$/
+		@regex = /^(?:(?:(?:\+|)(?:64|)|))(?:0|)(([2][0-9]{7,9})|([3,4,6,7,9][0-9]{7}))$/
 		@optionalTrunkPrefix = '0'
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
