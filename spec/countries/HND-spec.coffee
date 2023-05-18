@@ -26,7 +26,7 @@ describe 'Honduras', ->
 			result = Phone.format(phone, Phone.INTERNATIONAL)
 
 			# Assert
-			expect(result).to.match(/\+502 2121 2121/)
+			expect(result).to.match(/\+504 2121 2121/)
 
 	describe 'Should get a', ->
 
@@ -43,7 +43,7 @@ describe 'Honduras', ->
 
 		it 'mobile number', ->
 			# Arrange
-			number = "+504 7555 1234"
+			number = "+504 8555 1234"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
