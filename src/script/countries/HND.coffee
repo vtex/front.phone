@@ -16,7 +16,7 @@ class Honduras
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
-
+		
 		if withoutCountryCode.length isnt 8
 			return null
 		if ndc and withoutNDC[0] in @mobileNumbers
@@ -25,7 +25,7 @@ class Honduras
 			phone.number = withoutCountryCode
 		else
 			phone.isMobile = false
-
+		
 		return phone
 
 	format: (phone, format) =>
@@ -44,7 +44,6 @@ class Honduras
 				resultString += splitNumber.join(separator)
 
 		return resultString
-
 	splitNumber: (number) =>
 		switch number.length
 			when 8
