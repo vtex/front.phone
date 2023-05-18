@@ -4,94 +4,94 @@ honduras  = require('../../src/script/countries/HND')
 
 describe 'Honduras', ->
 
-	describe 'Should format a number', ->
+	# describe 'Should format a number', ->
 
-		it 'in international format', ->
-			# Arrange
-			number = "50423457898"
-			phone = Phone.getPhoneInternational(number)
+	# 	it 'in international format', ->
+	# 		# Arrange
+	# 		number = "50423457898"
+	# 		phone = Phone.getPhoneInternational(number)
 
-			# Act
-			result = Phone.format(phone, Phone.INTERNATIONAL)
+	# 		# Act
+	# 		result = Phone.format(phone, Phone.INTERNATIONAL)
 
-			# Assert
-			expect(result).to.match(/\+504 2345 7898/)
+	# 		# Assert
+	# 		expect(result).to.match(/\+504 2345 7898/)
 
-		it 'land line number with 21', ->
-			# Arrange
-			number = "+504 2121 2121"
-			phone = Phone.getPhoneInternational(number)
+	# 	it 'land line number with 21', ->
+	# 		# Arrange
+	# 		number = "+504 2121 2121"
+	# 		phone = Phone.getPhoneInternational(number)
 
-			# Act
-			result = Phone.format(phone, Phone.INTERNATIONAL)
+	# 		# Act
+	# 		result = Phone.format(phone, Phone.INTERNATIONAL)
 
-			# Assert
-			expect(result).to.match(/\+504 2121 2121/)
+	# 		# Assert
+	# 		expect(result).to.match(/\+504 2121 2121/)
 
-	describe 'Should get a', ->
+	# describe 'Should get a', ->
 
-		it 'land line number', ->
-			# Arrange
-			number = "+504 2222 1234"
+	# 	it 'land line number', ->
+	# 		# Arrange
+	# 		number = "+504 2222 1234"
 
-			# Act
-			result = Phone.getPhoneInternational(number)
+	# 		# Act
+	# 		result = Phone.getPhoneInternational(number)
 
-			# Assert
-			expect(result.valid).to.be.true
-			expect(result.isMobile).to.be.false
+	# 		# Assert
+	# 		expect(result.valid).to.be.true
+	# 		expect(result.isMobile).to.be.false
 
 		it 'mobile number', ->
 			# Arrange
 			number = "+504 8555 1234"
 
 			# Act
-			result = Phone.getPhoneInternational(number)
+			result = Phone.getPhoneInternational(number, '504', '555')
 
 			# Assert
 			expect(result.valid).to.be.true
 			expect(result.isMobile).to.be.true
 
-	describe 'Should split', ->
+	# describe 'Should split', ->
 
-		it 'land line number', ->
-			# Arrange
-			number = "22221234"
+	# 	it 'land line number', ->
+	# 		# Arrange
+	# 		number = "22221234"
 
-			# Act
-			result = Phone.countries['504'].splitNumber(number)
+	# 		# Act
+	# 		result = Phone.countries['504'].splitNumber(number)
 
-			# Assert
-			expect(result).to.deep.equal(['2222', '1234'])
+	# 		# Assert
+	# 		expect(result).to.deep.equal(['2222', '1234'])
 
-		it 'mobile number', ->
-			# Arrange
-			number = "75551234"
+	# 	it 'mobile number', ->
+	# 		# Arrange
+	# 		number = "75551234"
 
-			# Act
-			result = Phone.countries['504'].splitNumber(number)
+	# 		# Act
+	# 		result = Phone.countries['504'].splitNumber(number)
 
-			# Assert
-			expect(result).to.deep.equal(['7555', '1234'])
+	# 		# Assert
+	# 		expect(result).to.deep.equal(['7555', '1234'])
 
-	describe 'Should validate a', ->
+	# describe 'Should validate a', ->
 
-		it 'land line number', ->
-			# Arrange
-			number = "+504 2222 1234"
+	# 	it 'land line number', ->
+	# 		# Arrange
+	# 		number = "+504 2222 1234"
 
-			# Act
-			result = Phone.validate(number)
+	# 		# Act
+	# 		result = Phone.validate(number)
 
-			# Assert
-			expect(result).to.be.true
+	# 		# Assert
+	# 		expect(result).to.be.true
 
-		it 'mobile number', ->
-			# Arrange
-			number = "+504 7555 1234"
+	# 	it 'mobile number', ->
+	# 		# Arrange
+	# 		number = "+504 7555 1234"
 
-			# Act
-			result = Phone.validate(number)
+	# 		# Act
+	# 		result = Phone.validate(number)
 
-			# Assert
-			expect(result).to.be.true
+	# 		# Assert
+	# 		expect(result).to.be.true

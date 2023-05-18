@@ -27,12 +27,16 @@ class Phone
 				[foundNDC, ndcRegex] = @testNDC(nationalDestinationCode, countryObj, nationalNumber)
 				break if foundNDC is true
 
+		console.log('foundNDC ===>', {foundNDC})
+
 		# We are not taking NDC validation into account if the country doesn't have NDC options.
 		if not foundNDC and countryObj.nationalDestinationCode.length > 0 then return null
 
 		withoutNDC = nationalNumber.replace(ndcRegex, "")
 
+
 		phoneNumber = countryObj.specialRules(nationalNumber, withoutNDC, nationalDestinationCode)
+		console.log('getphoneNational ==>', {phoneNumber})
 
 		if phoneNumber
 			phoneNumber.valid(true)
@@ -51,6 +55,8 @@ class Phone
 			for countryCode, countryObj of @countries
 				[foundCountryCode, countryCodeRegex] = @testCountryCode(countryCode, number)
 				break if foundCountryCode is true
+		
+		console.log('getPHONEInternational ===>', {number, foundCountryCode, givenNationalDestinationCode})
 
 		if not foundCountryCode then return null
 
@@ -84,8 +90,12 @@ class Phone
 		if countryCodeRegex.test(number) then [true, countryCodeRegex] else [false, null]
 
 	testNDC: (nationalDestinationCode, countryObj, number) =>
-		ndcPattern = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
-		ndcRegex = new RegExp ndcPattern
+		trunkPrefix = countryObj.optionalTrunkPrefix || ''
+		ndcPattern = "^("+trunkPrefix+"|)"+nationalDestinationCode
+		actualndcPattern = countryObj.ndcRegex || ndcPattern
+		ndcRegex = new RegExp actualndcPattern
+
+		console.log("testNDC ===>", {countryObj, number, ndcRegex, nationalDestinationCode})
 
 		if ndcRegex.test(number) then [true, ndcRegex] else [false, null]
 
