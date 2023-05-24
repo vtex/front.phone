@@ -35,7 +35,6 @@ class NewZealand
 	splitNumber: (number) =>
 		return [number]
 
-
 # register
 newzealand = new NewZealand()
 Phone.countries['64'] = newzealand
