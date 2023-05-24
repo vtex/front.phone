@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- NZL phone format and validation.
+
 ## [4.17.12-beta] - 2023-04-12
 
 ### Fixed
@@ -365,6 +368,7 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 [Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.12-beta...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
+[4.17.10]: https://github.com/vtex/front.phone/compare/v4.17.9...v4.17.10
 [4.17.9]: https://github.com/vtex/front.phone/compare/v4.17.8...v4.17.9
 [4.17.8]: https://github.com/vtex/front.phone/compare/v4.17.7...v4.17.8
 [4.17.7]: https://github.com/vtex/front.phone/compare/v4.17.6...v4.17.7
