@@ -23,9 +23,9 @@ describe 'Australia', ->
             expect(result.valid).to.be.true
             expect(result.isMobile).to.be.true 
 
-    describe 'Should format a number', ->
+    describe 'Should format', ->
 
-        it 'in international format', ->
+        it 'a number in international format', ->
             # Arrange
             number = "61298789402"
             phone = Phone.getPhoneInternational(number)
@@ -34,7 +34,29 @@ describe 'Australia', ->
             result = Phone.format(phone, Phone.INTERNATIONAL)
 
             # Assert
-            expect(result).to.match(/\+61 2 98789402/)
+            expect(result).to.match(/\(02\) 9878 9402/)
+
+        it 'a mobile number in international format', ->
+            # Arrange
+            number = "+610498789402"
+            phone = Phone.getPhoneInternational(number)
+
+            # Act
+            result = Phone.format(phone, Phone.INTERNATIONAL)
+
+            # Assert
+            expect(result).to.match(/0498 789 402/)
+        
+        it 'a mobile number in national format', ->
+            # Arrange
+            number = "0411884057"
+            phone = Phone.getPhoneNational(number, '61', '4')
+
+            # Act
+            result = Phone.format(phone, Phone.NATIONAL)
+
+            # Assert
+            expect(result).to.match(/0411 884 057/)
 
     describe 'Should split', ->
 
