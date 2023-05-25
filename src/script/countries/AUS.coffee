@@ -12,43 +12,46 @@ class Australia
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
 			["1","2","3","4","5","7","8"]
+		@mobileDestinationCode = ["4"]
+		@internationalFormatRegex = /^((?:\+|)(61))(\d{0,10})$/
 	
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
+		isInternationalFormat = @internationalFormatRegex.test(withoutCountryCode)
 
-		if withoutCountryCode[0] in ['4', '5']
+		if isInternationalFormat
+			countryCodeRegex = new RegExp "^"+@countryCode+'('+@optionalTrunkPrefix+'|)'
+			withoutCountryCode = withoutCountryCode.replace(countryCodeRegex, "")
+			ndc = withoutCountryCode[0]
+			phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutCountryCode.substr 1)
+		
+		if withoutCountryCode[0] in @mobileDestinationCode
 			phone.isMobile = true
-			return phone
-		else return phone
 
-	splitNumber: (number) =>
-		return Phone.compact number.split(/(\d{1})(\d{4})(\d{4})/)
-
-		return [number]
+		return phone
 
 	format: (phone, format = Phone.NATIONAL) =>
 		resultString = ""
 		fullNumber = phone.nationalDestinationCode + phone.number
 		separator = @nationalNumberSeparator
 
-		switch format
-			when Phone.NATIONAL, Phone.LOCAL
-				if phone.nationalDestinationCode
-					resultString += '(0' + phone.nationalDestinationCode + ') '
-				return resultString + @splitNumber(phone.number).join(separator)
+		if phone.nationalDestinationCode
+			isMobile = phone.nationalDestinationCode in @mobileDestinationCode
+			if isMobile
+				resultString += @optionalTrunkPrefix + phone.nationalDestinationCode
+				resultString += @splitNumber(phone.number, isMobile).join(separator)
 			else
-				return "+" + phone.countryCode + " " + phone.nationalDestinationCode + " " + phone.number
+				resultString += '(' + @optionalTrunkPrefix + phone.nationalDestinationCode + ') '
+				resultString += @splitNumber(phone.number).join(separator)
+			return resultString
 
-	splitNumber: (number) =>
-		switch number.length
-			when 11 
-				return Phone.compact number.split(/(\d{2})(\d{3})(\d{3})(\d{3})/)
-			when 10 
-				return Phone.compact number.split(/(\d{2})(\d{4})(\d{4})/)
-			when 9 
-				return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
-			when 8
-				return Phone.compact number.split(/(\d{4})(\d{4})/)
+	splitNumber: (number, isMobile = false) =>
+		if number.length is 8 and isMobile
+			return Phone.compact number.split(/(\d{2})(\d{3})(\d{3})/)
+		else if number.length is 8
+			return Phone.compact number.split(/(\d{4})(\d{4})/)
+		else if number.length is 9
+			return Phone.compact number.split(/(\d{3})(\d{3})(\d{3})/)
 
 		return [number]
 
