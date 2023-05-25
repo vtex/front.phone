@@ -7,12 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [4.18.0-beta] - 2023-05-24
+### Fixed
+- AUS phone number validation and formatting.
+- NZL phone numbers started with country code and followed by zero.
+
+## [4.18.0] - 2023-05-24
 
 ### Changed
-- NZL phone format and validation.
+- NZL phone number validation and rules.
 
-## [4.17.12-beta] - 2023-04-12
+## [4.17.11] - 2023-05-11
+
+### Fixed
+- Mexico phone rules.
+- COL phone rules to reflect numbering plan changes.
+- CHL phone rules to reflect numbering plan changes.
+
+## [4.17.10] - 2023-04-12
 
 ### Fixed
 - Phone rules to accept slash when entering a number
@@ -367,9 +378,14 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
+<<<<<<< HEAD
 [Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.12-beta...HEAD
+=======
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.17.11...HEAD
+>>>>>>> fix/aus-phone-validation
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
+[4.17.11]: https://github.com/vtex/front.phone/compare/v4.17.10...v4.17.11
 [4.17.10]: https://github.com/vtex/front.phone/compare/v4.17.9...v4.17.10
 [4.17.9]: https://github.com/vtex/front.phone/compare/v4.17.8...v4.17.9
 [4.17.8]: https://github.com/vtex/front.phone/compare/v4.17.7...v4.17.8
