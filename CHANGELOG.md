@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.19.0-beta] - 2023-05-25
+
 ### Fixed
 - AUS phone number validation and formatting.
 - NZL phone numbers started with country code and followed by zero.
