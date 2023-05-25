@@ -16,24 +16,21 @@ class Honduras
 		@ndcRegex = /^(?:504|)(?:[2-3,7-9]{1}|)(?:(20[0-1,9])|(21[1-3,6])|(22\d|23\d|24[0,5-6])|(25[57])|(29[01])|(42[3-5,9])|(43[1,3-6,8-9])|(44[0-6,8])|(45[1-3,5])|(54[3-5])|(55[0-9])|(565|566)|(574)|(64[0-3,7-8])|(65[0-9])|(66[0-5,7-9])|(67[0-5,8])|(68\d|69[01])|(76[4,6-9])|(77[0,2-9])|(783|784)|(879|88[0-3,5,7-9])|(89[1-5,7-9]))(?:[0-9]{4})$/
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
-		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
+		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutCountryCode)
 		
 		if withoutCountryCode.length isnt 8
 			return null
-		if ndc and withoutNDC[0] in @mobileNumbers
+		if withoutCountryCode[0] in @mobileNumbers
 			phone.isMobile = true
 			phone.nationalDestinationCode = ''
 			phone.number = withoutCountryCode
 		else
 			phone.isMobile = false
-		if ndc[0] is 2 then return phone
 		return phone
 
 	format: (phone, format) =>
 		resultString = ""
-
-		fullNumber = phone.nationalDestinationCode + phone.number
-		splitNumber = @splitNumber(fullNumber)
+		splitNumber = @splitNumber(phone.number)
 
 		switch format
 			when Phone.INTERNATIONAL

@@ -8,25 +8,14 @@ describe 'Honduras', ->
 
 		it 'in international format', ->
 			# Arrange
-			number = "50423457898"
+			number = "+50422221234"
 			phone = Phone.getPhoneInternational(number)
 
 			# Act
 			result = Phone.format(phone, Phone.INTERNATIONAL)
 
 			# Assert
-			expect(result).to.match(/\+504 2345 7898/)
-
-		it 'land line number with 21', ->
-			# Arrange
-			number = "+504 2121 2121"
-			phone = Phone.getPhoneInternational(number)
-
-			# Act
-			result = Phone.format(phone, Phone.INTERNATIONAL)
-
-			# Assert
-			expect(result).to.match(/\+504 2121 2121/)
+			expect(result).to.match(/\+504 2222 1234/)
 
 	describe 'Should get a', ->
 

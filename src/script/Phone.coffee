@@ -84,9 +84,7 @@ class Phone
 		if countryCodeRegex.test(number) then [true, countryCodeRegex] else [false, null]
 
 	testNDC: (nationalDestinationCode, countryObj, number) =>
-		trunkPrefix = countryObj.optionalTrunkPrefix || ''
-		ndcPattern = "^("+trunkPrefix+"|)"+nationalDestinationCode
-		# ndcPattern = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
+		ndcPattern = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
 		actualndcPattern = countryObj.ndcRegex || ndcPattern
 		ndcRegex = new RegExp actualndcPattern
 		
