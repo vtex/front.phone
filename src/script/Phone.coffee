@@ -85,8 +85,9 @@ class Phone
 
 	testNDC: (nationalDestinationCode, countryObj, number) =>
 		ndcPattern = "^("+countryObj.optionalTrunkPrefix+"|)"+nationalDestinationCode
-		ndcRegex = new RegExp ndcPattern
-
+		actualndcPattern = countryObj.ndcRegex || ndcPattern
+		ndcRegex = new RegExp actualndcPattern
+		
 		if ndcRegex.test(number) then [true, ndcRegex] else [false, null]
 
 	format: (phone, format = @INTERNATIONAL) =>
