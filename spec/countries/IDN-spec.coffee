@@ -18,7 +18,7 @@ describe 'Indonesia', ->
             expect(result.countryNameAbbr).to.equal('IDN')
 
         it  'mobile number', ->
-            number = "+62 82348567890"
+            number = "+62 81348567890"
             result = Phone.getPhoneInternational(number)
             expect(result.valid).to.be.true
             expect(result.isMobile).to.be.true 
@@ -27,32 +27,32 @@ describe 'Indonesia', ->
 
         it 'in international format', ->
             # Arrange
-            number = "6203618496655"
+            number = "623618496655"
             phone = Phone.getPhoneInternational(number)
 
             # Act
             result = Phone.format(phone, Phone.INTERNATIONAL)
 
             # Assert
-            expect(result).to.match(/\+62 361 8496655/)
+            expect(result).to.match(/\+62 361 849 6655/)
 
     describe 'Should split', ->
 
         it 'number', ->
             # Arrange
-            number = "1234567890"
+            number = "12345678"
 
             # Act
             result = Phone.countries['62'].splitNumber(number)
 
             # Assert
-            expect(result.length).to.equal(3)
+            expect(result.length).to.equal(2)
 
     describe 'Should not', ->
 
         it 'get an invalid number', ->
             # Arrange
-            number = "+62 751 123456"
+            number = "+62 749 12345"
 
             # Act
             result = Phone.getPhoneInternational(number)
@@ -62,7 +62,7 @@ describe 'Indonesia', ->
 
         it 'validate an invalid number', ->
             # Arrange
-            number = "+62 234 123"
+            number = "+62 11 123"
 
             # Act
             result = Phone.validate(number, '62')

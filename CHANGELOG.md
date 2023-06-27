@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.19.2] - 2023-06-27
+
+### Fixed
+- Indonesia ('IDN') phone rules.
+
 ## [4.19.1] - 2023-05-31
 
 ### Added
@@ -385,7 +390,7 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/vtex/front.phone/compare/v4.19.1...HEAD
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.19.2...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
 [4.17.11]: https://github.com/vtex/front.phone/compare/v4.17.10...v4.17.11
@@ -402,4 +407,5 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 [4.17.1]: https://github.com/vtex/front.phone/compare/v4.17.0...v4.17.1
 [4.17.0]: https://github.com/vtex/front.phone/compare/v4.16.0...v4.17.0
 [4.16.0]: https://github.com/vtex/front.phone/compare/v4.15.15-beta...v4.16.0
+[4.19.2]: https://github.com/vtex/front.phone/compare/v4.19.1...v4.19.2
 [4.19.1]: https://github.com/vtex/front.phone/compare/v4.19.0...v4.19.1
