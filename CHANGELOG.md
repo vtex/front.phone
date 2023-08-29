@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Loosened Indonesia ('IDN') phone rules due to reported changes in mobile numbers.
+
 ## [4.19.3] - 2023-07-26
 
 ### Fixed
