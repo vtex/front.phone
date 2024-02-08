@@ -6,8 +6,9 @@
           channel: checkout-ui-notifications
       parameters:
         packageManager: npm
+        sonarProjectName: front.phone
         nodeCommands:
-            - "test"
+            - test
       runtime:
         architecture: arm64
       when:
