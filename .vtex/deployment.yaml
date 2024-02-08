@@ -24,7 +24,7 @@
         awsBucket: vtex-io-us
         awsRegion: us-east-1
         build: "true"
-        destinationPath: s3://vtex-io-us/{{ ref_name }}/
+        destinationPath: front.phone
         appVersion: {{ ref_name }}
         packageManager: npm
       runtime:
