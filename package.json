@@ -14,7 +14,7 @@
     "*.vtexlocal.com.br"
   ],
   "backend": "https://io.vtex.com.br/",
-  "deploy": "deploy/",
+  "deploy": "dist/",
   "readmeFilename": "README.md",
   "scripts": {
     "test": "grunt test",
