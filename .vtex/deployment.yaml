@@ -1,0 +1,37 @@
+- build:
+    pipelines:
+    - name: node-ci-v1
+      notifications:
+        slack:
+          channel: checkout-ui-notifications
+      parameters:
+        awsAccountId: "053131491888"
+        awsRegion: us-east-1
+        packageManager: npm
+        skipLint: "true"
+        skipScan: "true"
+      runtime:
+        architecture: arm64
+      when:
+      - event: push
+        source: branch
+    - name: build-node-app-and-upload-artifacts-v1
+      notifications:
+        slack:
+          channel: checkout-ui-notifications
+      parameters:
+        awsAccountId: "053131491888"
+        awsBucket: vtex-io-us
+        awsRegion: us-east-1
+        build: "true"
+        destinationPath: s3://vtex-io-us/front.phone/
+        packageManager: npm
+      runtime:
+        architecture: arm64
+      when:
+      - event: push
+        source: tag
+    provider: dkcicd
+  description: front.phone is a Javascript library that identifies, validates and
+    formats phone numbers
+  name: front.phone
