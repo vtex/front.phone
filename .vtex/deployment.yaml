@@ -10,7 +10,7 @@
         nodeCommands:
             - test
       runtime:
-        architecture: arm64
+        architecture: amd64
       when:
       - event: push
         source: branch
@@ -27,7 +27,7 @@
         appVersion: {{ ref_name }}
         packageManager: npm
       runtime:
-        architecture: arm64
+        architecture: amd64
       when:
       - event: push
         source: tag
