@@ -1,15 +1,13 @@
 - build:
     pipelines:
-    - name: node-ci-v1
+    - name: node-ci-v2
       notifications:
         slack:
           channel: checkout-ui-notifications
       parameters:
-        awsAccountId: "053131491888"
-        awsRegion: us-east-1
         packageManager: npm
-        skipLint: "true"
-        skipScan: "true"
+        nodeCommands:
+            - "test"
       runtime:
         architecture: arm64
       when:
