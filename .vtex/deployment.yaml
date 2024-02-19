@@ -8,6 +8,7 @@
         packageManager: npm
         sonarProjectName: front.phone
         nodeCommands:
+            - build
             - test
       runtime:
         architecture: amd64
