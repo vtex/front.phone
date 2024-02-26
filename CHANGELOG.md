@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- CI/CD pipeline from Jenkins to DK.
+
 ## [4.19.4] - 2024-02-26
 
 ### Fixed
