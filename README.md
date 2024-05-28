@@ -133,7 +133,7 @@ It also has two optional parameters:
 
 We use Grunt as a task runner. Before you start, make sure to `npm install -g grunt-cli` and `npm install`.
 
-Use `grunt` to build and test, and rebuild whenever a file is changed.
+Use `grunt` to build and test, and rebuild whenever a file is changed. 
 
 Use `grunt dist` to build, test and prepare files to npm.
 
