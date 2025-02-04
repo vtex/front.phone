@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Angola ('AGO') country rules.
+- Portugal ('PRT') country rules.
 
 ## [4.19.5] - 2024-02-26
 
