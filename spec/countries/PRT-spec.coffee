@@ -32,7 +32,7 @@ describe 'Portugal', ->
 
 		it 'mobile number', ->
 			# Arrange
-			# number = "+504 8555 1234"
+			number = "+351 855 512 234"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
@@ -55,13 +55,13 @@ describe 'Portugal', ->
 
 		it 'mobile number', ->
 			# Arrange
-			# number = "75551234"
+			number = "955512314"
 
 			# Act
 			result = Phone.countries['351'].splitNumber(number)
 
 			# Assert
-			# expect(result).to.deep.equal(['7555', '1234'])
+			expect(result).to.deep.equal(['955', '512' '314'])
 
 	describe 'Should validate a', ->
 
@@ -77,7 +77,7 @@ describe 'Portugal', ->
 
 		it 'mobile number', ->
 			# Arrange
-			# number = "+351 300 609 077"
+			number = "+351 900 609 077"
 
 			# Act
 			result = Phone.validate(number)
