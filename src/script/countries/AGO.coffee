@@ -13,7 +13,7 @@ class Angola
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode = ['2', '31', '33', '34', '35', '36', '41', '48', '49', '51', '52', '53', '54', '61', '64', '65', '72', '91', '92']
 		@mobileNumbers = ['91', '923', '93']
-		@ndcRegex = /^(?:244|)(?:2|(3[13-6])|(4[189])|(5[1-4])|(6[145])|72|(9[1-2]))[0-9]{8}$/
+		@ndcRegex = /^(?:244|)(?:2|(3[13-6])|(4[189])|(5[1-4])|(6[145])|72|(9[1-2]))[0-9]{7}$/
 
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutCountryCode)
