@@ -20,7 +20,7 @@ class Angola
 		
 		if withoutCountryCode.length isnt 9
 			return null
-		if withoutCountryCode[0] in @mobileNumbers
+		if withoutCountryCode[0:2] in @mobileNumbers or withoutCountryCode[0:1] in @mobileNumbers
 			phone.isMobile = true
 			phone.nationalDestinationCode = ''
 			phone.number = withoutCountryCode
