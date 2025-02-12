@@ -4,7 +4,7 @@ PhoneNumber = require('../PhoneNumber')
 
 # For more info check:
 # https://www.itu.int/oth/T0202000006/en
-class Honduras
+class Angola
 	constructor: ->
 		@countryName = "Angola"
 		@countryNameAbbr = "AGO"
