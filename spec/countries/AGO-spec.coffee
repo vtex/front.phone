@@ -61,7 +61,7 @@ describe 'Angola', ->
 			result = Phone.countries['244'].splitNumber(number)
 
 			# Assert
-			expect(result).to.deep.equal(['923', '434' '528'])
+			expect(result).to.deep.equal(['923', '434', '528'])
 
 	describe 'Should validate a', ->
 
