@@ -32,7 +32,7 @@ describe 'Portugal', ->
 
 		it 'mobile number', ->
 			# Arrange
-			number = "+351 855 512 234"
+			number = "+351 965 512 234"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
