@@ -51,7 +51,7 @@ describe 'Portugal', ->
 			result = Phone.countries['351'].splitNumber(number)
 
 			# Assert
-			expect(result).to.deep.equal(['300', '609' '044'])
+			expect(result).to.deep.equal(['300', '609', '044'])
 
 		it 'mobile number', ->
 			# Arrange
@@ -61,7 +61,7 @@ describe 'Portugal', ->
 			result = Phone.countries['351'].splitNumber(number)
 
 			# Assert
-			expect(result).to.deep.equal(['955', '512' '314'])
+			expect(result).to.deep.equal(['955', '512', '314'])
 
 	describe 'Should validate a', ->
 
