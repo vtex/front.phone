@@ -44,7 +44,7 @@
     "grunt-shell": "^1.1.1",
     "grunt-usemin": "2.0.2",
     "grunt-vtex": "^0.14.0",
-    "grunt-webpack": "^1.0.8",
+    "grunt-webpack": "^7.0.0",
     "jsdom": "^7.0.2",
     "less": "^2.5.0",
     "less-loader": "^3.0.0",
@@ -52,7 +52,7 @@
     "style-loader": "^0.12.1",
     "url-loader": "^0.5.5",
     "webpack": "^1.5.3",
-    "webpack-dev-server": "^1.7.0"
+    "webpack-dev-server": "^5.2.0"
   },
   "repository": {
     "type": "git",
