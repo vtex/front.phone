@@ -18,7 +18,7 @@ describe 'El Salvador', ->
 
 		it 'mobile number', ->
 			# Arrange
-			number = "+593 7986 8997"
+			number = "+503 7986 8997"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
