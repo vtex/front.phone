@@ -23,7 +23,7 @@ class ElSalvador
 			return phone
 
 	splitNumber: (number) =>
-        if number.length is 8
+		if number.length is 8
 			return Phone.compact number.split(/(\d{4})(\d{4})/)
 		return [number]
 
