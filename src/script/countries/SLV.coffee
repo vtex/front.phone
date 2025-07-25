@@ -17,14 +17,12 @@ class ElSalvador
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 		
 		if withoutNDC.length is 8
-            if ndc[0] is '2'
-                if ndc[0] is '6' or ndc[0] is '7'
-                    phone.isMobile = true
-            return phone
+			if ndc[0] is '2' return phone
+			if ndc[0] is '6' or ndc[0] is '7'
+				phone.isMobile = true
+			return phone
 
 	splitNumber: (number) =>
-		if number.length is 11
-			return Phone.compact number.split(/(\d{3})(\d{4})(\d{4})/)
         if number.length is 8
 			return Phone.compact number.split(/(\d{4})(\d{4})/)
 		return [number]
