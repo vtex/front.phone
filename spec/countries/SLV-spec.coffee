@@ -8,7 +8,7 @@ describe 'El Salvador', ->
 
 		it 'land line number', ->
 			# Arrange
-			number = "+503 2271 2252"
+			number = "+503 22712252"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
@@ -18,7 +18,7 @@ describe 'El Salvador', ->
 
 		it 'mobile number', ->
 			# Arrange
-			number = "+503 7986 8997"
+			number = "+503 79868997"
 
 			# Act
 			result = Phone.getPhoneInternational(number)
