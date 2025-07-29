@@ -1,6 +1,6 @@
 expect = require('chai').expect
 Phone = require('../../src/script/Phone')
-ecuador  = require('../../src/script/countries/SLV')
+elsalvador  = require('../../src/script/countries/SLV')
 
 describe 'El Salvador', ->
 
