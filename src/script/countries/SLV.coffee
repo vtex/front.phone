@@ -17,7 +17,7 @@ class ElSalvador
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
 		
-		if withoutNDC.length is 8
+		if withoutNDC.length is 7
 			if ndc[0] is '2' 
 				return phone
 			if ndc[0] is '6' or ndc[0] is '7'

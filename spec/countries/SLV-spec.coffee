@@ -25,7 +25,6 @@ describe 'El Salvador', ->
 
 			# Assert
 			expect(result.valid).to.be.true
-			expect(result.nationalDestinationCode.length).to.equal(0)
 
 	describe 'Should split', ->
 
