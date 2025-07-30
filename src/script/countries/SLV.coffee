@@ -12,6 +12,7 @@ class ElSalvador
 		@nationalNumberSeparator = ' '
 		@nationalDestinationCode =
 			["2","6","7"]
+		@mobileNumbers = ["6","7"]
 	
 	specialRules: (withoutCountryCode, withoutNDC, ndc) =>
 		phone = new PhoneNumber(@countryNameAbbr, @countryCode, ndc, withoutNDC)
