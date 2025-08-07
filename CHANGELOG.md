@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.20.1] - 2025-08-07
+
 ### Added
 - El Salvador ('SLV') country rules.
 
@@ -414,7 +416,7 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 - Improve Brazil's regex
 
 
-[Unreleased]: https://github.com/vtex/front.phone/compare/v4.20.0...HEAD
+[Unreleased]: https://github.com/vtex/front.phone/compare/v4.20.1...HEAD
 [4.15.1]: https://github.com/vtex/front.phone/compare/v4.15.0...v4.15.1
 
 [4.17.11]: https://github.com/vtex/front.phone/compare/v4.17.10...v4.17.11
@@ -434,5 +436,6 @@ The project is now available on npm, so you may now use it with Webpack and Reac
 [4.19.3]: https://github.com/vtex/front.phone/compare/v4.19.2...v4.19.3
 [4.19.2]: https://github.com/vtex/front.phone/compare/v4.19.1...v4.19.2
 [4.19.1]: https://github.com/vtex/front.phone/compare/v4.19.0...v4.19.1
+[4.20.1]: https://github.com/vtex/front.phone/compare/v4.20.0...v4.20.1
 [4.20.0]: https://github.com/vtex/front.phone/compare/v4.19.5...v4.20.0
 [4.19.5]: https://github.com/vtex/front.phone/compare/v4.19.4...v4.19.5
