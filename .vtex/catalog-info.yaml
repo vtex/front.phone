@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: front.phone
+  description: front.phone is a Javascript library that identifies, validates and
+    formats phone numbers.
+  tags:
+    - coffee-script
+  annotations:
+    vtex.com/janus-acronym: ""
+    vtex.com/o11y-os-index: ""
+    grafana/dashboard-selector: ""
+    github.com/project-slug: vtex/front.phone
+    vtex.com/platform-flow-id: ""
+    backstage.io/techdocs-ref: dir:../
+    vtex.com/application-id: 4HISK5KU
+spec:
+  lifecycle: stable
+  owner: te-0001
+  type: frontend-ui
+  dependsOn: []
