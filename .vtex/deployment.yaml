@@ -32,7 +32,20 @@
       when:
       - event: push
         source: tag
+    - name: techdocs-v1
+      parameters:
+        entityReference: default/component/front.phone
+      when:
+      - event: push
+        source: branch
+        regex: main
+        path:
+        - "docs/**"
+        - ".vtex/deployment.yaml"
+        - ".vtex/deployment.json"
+        - "README.md"
     provider: dkcicd
   description: front.phone is a Javascript library that identifies, validates and
     formats phone numbers
   name: front.phone
+  referenceId: 4HISK5KU
