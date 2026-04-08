@@ -13,8 +13,11 @@
       runtime:
         architecture: amd64
       when:
+      - event: pull_request
+        source: branch
       - event: push
         source: branch
+        regex: main
     - name: build-node-app-and-upload-artifacts-v1
       notifications:
         slack:
