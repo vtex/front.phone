@@ -31,6 +31,9 @@ Indentation uses tabs. Follow the existing file conventions exactly.
 - **yarn** is the package manager — use `yarn install --frozen-lockfile` in CI
 - **Node compatibility**: maintain compatibility with the range defined in `package.json`
 - Country regex patterns must be validated against real number samples before merging
+- **Security**: N/A — library has no authentication, network, or data persistence
+- **Performance**: TBD — no SLO defined; keep regex patterns efficient
+- **Observability**: N/A — library has no runtime instrumentation
 
 ## Quality Gates
 

@@ -80,9 +80,13 @@ This project uses spec-kit (SDD Full flow). Skills are in `.claude/skills/`:
 - `/speckit-analyze` — cross-artifact consistency check
 - `/speckit-clarify` — structured questions before planning
 
-## spec-kit Context
+## Expected Skills (SDD Lite)
 
-<!-- SPECKIT START -->
-For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan
-<!-- SPECKIT END -->
+For smaller tasks, bugs, or contained features where SDD Full would be overhead:
+
+- `/specification` — create a feature specification (Lite SDD flow)
+- `/implementing` — implement from an approved spec (Lite SDD flow)
+
+## Expected MCPs
+
+None required — front.phone is a standalone library with no VTEX-internal APIs or services.
