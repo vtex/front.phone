@@ -7,6 +7,11 @@
       parameters:
         packageManager: npm
         sonarProjectName: front.phone
+        # Pin Node to a version that still exposes util.isRegExp.
+        # css-loader@0.12 -> clean-css@3.4 uses it, and the function was
+        # removed in Node 23+. Bumping the legacy build chain is out of scope
+        # for this project.
+        nodeVersion: 20-bookworm
         nodeCommands:
             - run build
             - test
