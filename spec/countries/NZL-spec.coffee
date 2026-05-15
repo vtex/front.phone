@@ -81,3 +81,12 @@ describe 'New Zealand', ->
 
             # Assert
             expect(result).to.be.false
+
+    describe 'Branch coverage', ->
+
+        it 'leaves isMobile unset for a number not starting with 2', ->
+            # Arrange
+            phone = Phone.getPhoneInternational("+64 9 700 1234")
+
+            # Assert
+            expect(!!phone.isMobile).to.be.false

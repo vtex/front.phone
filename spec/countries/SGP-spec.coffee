@@ -87,6 +87,19 @@ describe 'Singapore', ->
             # Assert
             expect(result).to.be.null
 
+    describe 'Branch coverage', ->
 
+        it 'accepts a non-mobile number within the 8-12 digit range', ->
+            # Arrange (starts with 1 — not 8 or 9 — but within length range)
+            result = Phone.countries['65'].specialRules('12345678', '12345678', '')
 
+            # Assert
+            expect(result).to.exist
+            expect(!!result.isMobile).to.be.false
 
+        it 'returns undefined when length is outside the 8-12 range', ->
+            # Act
+            result = Phone.countries['65'].specialRules('1234567', '1234567', '')
+
+            # Assert
+            expect(result).to.be.undefined

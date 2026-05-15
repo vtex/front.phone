@@ -129,3 +129,12 @@ describe 'Colombia', ->
 
 			# Assert
 			expect(result).to.be.false
+
+	describe 'Branch coverage', ->
+
+		it 'returns the input wrapped in an array when splitNumber length is unsupported', ->
+			# Act
+			result = Phone.countries['57'].splitNumber('12345')
+
+			# Assert
+			expect(result).to.deep.equal(['12345'])

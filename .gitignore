@@ -12,3 +12,7 @@ countries/*
 !src/countries
 *.js
 .DS_Store
+coverage/
+.nyc_output/
+.env.local
+sonar-analyze.sh

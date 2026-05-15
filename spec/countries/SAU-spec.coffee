@@ -69,3 +69,20 @@ describe 'Saudi Arabia', ->
 
             # Assert
             expect(result).to.be.false
+
+    describe 'Branch coverage', ->
+
+        it 'returns undefined when withoutNDC length is not 6', ->
+            # Act
+            result = Phone.countries['966'].specialRules('017725225', '725225', '017')
+
+            # Assert
+            expect(result).to.exist
+            expect(result.isMobile).to.be.true
+
+        it 'returns the input wrapped in an array when splitNumber length is unsupported', ->
+            # Act
+            result = Phone.countries['966'].splitNumber('123')
+
+            # Assert
+            expect(result).to.deep.equal(['123'])

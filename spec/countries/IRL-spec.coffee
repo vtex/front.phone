@@ -90,3 +90,55 @@ describe 'Ireland', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Branch coverage', ->
+
+		it 'formats a land line number in international format', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("+35314406692")
+
+			# Act
+			result = Phone.format(phone, Phone.INTERNATIONAL)
+
+			# Assert
+			expect(result).to.match(/\+353 1 440 6692/)
+
+		it 'formats a mobile number in non-international format', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("+353 89 608 7422")
+
+			# Act
+			result = Phone.format(phone, Phone.NATIONAL)
+
+			# Assert
+			expect(result).to.match(/89 608 7422/)
+
+		it 'splits a number starting with 2 with 9 digits', ->
+			# Arrange
+			number = "212345678"
+
+			# Act
+			result = Phone.countries['353'].splitNumber(number)
+
+			# Assert
+			expect(result.length).to.equal(3)
+
+		it 'splits a number starting with 2 with 7 digits', ->
+			# Arrange
+			number = "2112345"
+
+			# Act
+			result = Phone.countries['353'].splitNumber(number)
+
+			# Assert
+			expect(result.length).to.equal(2)
+
+		it 'returns the input wrapped in an array when no splitter pattern matches', ->
+			# Arrange (12 digits — none of the splitter rules apply)
+			number = "212345678901"
+
+			# Act
+			result = Phone.countries['353'].splitNumber(number)
+
+			# Assert
+			expect(result).to.deep.equal([number])

@@ -1,0 +1,6 @@
+projectKey=front.phone
+serverUrl=http://sonarqube.vtex.systems
+serverVersion=25.10.0.114319
+dashboardUrl=http://sonarqube.vtex.systems/dashboard?id=front.phone
+ceTaskId=ffd6c686-82bd-4a0a-8064-ccd47b73adf0
+ceTaskUrl=http://sonarqube.vtex.systems/api/ce/task?id=ffd6c686-82bd-4a0a-8064-ccd47b73adf0

@@ -83,3 +83,19 @@ describe 'Costa Rica', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Branch coverage', ->
+
+		it 'returns undefined when the national number length is not 8', ->
+			# Act
+			result = Phone.countries['506'].specialRules('234567', '34567', '2')
+
+			# Assert
+			expect(result).to.be.undefined
+
+		it 'returns the input wrapped in an array when length is unsupported', ->
+			# Act
+			result = Phone.countries['506'].splitNumber('123')
+
+			# Assert
+			expect(result).to.deep.equal(['123'])

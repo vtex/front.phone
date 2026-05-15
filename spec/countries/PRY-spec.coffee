@@ -126,3 +126,16 @@ describe 'Paraguay', ->
 
 			# Assert
 			expect(result).to.be.null
+
+	describe 'Branch coverage', ->
+
+		it 'formats in international format', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("595219878765")
+
+			# Act
+			result = Phone.countries['595'].format(phone, Phone.INTERNATIONAL)
+
+			# Assert
+			expect(result).to.match(/\+595 21/)
+			expect(result).to.match(/987 8765/)

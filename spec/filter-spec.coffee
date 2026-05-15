@@ -50,3 +50,14 @@ describe "front.phone filter", ->
 
 	it "formats national phones to local format", inject (phoneFilter) ->
 		expect(phoneFilter('2189898989', 'local', "55")).to.match(/8989\-8989/)
+
+	it "returns 'N/A' when the phone is empty", inject (phoneFilter) ->
+		expect(phoneFilter('')).to.equal('N/A')
+
+	it "falls back to international parsing when the given national code does not match", inject (phoneFilter) ->
+		# Arrange — '99' is not a country code, so getPhoneNational returns null and
+		# the filter falls through to getPhoneInternational using just the number.
+		result = phoneFilter('552189898989', 'international', '99')
+
+		# Assert
+		expect(result).to.match(/\+55 21 8989 8989/)

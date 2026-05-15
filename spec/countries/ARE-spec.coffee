@@ -69,3 +69,40 @@ describe 'United Arab Emirates', ->
 
             # Assert
             expect(result).to.be.false
+
+    describe 'Branch coverage', ->
+
+        it 'flags isMobile=true when the NDC has 3 digits', ->
+            # Act
+            result = Phone.countries['971'].specialRules('050444400', '444400', '050')
+
+            # Assert
+            expect(result.isMobile).to.be.true
+
+        it 'flags isMobile=true when the NDC starts with 5', ->
+            # Act
+            result = Phone.countries['971'].specialRules('51234567', '1234567', '5')
+
+            # Assert
+            expect(result.isMobile).to.be.true
+
+        it 'returns undefined when the NDC is neither 3-digit nor starts with 5', ->
+            # Act
+            result = Phone.countries['971'].specialRules('21234567', '1234567', '2')
+
+            # Assert
+            expect(result).to.be.undefined
+
+        it 'splits a 10-digit number', ->
+            # Act
+            result = Phone.countries['971'].splitNumber('1234567890')
+
+            # Assert
+            expect(result.length).to.equal(3)
+
+        it 'returns the input wrapped in an array when length is unsupported', ->
+            # Act
+            result = Phone.countries['971'].splitNumber('123')
+
+            # Assert
+            expect(result).to.deep.equal(['123'])

@@ -70,5 +70,39 @@ describe 'Indonesia', ->
             # Assert
             expect(result).to.be.false
 
+    describe 'Branch coverage', ->
 
+        it 'leaves isMobile unset for a 2-digit NDC starting with 8', ->
+            # Arrange (NDC '84' is not 3-digit, hits the else)
+            result = Phone.countries['62'].specialRules('8412345678', '12345678', '84')
 
+            # Assert
+            expect(!!result.isMobile).to.be.false
+
+        it 'splits 5-digit numbers', ->
+            # Act
+            result = Phone.countries['62'].splitNumber('12345')
+
+            # Assert
+            expect(result.length).to.equal(2)
+
+        it 'splits 6-digit numbers', ->
+            # Act
+            result = Phone.countries['62'].splitNumber('123456')
+
+            # Assert
+            expect(result.length).to.equal(2)
+
+        it 'splits 7-digit numbers', ->
+            # Act
+            result = Phone.countries['62'].splitNumber('1234567')
+
+            # Assert
+            expect(result.length).to.equal(2)
+
+        it 'returns the input wrapped in an array when length is unsupported', ->
+            # Act
+            result = Phone.countries['62'].splitNumber('123')
+
+            # Assert
+            expect(result).to.deep.equal(['123'])
