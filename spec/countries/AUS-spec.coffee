@@ -91,3 +91,50 @@ describe 'Australia', ->
 
             # Assert
             expect(result).to.be.false
+
+    describe 'Branch coverage', ->
+
+        it 'detects a mobile number when leading digit is in mobileDestinationCode', ->
+            # Arrange
+            phone = Phone.getPhoneInternational("+61 4 0098 8691")
+
+            # Assert
+            expect(phone.isMobile).to.be.true
+
+        it 'detects a land line number when leading digit is not mobile', ->
+            # Arrange
+            phone = Phone.getPhoneInternational("+61 3 9481 7090")
+
+            # Assert
+            expect(!!phone.isMobile).to.be.false
+
+        it 'formats a land line number in national format', ->
+            # Arrange
+            phone = Phone.getPhoneNational("0298789402", '61', '2')
+
+            # Act
+            result = Phone.format(phone, Phone.NATIONAL)
+
+            # Assert
+            expect(result).to.match(/\(02\) 9878 9402/)
+
+        it 'splits an 8-digit mobile number', ->
+            # Act
+            result = Phone.countries['61'].splitNumber('12345678', true)
+
+            # Assert
+            expect(result.length).to.equal(3)
+
+        it 'splits an 8-digit non-mobile number', ->
+            # Act
+            result = Phone.countries['61'].splitNumber('12345678')
+
+            # Assert
+            expect(result.length).to.equal(2)
+
+        it 'returns the input wrapped in an array when length is unsupported', ->
+            # Act
+            result = Phone.countries['61'].splitNumber('1234')
+
+            # Assert
+            expect(result).to.deep.equal(['1234'])

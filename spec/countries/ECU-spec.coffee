@@ -70,3 +70,33 @@ describe 'Ecuador', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Branch coverage', ->
+
+		it 'returns undefined when withoutNDC length is 7 but NDC is "9"', ->
+			# Act
+			result = Phone.countries['593'].specialRules('91234567', '1234567', '9')
+
+			# Assert
+			expect(result).to.be.undefined
+
+		it 'returns undefined when NDC is "9" but withoutNDC length is not 8', ->
+			# Act
+			result = Phone.countries['593'].specialRules('9123456', '123456', '9')
+
+			# Assert
+			expect(result).to.be.undefined
+
+		it 'splits a 9-digit number that does NOT start with 9 by leaving it intact', ->
+			# Act
+			result = Phone.countries['593'].splitNumber('212345678')
+
+			# Assert
+			expect(result).to.deep.equal(['212345678'])
+
+		it 'returns the input wrapped in an array when length is unsupported', ->
+			# Act
+			result = Phone.countries['593'].splitNumber('123')
+
+			# Assert
+			expect(result).to.deep.equal(['123'])

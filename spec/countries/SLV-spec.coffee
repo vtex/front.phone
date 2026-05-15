@@ -69,3 +69,34 @@ describe 'El Salvador', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Branch coverage', ->
+
+		it 'returns a non-mobile phone for a "2" NDC', ->
+			# Act
+			result = Phone.countries['503'].specialRules('22712252', '2712252', '2')
+
+			# Assert
+			expect(result).to.exist
+			expect(!!result.isMobile).to.be.false
+
+		it 'flags isMobile=true for a "6" NDC', ->
+			# Act
+			result = Phone.countries['503'].specialRules('62712252', '2712252', '6')
+
+			# Assert
+			expect(result.isMobile).to.be.true
+
+		it 'returns undefined when withoutNDC length is not 7', ->
+			# Act
+			result = Phone.countries['503'].specialRules('227122', '227122', '2')
+
+			# Assert
+			expect(result).to.be.undefined
+
+		it 'returns the input wrapped in an array when length is unsupported', ->
+			# Act
+			result = Phone.countries['503'].splitNumber('123')
+
+			# Assert
+			expect(result).to.deep.equal(['123'])

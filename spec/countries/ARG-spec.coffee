@@ -103,3 +103,54 @@ describe 'Argentina', ->
 		it 'a mobile number', ->
 			# Arrange
 			number = "+54 9 11 87876565"
+
+	describe 'Branch coverage', ->
+
+		it 'formats a land line number in international format', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("+54 11 87876565")
+
+			# Act
+			result = Phone.format(phone, Phone.INTERNATIONAL)
+
+			# Assert
+			expect(result).to.match(/\+54 11 8787 6565/)
+
+		it 'formats a land line number in national format', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("+54 11 87876565")
+
+			# Act
+			result = Phone.format(phone, Phone.NATIONAL)
+
+			# Assert
+			expect(result).to.match(/\(11\) 8787\-6565/)
+
+		it 'formats a number in local format', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("+54 11 87876565")
+
+			# Act
+			result = Phone.format(phone, Phone.LOCAL)
+
+			# Assert
+			expect(result).to.match(/8787\-6565/)
+			expect(result).not.to.match(/\+/)
+			expect(result).not.to.match(/\(/)
+
+		it 'returns an empty string for an unknown format', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("+54 11 87876565")
+
+			# Act
+			result = Phone.format(phone, 999)
+
+			# Assert
+			expect(result).to.equal('')
+
+		it 'returns the input wrapped in an array when splitNumber cannot split', ->
+			# Act
+			result = Phone.countries['54'].splitNumber('123')
+
+			# Assert
+			expect(result).to.deep.equal(['123'])

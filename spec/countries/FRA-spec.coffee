@@ -120,3 +120,22 @@ describe 'France', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Branch coverage', ->
+
+		it 'formats in local format using the NATIONAL/LOCAL split branch', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("33187878787")
+
+			# Act
+			result = Phone.format(phone, Phone.LOCAL)
+
+			# Assert
+			expect(result).to.match(/01 87 87 87 87/)
+
+		it 'returns the input wrapped in an array when splitNumber length is unsupported', ->
+			# Act
+			result = Phone.countries['33'].splitNumber('123')
+
+			# Assert
+			expect(result).to.deep.equal(['123'])

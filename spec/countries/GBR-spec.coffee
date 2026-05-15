@@ -160,3 +160,29 @@ describe 'Great Britain', ->
 		it 'mobile number', ->
 			# Arrange
 			number = "+447400123456"
+
+	describe 'Branch coverage', ->
+
+		it 'flags isMobile=true when withoutNDC is a 10-digit mobile number', ->
+			# Arrange — mobile NDCs are not in the NDC list, so call specialRules directly.
+			result = Phone.countries['44'].specialRules('7400123456', '7400123456', '')
+
+			# Assert
+			expect(result.isMobile).to.be.true
+
+		it 'leaves isMobile undefined for a non-mobile 10-digit number', ->
+			# Arrange
+			phone = Phone.getPhoneInternational("+44 20 3000 5555")
+
+			# Assert
+			expect(!!phone.isMobile).to.be.false
+
+		it 'returns the input wrapped in an array when no splitter rule matches', ->
+			# Arrange (4 digits — no rule applies)
+			number = "1234"
+
+			# Act
+			result = Phone.countries['44'].splitNumber(number)
+
+			# Assert
+			expect(result).to.deep.equal([number])

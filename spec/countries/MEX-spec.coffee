@@ -99,3 +99,19 @@ describe 'Mexico', ->
 				if !result
 					console.log 'NDC missing: ', ndc
 				expect(result).to.be.true
+
+	describe 'Branch coverage', ->
+
+		it 'returns undefined when the national number length is neither 7 nor 8', ->
+			# Act
+			result = Phone.countries['52'].specialRules('33123456', '123456', '33')
+
+			# Assert
+			expect(result).to.be.undefined
+
+		it 'returns the input wrapped in an array when splitNumber length is unsupported', ->
+			# Act
+			result = Phone.countries['52'].splitNumber('123')
+
+			# Assert
+			expect(result).to.deep.equal(['123'])

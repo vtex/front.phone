@@ -137,3 +137,19 @@ describe 'Peru', ->
 
 			# Assert
 			expect(result).to.be.true
+
+	describe 'Branch coverage', ->
+
+		it 'returns undefined when no specialRules branch matches', ->
+			# Arrange (ndc '1' requires 7-digit withoutNDC; here we give 6)
+			result = Phone.countries['51'].specialRules('1123456', '123456', '1')
+
+			# Assert
+			expect(result).to.be.undefined
+
+		it 'returns the input wrapped in an array when splitNumber length is unsupported', ->
+			# Act
+			result = Phone.countries['51'].splitNumber('123')
+
+			# Assert
+			expect(result).to.deep.equal(['123'])
