@@ -1,59 +1,63 @@
 - build:
     pipelines:
-    - name: node-ci-v2
-      notifications:
-        slack:
-          channel: checkout-ui-notifications
-      parameters:
-        packageManager: npm
-        sonarProjectName: front.phone
-        # Pin Node to a version that still exposes util.isRegExp.
-        # css-loader@0.12 -> clean-css@3.4 uses it, and the function was
-        # removed in Node 23+. Bumping the legacy build chain is out of scope
-        # for this project.
-        nodeVersion: 20-bookworm
-        nodeCommands:
+      - name: node-ci-v2
+        notifications:
+          slack:
+            channel: checkout-ui-notifications
+        parameters:
+          packageManager: npm
+          sonarProjectName: front.phone
+          # Pin Node to a version that still exposes util.isRegExp.
+          # css-loader@0.12 -> clean-css@3.4 uses it, and the function was
+          # removed in Node 23+. Bumping the legacy build chain is out of scope
+          # for this project.
+          nodeVersion: 20-bookworm
+          nodeCommands:
             - run build
-            - test
-      runtime:
-        architecture: amd64
-      when:
-      - event: pull_request
-        source: branch
-      - event: push
-        source: branch
-        regex: main
-    - name: build-node-app-and-upload-artifacts-v1
-      notifications:
-        slack:
-          channel: checkout-ui-notifications
-      parameters:
-        awsAccountId: "053131491888"
-        awsBucket: vtex-io-us
-        awsRegion: us-east-1
-        build: "true"
-        destinationPath: front.phone
-        appVersion: "{{ ref_name }}"
-        packageManager: npm
-      runtime:
-        architecture: amd64
-      when:
-      - event: push
-        source: tag
-    - name: techdocs-v1
-      parameters:
-        entityReference: default/component/front.phone
-      when:
-      - event: push
-        source: branch
-        regex: main
-        path:
-        - "docs/**"
-        - ".vtex/deployment.yaml"
-        - ".vtex/deployment.json"
-        - "README.md"
+            # test:coverage compiles .coffee -> .js into src/script/ and
+            # produces coverage/lcov.info, which sonar-project.properties
+            # references via sonar.javascript.lcov.reportPaths.
+            - run test:coverage
+        runtime:
+          architecture: amd64
+        when:
+          - event: pull_request
+            source: branch
+          - event: push
+            source: branch
+            regex: main
+      - name: build-node-app-and-upload-artifacts-v1
+        notifications:
+          slack:
+            channel: checkout-ui-notifications
+        parameters:
+          awsAccountId: "053131491888"
+          awsBucket: vtex-io-us
+          awsRegion: us-east-1
+          build: "true"
+          destinationPath: front.phone
+          appVersion: "{{ ref_name }}"
+          packageManager: npm
+        runtime:
+          architecture: amd64
+        when:
+          - event: push
+            source: tag
+      - name: techdocs-v1
+        parameters:
+          entityReference: default/component/front.phone
+        when:
+          - event: push
+            source: branch
+            regex: main
+            path:
+              - "docs/**"
+              - ".vtex/deployment.yaml"
+              - ".vtex/deployment.json"
+              - "README.md"
     provider: dkcicd
-  description: front.phone is a Javascript library that identifies, validates and
+  description:
+    front.phone is a Javascript library that identifies, validates and
     formats phone numbers
   name: front.phone
   referenceId: 4HISK5KU
