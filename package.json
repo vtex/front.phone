@@ -22,7 +22,7 @@
   "scripts": {
     "test": "yarn coverage:clean && grunt test",
     "testWatch": "mocha --watch spec/**/*-spec.coffee --compilers coffee:coffee-script/register",
-    "test:coverage": "yarn coverage:clean && yarn coverage:build && nyc --reporter=lcov --reporter=text-summary mocha --compilers coffee:coffee-script/register --recursive spec",
+    "test:coverage": "yarn coverage:clean && yarn coverage:build && nyc --reporter=lcov --reporter=text-summary mocha --compilers coffee:coffee-script/register --recursive spec && node scripts/normalize-lcov.js",
     "coverage:build": "coffee -c src/script",
     "coverage:clean": "node -e \"const fs=require('fs'),p=require('path');(function w(d){if(!fs.existsSync(d))return;for(const e of fs.readdirSync(d,{withFileTypes:true})){const f=p.join(d,e.name);if(e.isDirectory())w(f);else if(e.name.endsWith('.js'))fs.unlinkSync(f);}})('src/script');fs.rmSync('coverage',{recursive:true,force:true});fs.rmSync('.nyc_output',{recursive:true,force:true});\"",
     "build": "grunt dist",
