@@ -38,6 +38,7 @@
           destinationPath: front.phone
           appVersion: "{{ ref_name }}"
           packageManager: npm
+          nodeVersion: 20-bookworm
         runtime:
           architecture: amd64
         when:
