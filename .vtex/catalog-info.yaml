@@ -16,5 +16,5 @@ metadata:
 spec:
   lifecycle: stable
   owner: te-0001
-  type: frontend-ui
+  type: frontend
   dependsOn: []
